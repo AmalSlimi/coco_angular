@@ -25,6 +25,9 @@ import { ChartJsComponent } from './backOffice/charts/chart-js/chart-js.componen
 import { ApexchartsComponent } from './backOffice/charts/apexcharts/apexcharts.component';
 import { EchartsComponent } from './backOffice/charts/echarts/echarts.component';
 import { ProfileComponent } from './backOffice/userManagement/profile/profile.component';
+import { HttpClientModule} from '@angular/common/http';
+import { AddBusComponent } from './backOffice/busModule/add-bus/add-bus.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,13 +53,17 @@ import { ProfileComponent } from './backOffice/userManagement/profile/profile.co
     ChartJsComponent,
     ApexchartsComponent,
     EchartsComponent,
-    ProfileComponent
-    
-    
+    ProfileComponent,
+    AddBusComponent
+
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

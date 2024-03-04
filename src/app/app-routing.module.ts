@@ -20,6 +20,7 @@ import { ApexchartsComponent } from './backOffice/charts/apexcharts/apexcharts.c
 import { EchartsComponent } from './backOffice/charts/echarts/echarts.component';
 import { ProfileComponent } from './backOffice/userManagement/profile/profile.component';
 import { HomeFrontComponent } from './frontOffice/home-front/home-front.component';
+import { AddBusComponent } from './backOffice/busModule/add-bus/add-bus.component';
 
 const routes: Routes = [
   {path:'',component:HomeBackComponent},
@@ -40,6 +41,8 @@ const routes: Routes = [
   {path:'bus',component:BusComponent},
   {path:'stop',component:StopComponent},
   {path:'trip',component:TripComponent},
+  {path:'add-bus',component:AddBusComponent},
+
 
   //hdayla
   {path:'room',component:RoomComponent},
@@ -49,7 +52,7 @@ const routes: Routes = [
   {path:'post',component:PostComponent},
   {path:'comment',component:CommentComponent},
 
-  
+
   //charts
   {path:'chartjs',component:ChartJsComponent},
   {path:'apexcharts',component:ApexchartsComponent},
@@ -68,10 +71,10 @@ const routes: Routes = [
 
 
 
-  
 
 
-  
+
+
 
 ];
 
