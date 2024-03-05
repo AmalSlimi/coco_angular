@@ -21,6 +21,11 @@ import { EchartsComponent } from './backOffice/charts/echarts/echarts.component'
 import { ProfileComponent } from './backOffice/userManagement/profile/profile.component';
 import { HomeFrontComponent } from './frontOffice/home-front/home-front.component';
 import { AddBusComponent } from './backOffice/busModule/add-bus/add-bus.component';
+import { UpdateBusComponent } from './backOffice/busModule/update-bus/update-bus.component';
+import { UpdateStopComponent } from './backOffice/busModule/update-stop/update-stop.component';
+import { AddStopComponent } from './backOffice/busModule/add-stop/add-stop.component';
+import { AddtripComponent } from './backOffice/busModule/addtrip/addtrip.component';
+import { UpdateTripComponent } from './backOffice/busModule/updatetrip/updatetrip.component';
 
 const routes: Routes = [
   {path:'',component:HomeBackComponent},
@@ -42,6 +47,11 @@ const routes: Routes = [
   {path:'stop',component:StopComponent},
   {path:'trip',component:TripComponent},
   {path:'add-bus',component:AddBusComponent},
+  {path:'update-bus/:id',component:UpdateBusComponent},
+  {path:'update-stop/:id',component:UpdateStopComponent},
+  {path:'add-stop',component:AddStopComponent},
+  {path:'add-trip',component:AddtripComponent},
+  {path:'update-trip/:id',component:UpdateTripComponent},
 
 
   //hdayla

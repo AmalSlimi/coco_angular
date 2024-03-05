@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BusServiceService } from '../service/bus-service.service';
 import { Router } from '@angular/router';
+import { bus } from '../model/bus';
 
 @Component({
   selector: 'app-add-bus',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-bus.component.scss']
 })
 export class AddBusComponent {
+
   constructor(private bs: BusServiceService, private route:Router) {}
 busForm:FormGroup=new FormGroup({
   availability: new FormControl('', Validators.required),
@@ -21,7 +23,7 @@ busForm:FormGroup=new FormGroup({
 
 save(){console.log(this.busForm.value)
 this.bs.addBus(this.busForm.value as any).subscribe(
-  ()=>this.route.navigateByUrl('/add-bus')
+  ()=>this.route.navigateByUrl('/bus')
 )
 }
 }

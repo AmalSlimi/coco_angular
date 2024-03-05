@@ -21,6 +21,7 @@
       <td>{{ bus.model }}</td>
       <td>{{ bus.seatingCapacity }}</td>
       <td><button class="btn btn-warning"(click)="supp(bus.id)" >delete</button></td>
+      <td><button class="btn btn-danger" [routerLink]="['/update-bus',bus.id]">Update</button></td>
 
 
     </tr>

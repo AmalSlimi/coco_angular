@@ -28,6 +28,12 @@ import { ProfileComponent } from './backOffice/userManagement/profile/profile.co
 import { HttpClientModule} from '@angular/common/http';
 import { AddBusComponent } from './backOffice/busModule/add-bus/add-bus.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UpdateBusComponent } from './backOffice/busModule/update-bus/update-bus.component';
+import { UpdateStopComponent } from './backOffice/busModule/update-stop/update-stop.component';
+import { AddStopComponent } from './backOffice/busModule/add-stop/add-stop.component';
+import { AddtripComponent } from './backOffice/busModule/addtrip/addtrip.component';
+import { UpdateTripComponent } from './backOffice/busModule/updatetrip/updatetrip.component';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +60,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ApexchartsComponent,
     EchartsComponent,
     ProfileComponent,
-    AddBusComponent
+    AddBusComponent,
+    UpdateBusComponent,
+    UpdateStopComponent,
+    AddStopComponent,
+    UpdateStopComponent,
+    AddStopComponent,
+    AddtripComponent,
+    UpdateTripComponent,
+
 
 
   ],

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BusComponent } from '../bus/bus.component';
 import { bus } from '../model/bus';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,4 +21,12 @@ export class BusServiceService {
   removeBus(id:number){
     return this.http.delete(this.baseUrl + 'remove' +'/'+id)
   }
+  
+  UpdateBus(b: bus) : Observable<bus> {
+    return this.http.put<bus> ( this.baseUrl + 'update', b);
+  }
+  getDetailbus(id: number): Observable<bus> {
+    return this.http.get<bus>(this.baseUrl + 'get/' + id);
+  }
+
 }
