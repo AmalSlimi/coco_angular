@@ -25,7 +25,13 @@ import { ChartJsComponent } from './backOffice/charts/chart-js/chart-js.componen
 import { ApexchartsComponent } from './backOffice/charts/apexcharts/apexcharts.component';
 import { EchartsComponent } from './backOffice/charts/echarts/echarts.component';
 import { ProfileComponent } from './backOffice/userManagement/profile/profile.component';
-
+import {HomeFrontComponent} from './frontOffice/home-front/home-front.component';
+import {HttpClientModule} from '@angular/common/http';
+import { CategoryListComponent } from './category-list/category-list.component';
+import {CategoryProductService} from "./MarketPlaceService/category-product.service";
+import { RegisterCategoryProductComponent } from './register-category-product/register-category-product.component';
+import {FormsModule} from "@angular/forms";
+import { EditCategoryComponent } from './edit-category-product/edit-category.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,13 +56,19 @@ import { ProfileComponent } from './backOffice/userManagement/profile/profile.co
     ChartJsComponent,
     ApexchartsComponent,
     EchartsComponent,
-    ProfileComponent
-    
-    
+    ProfileComponent,
+    HomeFrontComponent,
+    CategoryListComponent,
+    RegisterCategoryProductComponent,
+    EditCategoryComponent
+
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

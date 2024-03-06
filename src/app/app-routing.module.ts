@@ -20,6 +20,9 @@ import { ApexchartsComponent } from './backOffice/charts/apexcharts/apexcharts.c
 import { EchartsComponent } from './backOffice/charts/echarts/echarts.component';
 import { ProfileComponent } from './backOffice/userManagement/profile/profile.component';
 import { HomeFrontComponent } from './frontOffice/home-front/home-front.component';
+import { CategoryListComponent } from './category-list/category-list.component';
+import { RegisterCategoryProductComponent } from './register-category-product/register-category-product.component';
+import { EditCategoryComponent } from './edit-category-product/edit-category.component';
 
 const routes: Routes = [
   {path:'',component:HomeBackComponent},
@@ -35,6 +38,11 @@ const routes: Routes = [
   //sysy
   {path:'product',component:ProductComponent},
   {path:'productcategory',component:ProductCategoryComponent},
+  {path:'category-list',component:CategoryListComponent},
+  {path:'register-category-product', component:RegisterCategoryProductComponent},
+  {path:'edit-category-product/:idCategory',component:EditCategoryComponent},
+
+
 
   // ghribii
   {path:'bus',component:BusComponent},
@@ -49,7 +57,7 @@ const routes: Routes = [
   {path:'post',component:PostComponent},
   {path:'comment',component:CommentComponent},
 
-  
+
   //charts
   {path:'chartjs',component:ChartJsComponent},
   {path:'apexcharts',component:ApexchartsComponent},
@@ -68,10 +76,10 @@ const routes: Routes = [
 
 
 
-  
 
 
-  
+
+
 
 ];
 
