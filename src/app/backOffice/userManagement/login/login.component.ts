@@ -27,7 +27,7 @@ export class LoginComponent {
         } else if(userRole === 'EXTERNAL_USER') {
           this.router.navigate(['/external-user']);
         } else {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/coco']);
         }
   
         // Show a success alert

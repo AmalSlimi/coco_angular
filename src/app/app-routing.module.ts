@@ -33,11 +33,12 @@ import { TripFrontComponent } from './frontOffice/busManagment/trip-front/trip-f
 const routes: Routes = [
   
   {path:'signup',component:RegisterComponent},
-  //default route
-  {path:'', redirectTo :'/signup', pathMatch:'full'},
   {path:'login',component:LoginComponent},
+  //default route
+  {path:'', redirectTo :'/login', pathMatch:'full'},
+  
 
- //amal
+  //amal
   {
     path: 'admin',
     component: HomeBackComponent,
@@ -47,7 +48,7 @@ const routes: Routes = [
   {path:'profile',component:ProfileComponent,canActivate: [AuthGuard]},
   {path:'overview',component:OverviewComponent,canActivate: [AuthGuard]},
 
-//front
+  //front
 {path:'coco',component:HomeFrontComponent,canActivate: [AuthGuard]},
 {path:'myProfile',component:MyProfileComponent},
 {path:'external-user',component:ExternalUserComponent,canActivate: [AuthGuard]},
