@@ -19,14 +19,26 @@ import { ChartJsComponent } from './backOffice/charts/chart-js/chart-js.componen
 import { ApexchartsComponent } from './backOffice/charts/apexcharts/apexcharts.component';
 import { EchartsComponent } from './backOffice/charts/echarts/echarts.component';
 import { ProfileComponent } from './backOffice/userManagement/profile/profile.component';
+import { RegisterComponent } from './backOffice/userManagement/register/register.component';
+import { LoginComponent } from './backOffice/userManagement/login/login.component';
+import { ExternalUserComponent } from './frontOffice/external-user/external-user.component';
+import { OverviewComponent } from './backOffice/userManagement/overview/overview.component';
 import { HomeFrontComponent } from './frontOffice/home-front/home-front.component';
+import { DashboardComponent } from './frontOffice/userModule/dashboard/dashboard.component';
 
 const routes: Routes = [
-  {path:'',component:HomeBackComponent},
+  {path:'',component:RegisterComponent},
+
+  
+  {path:'admin',component:HomeBackComponent},
 
   //amal
   {path:'profile',component:ProfileComponent},
+  {path:'login',component:LoginComponent},
+  {path:'overview',component:OverviewComponent},
 
+
+  
 
   //special
   {path:'car',component:CarComponent},
@@ -61,7 +73,13 @@ const routes: Routes = [
  {path:'table',component:DataTablesComponent},
 
  //front
- {path:'coco',component:HomeFrontComponent},
+ {path:'coco_app',component:HomeFrontComponent},
+ {path:'external-user',component:ExternalUserComponent},
+ {path:'dashboard',component:DashboardComponent},
+
+ 
+
+
 
 
 

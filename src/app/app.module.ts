@@ -25,6 +25,21 @@ import { ChartJsComponent } from './backOffice/charts/chart-js/chart-js.componen
 import { ApexchartsComponent } from './backOffice/charts/apexcharts/apexcharts.component';
 import { EchartsComponent } from './backOffice/charts/echarts/echarts.component';
 import { ProfileComponent } from './backOffice/userManagement/profile/profile.component';
+import { RegisterComponent } from './backOffice/userManagement/register/register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './backOffice/userManagement/login/login.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { HeaderFrontComponent } from './frontOffice/header-front/header-front.component';
+import { FooterFrontComponent } from './frontOffice/footer-front/footer-front.component';
+import { CarouselComponent } from './frontOffice/carousel/carousel.component';
+import { ExternalUserComponent } from './frontOffice/external-user/external-user.component';
+import { OverviewComponent } from './backOffice/userManagement/overview/overview.component';
+import { HomeFrontComponent } from './frontOffice/home-front/home-front.component';
+import { DashboardComponent } from './frontOffice/userModule/dashboard/dashboard.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -50,15 +65,31 @@ import { ProfileComponent } from './backOffice/userManagement/profile/profile.co
     ChartJsComponent,
     ApexchartsComponent,
     EchartsComponent,
-    ProfileComponent
+    ProfileComponent,
+    RegisterComponent,
+    LoginComponent,
+    HeaderFrontComponent,
+    FooterFrontComponent,
+    CarouselComponent,
+    ExternalUserComponent,
+    OverviewComponent,
+    HomeFrontComponent,
+    DashboardComponent,
     
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule,
+    
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
