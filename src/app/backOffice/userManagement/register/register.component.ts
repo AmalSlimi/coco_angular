@@ -37,12 +37,12 @@ export class RegisterComponent {
       const emailDomain = email.split('@')[1];
       this.displayRoleSelection = emailDomain === 'esprit.tn';
 
-      // Automatically set role to EXTERNAL_USER if the domain is not esprit.tn
+      // mech esprit.tn auto external user
       if (!this.displayRoleSelection) {
         this.registerForm.get('role')!.setValue(['EXTERNAL_USER']);
-        this.registerForm.get('role')!.disable(); // Optional: disable the role field
+        this.registerForm.get('role')!.disable(); 
       } else {
-        this.registerForm.get('role')!.enable(); // Re-enable the role field for esprit.tn emails
+        this.registerForm.get('role')!.enable(); 
       }
     });
   }

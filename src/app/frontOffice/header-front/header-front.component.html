@@ -1,3 +1,30 @@
+<div class="offcanvas-menu-overlay"></div>
+  <div class="offcanvas-menu-wrapper">
+    <div class="canvas-close">
+      <span class="icon_close"></span>
+    </div>
+    <div class="logo">
+      <a href="./index.html">
+        <img src="assets/frontOffice/img/logo.png" alt="">
+      </a>
+    </div>
+    <div id="mobile-menu-wrap"></div>
+    <div class="om-widget">
+      <ul>
+        <li><i class="icon_mail_alt"></i> CoCo.support@gmail.com</li>
+        <li><i class="fa fa-mobile-phone"></i> 78-258-456 <span>77-777-789</span></li>
+      </ul>
+      <a href="#" class="hw-btn">Submit property</a>
+    </div>
+    <div class="om-social">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-youtube-play"></i></a>
+      <a href="#"><i class="fa fa-instagram"></i></a>
+      <a href="#"><i class="fa fa-pinterest-p"></i></a>
+    </div>
+  </div>
+
 <header class="header-section">
     <div class="hs-top">
       <div class="container">
@@ -13,7 +40,8 @@
                 <li><i class="icon_mail_alt"></i> CoCo.CoCo@esprit.tn</li>
                 <li><i class="fa fa-mobile-phone"></i> 78-258-456 <span>77-777-789</span></li>
               </ul>
-              <a routerLink="#" class="hw-btn">Co&Co esprit</a>
+              <a href="#" class="hw-btn" (click)="logout()">Logout</a>
+
             </div>
           </div>
         </div>
@@ -28,20 +56,54 @@
           <div class="col-lg-9">
             <nav class="nav-menu">
               <ul>
-                <li class="active"><a routerLink="./index.html">Home</a></li>
+                <li><a routerLink="/coco">Home</a>
+                  <ul class="dropdown">
+                    <li><a routerLink="/myProfile">My Profile</a></li>
+                    <li><a routerLink="/my-rides">My Rides</a></li>
+                    <!-- taw nzid okhrin -->
+                  </ul>
+                </li>
                 <li><a routerLink="#">Capooling</a>
                   <ul class="dropdown">
                     <li><a routerLink="./property.html">car</a></li>
                     <li><a routerLink="./profile.html">add a ride</a></li>
                     <li><a routerLink="./property-details.html">ride details</a></li>
-                    <li><a routerLink="./property-comparison.html">my rides</a></li>
                     <li><a routerLink="./property-submit.html">drivers list</a></li>
                   </ul>
                 </li>
-                <li><a routerLink="./agents.html">Accommodation</a></li>
-                <li><a routerLink="./about.html">MarketPlace</a></li>
-                <li><a routerLink="./blog.html">Blog</a></li>
-                <li><a routerLink="./blog.html">Bus</a></li>
+                <li><a routerLink="#">Accommodation</a>
+                  <ul class="dropdown">
+                    <li><a routerLink="/find-accommodation">Find Accommodation</a></li>
+                    <li><a routerLink="/my-bookings">My Bookings</a></li>
+                    <!-- zid hajet teb3in  Accommodation -->
+                  </ul>
+                </li>
+            
+                <li><a routerLink="#">MarketPlace</a>
+                  <ul class="dropdown">
+                    <li><a routerLink="/browse-items">Browse Items</a></li>
+                    <li><a routerLink="/my-listings">My Listings</a></li>
+                    <!-- zid hajet teb3in MarketPlace -->
+                  </ul>
+                </li>
+            
+                <li><a routerLink="#">Bus</a>
+                  <ul class="dropdown">
+                    <li><a routerLink="/bus-front">Bus Schedule</a></li>
+                    <li><a routerLink="/trip-front">My Trips</a></li>
+                    <!--zid hajet teb3in Bus -->
+                  </ul>
+                </li>
+
+                <li><a routerLink="#">Blog</a>
+                  <ul class="dropdown">
+                    <li><a routerLink="/latest-posts">Latest Posts</a></li>
+                    <li><a routerLink="/my-posts">My Posts</a></li>
+                    <!-- zid hajet teb3in Blog -->
+                  </ul>
+                </li>
+            
+                
                 <li><a routerLink="./contact.html">Contact</a></li>
               </ul>
             </nav>
@@ -53,6 +115,8 @@
               <a routerLink="#"><i class="fa fa-youtube-play"></i></a>
               <a routerLink="#"><i class="fa fa-instagram"></i></a>
               <a routerLink="#"><i class="fa fa-pinterest-p"></i></a>
+
+              
             </div>
           </div>
         </div>

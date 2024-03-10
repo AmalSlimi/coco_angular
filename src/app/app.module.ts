@@ -39,6 +39,9 @@ import { OverviewComponent } from './backOffice/userManagement/overview/overview
 import { HomeFrontComponent } from './frontOffice/home-front/home-front.component';
 import { DashboardComponent } from './frontOffice/userModule/dashboard/dashboard.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { MyProfileComponent } from './frontOffice/userModule/my-profile/my-profile.component';
+import { BusFrontComponent } from './frontOffice/busManagment/bus-front/bus-front.component';
+import { TripFrontComponent } from './frontOffice/busManagment/trip-front/trip-front.component';
 
 
 @NgModule({
@@ -75,6 +78,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     OverviewComponent,
     HomeFrontComponent,
     DashboardComponent,
+    MyProfileComponent,
+    BusFrontComponent,
+    TripFrontComponent,
     
     
   ],

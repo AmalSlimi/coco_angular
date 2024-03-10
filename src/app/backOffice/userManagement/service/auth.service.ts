@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../model/User';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,16 @@ export class AuthService {
   };
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}auth/login`, { email, password });
+    return this.http.post<any>(`${this.baseUrl}auth/login`, { email, password }, this.httpOptions)
+      .pipe(tap(res => {
+        if (res && res.accessToken) { // Assuming the token is named 'accessToken' in the response
+          localStorage.setItem('token', res.accessToken); // Use 'token' as the key
+          console.log('Token stored');
+        }
+      }));
+    
   }
+  
 
   register(user: any): Observable<any> {
     console.log("Sending registration data: ", user); // Debug log
@@ -28,21 +37,22 @@ export class AuthService {
   
 
   saveToken(token: string): void {
-    localStorage.setItem('authToken', token);
+    localStorage.setItem('token', token);
   }
   
   getToken(): string | null {
-    return localStorage.getItem('authToken');
+    return localStorage.getItem('token');
   }
   
   isLoggedIn(): boolean {
-    const token = this.getToken();
+    const token = localStorage.getItem('token'); 
     return !!token; 
   }
 
   logout(): void {
-    localStorage.removeItem('authToken'); 
+    localStorage.removeItem('token'); 
   }
   
 
+  
 }

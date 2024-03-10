@@ -11,8 +11,7 @@ export class HeaderBackComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   logout(): void {
-    console.log('Attempting to logout...');
-    this.authService.logout();
+    localStorage.removeItem('token'); 
     this.router.navigate(['/login']);
   }
   

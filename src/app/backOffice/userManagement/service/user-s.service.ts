@@ -38,4 +38,30 @@ export class UserSService {
   
     return this.http.delete(`${this.baseUrl}users/${id}`, httpOptions);
   }
+
+  getMyProfile(): Observable<any> {
+    const token = localStorage.getItem('authToken');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+  
+    return this.http.get<User>(`${this.baseUrl}user/profile`, httpOptions); // Note: Removed the slash before "user/profile"
+  }
+  
+  updateProfile(user: User): Observable<any> {
+    const token = localStorage.getItem('authToken');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+  
+    return this.http.put(`${this.baseUrl}user/profile`, user, httpOptions); // Note: Removed the slash before "user/profile"
+  }
+  
+
 }

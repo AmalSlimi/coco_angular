@@ -25,41 +25,59 @@ import { ExternalUserComponent } from './frontOffice/external-user/external-user
 import { OverviewComponent } from './backOffice/userManagement/overview/overview.component';
 import { HomeFrontComponent } from './frontOffice/home-front/home-front.component';
 import { DashboardComponent } from './frontOffice/userModule/dashboard/dashboard.component';
+import { AuthGuard } from './auth/auth.guard';
+import { MyProfileComponent } from './frontOffice/userModule/my-profile/my-profile.component';
+import { BusFrontComponent } from './frontOffice/busManagment/bus-front/bus-front.component';
+import { TripFrontComponent } from './frontOffice/busManagment/trip-front/trip-front.component';
 
 const routes: Routes = [
-  {path:'',component:RegisterComponent},
-
   
-  {path:'admin',component:HomeBackComponent},
-
-  //amal
-  {path:'profile',component:ProfileComponent},
+  {path:'signup',component:RegisterComponent},
+  //default route
+  {path:'', redirectTo :'/signup', pathMatch:'full'},
   {path:'login',component:LoginComponent},
-  {path:'overview',component:OverviewComponent},
 
+ //amal
+  {
+    path: 'admin',
+    component: HomeBackComponent,
+    canActivate: [AuthGuard] 
+  },
 
+  {path:'profile',component:ProfileComponent,canActivate: [AuthGuard]},
+  {path:'overview',component:OverviewComponent,canActivate: [AuthGuard]},
+
+//front
+{path:'coco',component:HomeFrontComponent,canActivate: [AuthGuard]},
+{path:'myProfile',component:MyProfileComponent},
+{path:'external-user',component:ExternalUserComponent,canActivate: [AuthGuard]},
+{path:'dashboard',component:DashboardComponent,canActivate: [AuthGuard]},
   
 
   //special
-  {path:'car',component:CarComponent},
-  {path:'driver',component:DriversComponent},
+  {path:'car',component:CarComponent,canActivate: [AuthGuard]},
+  {path:'driver',component:DriversComponent,canActivate: [AuthGuard]},
 
   //sysy
-  {path:'product',component:ProductComponent},
-  {path:'productcategory',component:ProductCategoryComponent},
+  {path:'product',component:ProductComponent,canActivate: [AuthGuard]},
+  {path:'productcategory',component:ProductCategoryComponent,canActivate: [AuthGuard]},
 
   // ghribii
-  {path:'bus',component:BusComponent},
-  {path:'stop',component:StopComponent},
-  {path:'trip',component:TripComponent},
+  {path:'bus',component:BusComponent,canActivate: [AuthGuard]},
+  {path:'stop',component:StopComponent,canActivate: [AuthGuard]},
+  {path:'trip',component:TripComponent,canActivate: [AuthGuard]},
+  //ghribi front
+  {path:'bus-front',component:BusFrontComponent},
+  {path:'trip-front',component:TripFrontComponent},
+
 
   //hdayla
-  {path:'room',component:RoomComponent},
-  {path:'accommodation',component:AccommodationComponent},
+  {path:'room',component:RoomComponent,canActivate: [AuthGuard]},
+  {path:'accommodation',component:AccommodationComponent,canActivate: [AuthGuard]},
 
   //ramsys
-  {path:'post',component:PostComponent},
-  {path:'comment',component:CommentComponent},
+  {path:'post',component:PostComponent,canActivate: [AuthGuard]},
+  {path:'comment',component:CommentComponent,canActivate: [AuthGuard]},
 
   
   //charts
@@ -72,10 +90,7 @@ const routes: Routes = [
  //table
  {path:'table',component:DataTablesComponent},
 
- //front
- {path:'coco_app',component:HomeFrontComponent},
- {path:'external-user',component:ExternalUserComponent},
- {path:'dashboard',component:DashboardComponent},
+ 
 
  
 

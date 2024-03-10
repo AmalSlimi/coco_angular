@@ -9,11 +9,18 @@ import { AuthService } from '../backOffice/userManagement/service/auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
-  canActivate(): boolean {
-    if (!this.authService.isLoggedIn()) {
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+
+    const isLoggedIn = this.authService.isLoggedIn(); 
+
+    if (!isLoggedIn) {
+      // If not logged in, redirect to the login page
       this.router.navigate(['/login']);
       return false;
     }
+
     return true;
   }
   

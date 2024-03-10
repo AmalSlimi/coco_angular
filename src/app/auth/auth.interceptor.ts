@@ -12,11 +12,11 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (!request.url.endsWith('/auth/signup') && !request.url.endsWith('/auth/login')) {
-      const token = localStorage.getItem('token'); 
-      if (token) {
+      const authToken = localStorage.getItem('token'); //retrieve the token
+      if (authToken) {
         request = request.clone({
           setHeaders: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${authToken}`
           }
         });
       }
