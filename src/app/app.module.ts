@@ -33,6 +33,9 @@ import { UpdateStopComponent } from './backOffice/busModule/update-stop/update-s
 import { AddStopComponent } from './backOffice/busModule/add-stop/add-stop.component';
 import { AddtripComponent } from './backOffice/busModule/addtrip/addtrip.component';
 import { UpdateTripComponent } from './backOffice/busModule/updatetrip/updatetrip.component';
+import { AddtripStopComponent } from './backOffice/busModule/addtrip-stop/addtrip-stop.component';
+import { TripStopComponent } from './backOffice/busModule/trip-stop/trip-stop.component';
+import { UpdatetripStopComponent } from './backOffice/busModule/updatetrip-stop/updatetrip-stop.component';
 
 
 @NgModule({
@@ -68,6 +71,10 @@ import { UpdateTripComponent } from './backOffice/busModule/updatetrip/updatetri
     AddStopComponent,
     AddtripComponent,
     UpdateTripComponent,
+    AddtripStopComponent,
+    AddtripStopComponent,
+    TripStopComponent,
+    UpdatetripStopComponent,
 
 
 

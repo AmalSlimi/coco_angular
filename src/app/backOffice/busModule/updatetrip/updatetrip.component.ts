@@ -16,6 +16,8 @@ export class UpdateTripComponent implements OnInit {
 
   constructor(private tripService: TripServiceService, private router: Router, private route: ActivatedRoute) {
     this.tripForm = new FormGroup({
+      tripId: new FormControl('', Validators.required),
+      stopId: new FormControl('', Validators.required),
       departureLocation: new FormControl('', Validators.required),
       arrivalLocation: new FormControl('', Validators.required),
       estimatedDuration: new FormControl('', Validators.required),
@@ -36,7 +38,7 @@ export class UpdateTripComponent implements OnInit {
       this.tripService.updatetrip(updatedTrip).subscribe({
         next: (response) => {
           console.log('Trip updated successfully', response);
-          this.router.navigate(['/trip']);
+          this.router.navigate(['/tripStop']);
         },
         error: (error) => console.error('Error updating trip', error)
       });
