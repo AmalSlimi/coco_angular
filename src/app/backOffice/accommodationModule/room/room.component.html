@@ -3,7 +3,26 @@
 
 <main id="main" class="main">
 
-    <p> you code here </p>
+<table class="table" border="1">
+    <tr>
+      <th>Type Of Room</th>
+        <th>Rent</th>
+        <th>amenities</th>
+        <th>Room Details</th>
+        <th>accommodationID</th>
+    
+        <!-- commantaire -->
+    </tr>
+    <tr *ngFor="let r of listRoom, let i=index">
+        <ng-container>
+        <td>{{r.roomType}}</td>
+        <td>{{r.rent}}</td>
+        <td>{{r.amenities}}</td>
+        <td>{{r.roomDetails}}</td>
+        <td>{{r.accommodationID}}</td>
+    </ng-container> 
+    </tr>
+</table>
 
   </main>
 <app-footer-back></app-footer-back>

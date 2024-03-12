@@ -1,0 +1,29 @@
+
+<form class="row g-3 p-4" [formGroup]="ajouterForm">
+    <div class="col-md-12">
+      <input type="text" class="form-control" placeholder="address" formControlName="address">
+    </div>
+    <div class="col-md-12">
+      <input type="email" class="form-control" placeholder="rent_price" formControlName="rent_price">
+    </div>
+    
+    <div class="col-12">
+      <input type="text" class="form-control" placeholder="numberOfRoom" formControlName="numberOfRoom">
+    </div>
+    <div class="col-md-12">
+      <input type="text" class="form-control" placeholder="rules" formControlName="rules">
+    </div>
+    <div class="col-md-12">
+        <input type="text" class="form-control" placeholder="localisation" formControlName="localisation">
+      </div>
+    <div class="col-md-12">
+        <label for="">Choose image ..</label>
+      <input  (change)="selectFile($event)" type="file" name="" id="">
+    </div>
+    
+    
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary" (click)="add()">Submit</button>
+      <button type="reset" class="btn btn-secondary">Reset</button>
+    </div>
+  </form>

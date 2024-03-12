@@ -65,8 +65,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "coco_angular:build:production"
-            },
+              "browserTarget": "coco_angular:build:production"            },
             "development": {
               "browserTarget": "coco_angular:build:development"
             }
@@ -100,5 +99,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "0f4cf49a-5a7a-4c07-b8d1-e17edd433c40"
   }
 }

@@ -20,6 +20,7 @@ import { ApexchartsComponent } from './backOffice/charts/apexcharts/apexcharts.c
 import { EchartsComponent } from './backOffice/charts/echarts/echarts.component';
 import { ProfileComponent } from './backOffice/userManagement/profile/profile.component';
 import { HomeFrontComponent } from './frontOffice/home-front/home-front.component';
+import { CategoryComponent } from './backOffice/accommodationModule/category/category.component';
 
 const routes: Routes = [
   {path:'',component:HomeBackComponent},
@@ -44,6 +45,8 @@ const routes: Routes = [
   //hdayla
   {path:'room',component:RoomComponent},
   {path:'accommodation',component:AccommodationComponent},
+  {path:'category',component:CategoryComponent},
+  //{path:'subcategory',component:SubCategoryComponent},
 
   //ramsys
   {path:'post',component:PostComponent},

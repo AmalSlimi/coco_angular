@@ -25,6 +25,12 @@ import { ChartJsComponent } from './backOffice/charts/chart-js/chart-js.componen
 import { ApexchartsComponent } from './backOffice/charts/apexcharts/apexcharts.component';
 import { EchartsComponent } from './backOffice/charts/echarts/echarts.component';
 import { ProfileComponent } from './backOffice/userManagement/profile/profile.component';
+import { HttpClientModule} from '@angular/common/http';
+import { CategoryComponent } from './backOffice/accommodationModule/category/category.component';
+import { CategoryServiceService } from './ServiceCollocation/category-service.service';
+import { FormsModule } from '@angular/forms';
+import { QRCodeModule } from 'angular2-qrcode';
+
 
 @NgModule({
   declarations: [
@@ -50,15 +56,18 @@ import { ProfileComponent } from './backOffice/userManagement/profile/profile.co
     ChartJsComponent,
     ApexchartsComponent,
     EchartsComponent,
-    ProfileComponent
+    ProfileComponent,
+    CategoryComponent
+    ],
     
-    
-  ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    QRCodeModule,
+    ],
+  providers: [CategoryServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

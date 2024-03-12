@@ -1,0 +1,96 @@
+<!-- <app-header-back></app-header-back>
+<app-navbar-back></app-navbar-back>
+
+<main id="main" class="main">
+    <!-- <button type="submit" class="btn btn-primary" (click)="addSubCat()">Add Sub-Category</button> -->
+    <!-- <div class="text-center">
+      <button type="submit" class="btn btn-primary" (click)="addSubCat()">Add Sub-Category</button>
+    </div>
+    <table class="table datatable">
+        <thead>
+          <tr>
+            
+            <th>Id</th>
+            <th>CategoryTitle</th>
+            <th>Category Description</th>
+            <th>QR Code</th>
+            <th>Delete</th>
+            <th>Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of subCat">
+            <td>{{c.subCategoryID}}</td>
+            <td>{{c.subCategoryTitle}}</td>
+            <td>{{c.subCategoryDescription}}</td>
+            <td>
+              <img [src]="generateQRCode(c)" alt="QR Code">
+            </td>
+            <td> <button class=" btn btn-primary" (click)="delet(c.subCategoryID)" ><i class="bi bi-trash"></i></button></td>
+            <td> <button class=" btn btn-secondary"><i class="bi bi-question-circle" (click)="update(c.subCategoryID)" ></i></button></td>
+            
+          </tr>
+        </tbody>
+      </table>
+      <app-footer-back></app-footer-back>
+      <ng-template #myForm3> 
+        <app-add-sub-category  (addevent)="add($event)" ></app-add-sub-category>
+      </ng-template>
+      <ng-template #myForm2> 
+        <app-update-subcategory  [id]="idcat" (updateSubCategory)="up($event)" ></app-update-subcategory>
+        </ng-template> --> -->
+
+
+
+        <app-header-back></app-header-back>
+        <app-navbar-back></app-navbar-back>
+        
+        <main id="main" class="main">
+            <div class="container mt-4">
+                <div class="text-center mb-3">
+                    <button type="submit" class="btn btn-primary" (click)="addSubCat()">Add Sub-Category</button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped datatable">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Sub-Category Title</th>
+                                <th>Sub-Category Description</th>
+                                <th>QR Code</th>
+                                <th>Delete</th>
+                                <th>Update</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let c of subCat">
+                                <td>{{c.subCategoryID}}</td>
+                                <td>{{c.subCategoryTitle}}</td>
+                                <td>{{c.subCategoryDescription}}</td>
+                                <td>
+                                    <img [src]="generateQRCode(c)" alt="QR Code">
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger" (click)="delet(c.subCategoryID)">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-warning" (click)="update(c.subCategoryID)">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <app-footer-back></app-footer-back>
+            <ng-template #myForm3>
+                <app-add-sub-category (addevent)="add($event)" (evnt)="onhide()"></app-add-sub-category>
+            </ng-template>
+            <ng-template #myForm2>
+                <app-update-subcategory [id]="idcat" (updateSubCategory)="up($event)" (evnt)="onhide()"></app-update-subcategory>
+            </ng-template>
+        </main>
+        

@@ -1,0 +1,101 @@
+<!-- <app-header-back></app-header-back>
+<app-navbar-back></app-navbar-back>
+
+<main id="main" class="main">
+
+   
+   <button type="submit" class="btn btn-primary" (click)="addCat()">AddCaegory</button>
+   
+   <table class="table datatable">
+    <thead>
+      <tr>
+        
+        <th>ID</th>
+        <th>Category Title</th>
+        <th>Category Description</th>
+        <th>QR Code</th>
+        <th>Delete</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of cats">
+        <td>{{c.categoryID}}</td>
+        <td>{{c.categoryTitle}}</td>
+        <td>{{c.categoryDescription}}</td>
+        <td>
+          <img [src]="generateQRCode(c)" alt="QR Code">
+        </td>
+        <td> <button class=" btn btn-primary" (click)="deleteCat(c.categoryID)"><i class="bi bi-trash"></i></button></td>
+        <td> <button class=" btn btn-secondary"><i class="bi bi-question-circle" (click)="updateCat(c.categoryID)"></i></button></td>
+        
+      </tr> 
+    
+
+     
+    </tbody>
+  </table>
+
+  </main>
+  <ng-template #myForm>
+    <app-my-modal  (evnt)="onhide()" (evnt2)="add($event)" ></app-my-modal>
+  </ng-template>
+  <ng-template #myForm2>
+    <app-update-category (evnt)="onhide()" (updateCategory)="update($event) "  [id]="idcat" ></app-update-category>  
+  
+<app-footer-back></app-footer-back> -->
+
+
+
+
+<app-header-back></app-header-back>
+<app-navbar-back></app-navbar-back>
+
+<main id="main" class="main">
+    <div class="container mt-4">
+        <div class="text-center mb-3">
+            <button type="submit" class="btn btn-primary" (click)="addCat()">Add Category</button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped datatable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Category Title</th>
+                        <th>Category Description</th>
+                        <th>QR Code</th>
+                        <th>Delete</th>
+                        <th>Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of cats">
+                        <td>{{c.categoryID}}</td>
+                        <td>{{c.categoryTitle}}</td>
+                        <td>{{c.categoryDescription}}</td>
+                        <td>
+                            <img [src]="generateQRCode(c)" alt="QR Code">
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" (click)="deleteCat(c.categoryID)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-warning" (click)="updateCat(c.categoryID)">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+ <ng-template #myForm>
+    <app-my-modal  (evnt)="onhide()" (evnt2)="add($event)" ></app-my-modal>
+  </ng-template>
+  <ng-template #myForm2>
+    <app-update-category (evnt)="onhide()" (updateCategory)="update($event) "  [id]="idcat" ></app-update-category>  
+  
+<app-footer-back></app-footer-back>
