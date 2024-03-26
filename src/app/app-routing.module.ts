@@ -19,7 +19,7 @@ import { ChartJsComponent } from './backOffice/charts/chart-js/chart-js.componen
 import { ApexchartsComponent } from './backOffice/charts/apexcharts/apexcharts.component';
 import { EchartsComponent } from './backOffice/charts/echarts/echarts.component';
 import { ProfileComponent } from './backOffice/userManagement/profile/profile.component';
-import { HomeFrontComponent } from './frontOffice/home-front/home-front.component';
+
 import { AddBusComponent } from './backOffice/busModule/add-bus/add-bus.component';
 import { UpdateBusComponent } from './backOffice/busModule/update-bus/update-bus.component';
 import { UpdateStopComponent } from './backOffice/busModule/update-stop/update-stop.component';
@@ -29,6 +29,14 @@ import { UpdateTripComponent } from './backOffice/busModule/updatetrip/updatetri
 import { AddtripStopComponent } from './backOffice/busModule/addtrip-stop/addtrip-stop.component';
 import { TripStopComponent } from './backOffice/busModule/trip-stop/trip-stop.component';
 import { UpdatetripStopComponent } from './backOffice/busModule/updatetrip-stop/updatetrip-stop.component';
+import { HomeFrontComponent } from './frontOffice/home-front/home-front.component';
+import { SubscriptionComponent } from './frontOffice/busManagment/subscription/subscription.component';
+import { UtripComponent } from './frontOffice/busManagment/utrip/utrip.component';
+import { AddsubscriptionComponent } from './frontOffice/busManagment/addsubscription/addsubscription.component';
+import { StripeComponent } from './frontOffice/busManagment/stripe/stripe.component';
+
+
+
 
 const routes: Routes = [
   {path:'',component:HomeBackComponent},
@@ -60,6 +68,15 @@ const routes: Routes = [
   {path:'update-tripStop/:id',component:UpdatetripStopComponent},
 
 
+  //ghriibi u
+  {path: 'sub', component: SubscriptionComponent},
+  {path: 'utrip', component: UtripComponent},
+  {path:'add-sub/:id',component:AddsubscriptionComponent},
+  {path: 'strip', component: StripeComponent},
+
+
+
+
   //hdayla
   {path:'room',component:RoomComponent},
   {path:'accommodation',component:AccommodationComponent},
@@ -81,7 +98,6 @@ const routes: Routes = [
 
  //front
  {path:'coco',component:HomeFrontComponent},
-
 
 
 

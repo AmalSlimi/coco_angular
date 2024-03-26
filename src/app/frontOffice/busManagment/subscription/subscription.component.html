@@ -1,0 +1,25 @@
+<app-header-front></app-header-front>
+
+<main id="main" class="main">
+  <div class="card-container">
+    <div class="card" *ngFor="let s of listSub">
+      <div class="card-content">
+        <div class="subscription-info">
+          <div><strong>Remaining Trips:</strong> {{ s.remainingTrips }}</div>
+          <div><strong>Payment Method:</strong> {{ s.subscriptionPaymentMethod }}</div>
+          <div><strong>Status:</strong> {{ s.status }}</div>
+          <div><strong>Price:</strong> {{ s.subscriptionPrice }}</div>
+          <!-- Ajoutez les détails de l'utilisateur et un bouton de paiement -->
+
+          <button (click)="paySubscription(s)">Pay Subscription</button>
+        </div>
+        <div class="card-actions">
+          <button (click)="generateQrCode(s)">Generate QR Code</button>
+          <img *ngIf="s.qrCodeImageUrl" [src]="s.qrCodeImageUrl" alt="QR Code">
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<app-footer-front></app-footer-front>

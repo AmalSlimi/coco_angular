@@ -1,0 +1,55 @@
+/* Apply some basic styling to the form container */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Style form labels */
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Style form inputs */
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Style submit button */
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Style submit button on hover */
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Center align text */
+h2 {
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  form {
+    max-width: 100%;
+  }
+}

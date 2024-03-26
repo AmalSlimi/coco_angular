@@ -36,6 +36,15 @@ import { UpdateTripComponent } from './backOffice/busModule/updatetrip/updatetri
 import { AddtripStopComponent } from './backOffice/busModule/addtrip-stop/addtrip-stop.component';
 import { TripStopComponent } from './backOffice/busModule/trip-stop/trip-stop.component';
 import { UpdatetripStopComponent } from './backOffice/busModule/updatetrip-stop/updatetrip-stop.component';
+import { HeaderFrontComponent } from './frontOffice/header-front/header-front.component';
+import { FooterFrontComponent } from './frontOffice/footer-front/footer-front.component';
+import { CarouselComponent } from './frontOffice/carousel/carousel.component';
+import { HomeFrontComponent } from './frontOffice/home-front/home-front.component';
+import { UtripComponent } from './frontOffice/busManagment/utrip/utrip.component';
+import { SubscriptionComponent } from './frontOffice/busManagment/subscription/subscription.component';
+import { AddsubscriptionComponent } from './frontOffice/busManagment/addsubscription/addsubscription.component';
+import { StripeComponent } from './frontOffice/busManagment/stripe/stripe.component';
+
 
 
 @NgModule({
@@ -75,16 +84,34 @@ import { UpdatetripStopComponent } from './backOffice/busModule/updatetrip-stop/
     AddtripStopComponent,
     TripStopComponent,
     UpdatetripStopComponent,
+    HeaderFrontComponent,
+    FooterFrontComponent,
+    CarouselComponent,
+    HomeFrontComponent,
+    UtripComponent,
+    SubscriptionComponent,
+    AddsubscriptionComponent,
+    StripeComponent,
+   
+
+
+
+
+
 
 
 
   ],
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
