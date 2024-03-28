@@ -6,9 +6,12 @@
       <div class="card-content">
         <div class="subscription-info">
           <div><strong>Remaining Trips:</strong> {{ s.remainingTrips }}</div>
+          <div><strong>TripStops:</strong> {{ s.tripStops}}</div>
           <div><strong>Payment Method:</strong> {{ s.subscriptionPaymentMethod }}</div>
           <div><strong>Status:</strong> {{ s.status }}</div>
           <div><strong>Price:</strong> {{ s.subscriptionPrice }}</div>
+
+
           <!-- Ajoutez les détails de l'utilisateur et un bouton de paiement -->
 
           <button (click)="paySubscription(s)">Pay Subscription</button>
