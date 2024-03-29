@@ -2,29 +2,33 @@
 <app-navbar-back></app-navbar-back>
 
 <main id="main" class="main">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" [(ngModel)]="search"
+        placeholder="Search" aria-label="Search"
+        aria-describedby="basic-addon2">
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary"
+            type="button">Search</button>
+    </div>
+  </div>
+  <button class="btn btn-warning" (click)="tri()">Tri</button>
   <table class="table" border="1">
     <tr>
-
       <th>Departure Time</th>
       <th>Arrival Time</th>
       <th>Amount</th>
-
-
+      <th></th>
+      <th></th>
     </tr>
+
     <tr *ngFor="let ts of listTripStop">
-
-      <td>{{ ts.arrivalTime }}</td>
-      <td>{{ ts.departureTime }}</td>
-      <td>{{ ts.amount }}</td>
-
-      <td><button class="btn btn-warning"(click)="supp(ts.id)" >delete</button></td>
-      <td><button class="btn btn-danger" [routerLink]="['/update-tripStop',ts.id]">Update</button></td>
-
-
-
+      <td *ngIf="ts.amount == search || search == 0">{{ ts.departureTime }}</td>
+      <td *ngIf="ts.amount == search || search == 0">{{ ts.arrivalTime }}</td>
+      <td *ngIf="ts.amount == search || search == 0">{{ ts.amount }}</td>
+      <td *ngIf="ts.amount == search || search == 0"><button class="btn btn-warning" (click)="supp(ts.id)">delete</button></td>
+      <td *ngIf="ts.amount == search || search == 0"><button class="btn btn-danger" [routerLink]="['/update-tripStop', ts.id]">Update</button></td>
     </tr>
   </table>
 </main>
 
 <app-footer-back></app-footer-back>
-

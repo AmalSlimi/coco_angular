@@ -8,6 +8,7 @@ import { TripStopServiceService } from '../service/trip-stop-service.service';
   styleUrls: ['./trip-stop.component.scss']
 })
 export class TripStopComponent {
+  search: number = 0;
   listTripStop: TripStop[] = [];
 
   constructor(private tripStopService: TripStopServiceService) {}
@@ -28,6 +29,17 @@ export class TripStopComponent {
     this.tripStopService.removetrip(id).subscribe(
      ()=>this.ngOnInit()
     )
+  }
+  tri(){
+    this.tripStopService.tri().subscribe(TripStop => {
+      this.listTripStop = TripStop;
+      console.log('tri success');
+    },
+    (error) => {
+      // Gestion des erreurs : Affichez ou traitez les erreurs ici
+      console.error('Erreur lors de l\'enregistrement de la réponse : ', error);
+    }
+  );
   }
 
 }
