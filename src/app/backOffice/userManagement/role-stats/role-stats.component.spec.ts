@@ -1,19 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeBackComponent } from './home-back.component';
+import { RoleStatsComponent } from './role-stats.component';
 
-
-describe('HomeBackComponent', () => {
-  let component: HomeBackComponent;
-  let fixture: ComponentFixture<HomeBackComponent>;
+describe('RoleStatsComponent', () => {
+  let component: RoleStatsComponent;
+  let fixture: ComponentFixture<RoleStatsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeBackComponent ]
+      declarations: [ RoleStatsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HomeBackComponent);
+    fixture = TestBed.createComponent(RoleStatsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

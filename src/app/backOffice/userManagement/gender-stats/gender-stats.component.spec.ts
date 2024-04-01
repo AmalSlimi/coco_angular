@@ -1,19 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeBackComponent } from './home-back.component';
+import { GenderStatsComponent } from './gender-stats.component';
 
-
-describe('HomeBackComponent', () => {
-  let component: HomeBackComponent;
-  let fixture: ComponentFixture<HomeBackComponent>;
+describe('GenderStatsComponent', () => {
+  let component: GenderStatsComponent;
+  let fixture: ComponentFixture<GenderStatsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeBackComponent ]
+      declarations: [ GenderStatsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HomeBackComponent);
+    fixture = TestBed.createComponent(GenderStatsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

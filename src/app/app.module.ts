@@ -42,7 +42,10 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { MyProfileComponent } from './frontOffice/userModule/my-profile/my-profile.component';
 import { BusFrontComponent } from './frontOffice/busManagment/bus-front/bus-front.component';
 import { TripFrontComponent } from './frontOffice/busManagment/trip-front/trip-front.component';
-
+import { AccessDeniedComponent } from './frontOffice/access-denied/access-denied.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { GenderStatsComponent } from './backOffice/userManagement/gender-stats/gender-stats.component';
+import { RoleStatsComponent } from './backOffice/userManagement/role-stats/role-stats.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +84,9 @@ import { TripFrontComponent } from './frontOffice/busManagment/trip-front/trip-f
     MyProfileComponent,
     BusFrontComponent,
     TripFrontComponent,
+    AccessDeniedComponent,
+    GenderStatsComponent,
+    RoleStatsComponent,
     
     
   ],
@@ -91,6 +97,9 @@ import { TripFrontComponent } from './frontOffice/busManagment/trip-front/trip-f
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    NgApexchartsModule,
+    BrowserModule,
+    
     
   ],
   providers: [

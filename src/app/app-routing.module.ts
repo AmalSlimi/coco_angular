@@ -29,6 +29,9 @@ import { AuthGuard } from './auth/auth.guard';
 import { MyProfileComponent } from './frontOffice/userModule/my-profile/my-profile.component';
 import { BusFrontComponent } from './frontOffice/busManagment/bus-front/bus-front.component';
 import { TripFrontComponent } from './frontOffice/busManagment/trip-front/trip-front.component';
+import { Role } from './backOffice/userManagement/model/Role';
+import { AccessDeniedComponent } from './frontOffice/access-denied/access-denied.component';
+import { RoleStatsComponent } from './backOffice/userManagement/role-stats/role-stats.component';
 
 const routes: Routes = [
   
@@ -42,11 +45,13 @@ const routes: Routes = [
   {
     path: 'admin',
     component: HomeBackComponent,
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard]
+    
   },
 
   {path:'profile',component:ProfileComponent,canActivate: [AuthGuard]},
   {path:'overview',component:OverviewComponent,canActivate: [AuthGuard]},
+  {path:'role-stats',component:RoleStatsComponent},
 
   //front
 {path:'coco',component:HomeFrontComponent,canActivate: [AuthGuard]},
@@ -92,7 +97,7 @@ const routes: Routes = [
  {path:'table',component:DataTablesComponent},
 
  
-
+ { path: 'access-denied', component: AccessDeniedComponent },
  
 
 

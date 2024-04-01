@@ -1,5 +1,4 @@
 import { Role } from './Role';
-
 export class User {
     id!: number;
     email!: string;
@@ -9,5 +8,6 @@ export class User {
     address!: string;
     dateOfBirth!: Date; 
     pictureUrl!: string;
+    phoneNumber!: string;
     role!: Role[];  
 }

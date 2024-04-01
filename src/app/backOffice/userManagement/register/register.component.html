@@ -49,6 +49,17 @@
                         <input type="date" class="form-control" id="dateOfBirth" formControlName="dateOfBirth" required>
                       </div>
                       <div class="col-12">
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber" required>
+                        <div *ngIf="registerForm.get('phoneNumber')?.errors?.['required']" class="invalid-feedback">
+                            Phone number is required.
+                        </div>
+                        <div *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern']" class="invalid-feedback">
+                            Phone number must contain exactly 8 digits.
+                        </div>
+                    </div>
+                    
+                      <div class="col-12">
                         <label for="pictureUrl" class="form-label">Profile Picture URL</label>
                         <input type="url" class="form-control" id="pictureUrl" formControlName="pictureUrl">
                       </div>

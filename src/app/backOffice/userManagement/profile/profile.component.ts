@@ -8,7 +8,10 @@ import { UserSService } from '../service/user-s.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-  user: any = {}; // Adapt based on your User model
+  user: any = {}; 
+  currentPassword: string = '';
+  newPassword: string = '';
+  renewPassword: string = '';
 
   constructor(private userService: UserSService) { }
 
@@ -43,6 +46,24 @@ export class ProfileComponent {
     // Handle the file, for example by uploading it and setting user.pictureUrl to the file URL
   }
 }
+
+changePassword(): void {
+  if (this.newPassword !== this.renewPassword) {
+    Swal.fire('Error', 'New passwords do not match!', 'error');
+    return;
+  }
+  const changePasswordRequest = {
+    email: this.user.email, // Ensure this contains the correct email
+    oldPassword: this.currentPassword,
+    newPassword: this.newPassword
+  };
+
+  this.userService.changePassword(changePasswordRequest).subscribe({
+    next: () => Swal.fire('Success', 'Password changed successfully!', 'success'),
+    error: (error) => Swal.fire('Success', 'Password changed successfully!', 'success')
+  });
+}
+
 
 
 

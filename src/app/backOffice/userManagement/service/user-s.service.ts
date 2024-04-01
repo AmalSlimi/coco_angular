@@ -11,6 +11,9 @@ export class UserSService {
 
   constructor(private http:HttpClient) { }
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
   
   getAllUsers(): Observable<any> {
     // Assuming you store the JWT token in localStorage after login
@@ -63,5 +66,15 @@ export class UserSService {
     return this.http.put(`${this.baseUrl}user/profile`, user, httpOptions); // Note: Removed the slash before "user/profile"
   }
   
+  changePassword(changePasswordRequest: {email: string, oldPassword: string, newPassword: string}): Observable<any> {
+    const url = `${this.baseUrl}user/change-password`;
+    return this.http.post(url, changePasswordRequest, this.httpOptions);
+}
+
+searchUsers(searchTerm: string): Observable<any> {
+  const url = `${this.baseUrl}admin/search?searchTerm=${encodeURIComponent(searchTerm)}`;
+  return this.http.get<any>(url, this.httpOptions);
+}
+
 
 }

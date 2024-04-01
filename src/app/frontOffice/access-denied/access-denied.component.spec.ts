@@ -1,19 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeBackComponent } from './home-back.component';
+import { AccessDeniedComponent } from './access-denied.component';
 
-
-describe('HomeBackComponent', () => {
-  let component: HomeBackComponent;
-  let fixture: ComponentFixture<HomeBackComponent>;
+describe('AccessDeniedComponent', () => {
+  let component: AccessDeniedComponent;
+  let fixture: ComponentFixture<AccessDeniedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeBackComponent ]
+      declarations: [ AccessDeniedComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HomeBackComponent);
+    fixture = TestBed.createComponent(AccessDeniedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
