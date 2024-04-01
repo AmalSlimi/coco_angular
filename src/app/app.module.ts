@@ -44,6 +44,8 @@ import { UtripComponent } from './frontOffice/busManagment/utrip/utrip.component
 import { SubscriptionComponent } from './frontOffice/busManagment/subscription/subscription.component';
 import { AddsubscriptionComponent } from './frontOffice/busManagment/addsubscription/addsubscription.component';
 import { StripeComponent } from './frontOffice/busManagment/stripe/stripe.component';
+import { CheckSubComponent } from './backOffice/busModule/check-sub/check-sub.component';
+
 
 
 
@@ -92,7 +94,9 @@ import { StripeComponent } from './frontOffice/busManagment/stripe/stripe.compon
     SubscriptionComponent,
     AddsubscriptionComponent,
     StripeComponent,
-   
+    CheckSubComponent,
+
+
 
 
 

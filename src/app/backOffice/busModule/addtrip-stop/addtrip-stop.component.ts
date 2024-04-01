@@ -16,6 +16,7 @@ export class AddtripStopComponent implements OnInit {
   stops: any[] = [];
   trips: any[] = [];
   TripStopForm!: FormGroup;
+  minDepartureTime: string = '';
 
   constructor(
     private tss: TripStopServiceService,
@@ -30,8 +31,10 @@ export class AddtripStopComponent implements OnInit {
       stopId: new FormControl('', Validators.required),
       departureTime: new FormControl('', Validators.required),
       arrivalTime: new FormControl('', Validators.required),
-      amount: new FormControl('', Validators.required),
+      amount: new FormControl('', Validators.required)
     });
+
+
 
     this.loadStops();
     this.loadTrips();
@@ -60,19 +63,33 @@ export class AddtripStopComponent implements OnInit {
   }
 
   save() {
-    const { tripId, stopId, departureTime, arrivalTime, amount } = this.TripStopForm.value;
+    const { tripId, stopId, arrivalTime, amount } = this.TripStopForm.value;
+
+    // Convert arrival time to Date object
+    const arrivalDate = new Date(arrivalTime);
+
+    // Copy the arrival time to departure time
+    const departureDate = new Date(arrivalDate);
+
+    // Add 5 minutes to the departure time
+    departureDate.setMinutes(departureDate.getMinutes() + 5);
+
+    // Create ISO strings for both arrival and departure times
+    const arrivalISO = arrivalDate.toISOString();
+    const departureISO = departureDate.toISOString();
 
     const tripStop: TripStop = {
       id: 0,
       idTrip: tripId,
       idStop: stopId,
-      arrivalTime: arrivalTime,
-      departureTime: departureTime,
+      arrivalTime: arrivalISO,
+      departureTime: departureISO,
       amount: amount
     };
 
     this.tss.addTripStop(tripId, stopId, tripStop).subscribe(
-      () => this.route.navigateByUrl('/trip')
+      () => this.route.navigateByUrl('/tripStop')
     );
-  }
+}
+
 }

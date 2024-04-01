@@ -34,6 +34,8 @@ import { SubscriptionComponent } from './frontOffice/busManagment/subscription/s
 import { UtripComponent } from './frontOffice/busManagment/utrip/utrip.component';
 import { AddsubscriptionComponent } from './frontOffice/busManagment/addsubscription/addsubscription.component';
 import { StripeComponent } from './frontOffice/busManagment/stripe/stripe.component';
+import { CheckSubComponent } from './backOffice/busModule/check-sub/check-sub.component';
+
 
 
 
@@ -66,6 +68,8 @@ const routes: Routes = [
   {path:'add-tripStop',component:AddtripStopComponent},
   {path:'tripStop',component:TripStopComponent},
   {path:'update-tripStop/:id',component:UpdatetripStopComponent},
+  {path:'checksub',component:CheckSubComponent},
+
 
 
   //ghriibi u

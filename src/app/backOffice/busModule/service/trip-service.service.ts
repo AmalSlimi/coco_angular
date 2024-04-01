@@ -34,5 +34,5 @@ export class TripServiceService {
   getDetailtrip(id: number): Observable<trip> {
     return this.http.get<trip>(this.baseUrl + 'get/' + id);
   }
-
+ 
 }

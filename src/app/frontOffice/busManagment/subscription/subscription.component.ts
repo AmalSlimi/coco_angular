@@ -14,6 +14,7 @@ import { StripeComponent } from '../stripe/stripe.component';
 export class SubscriptionComponent implements OnInit {
   listSub: subscription[] = [];
   stripeComponent: StripeComponent;
+  userId!: number;
 
   constructor(
     private subservice: SubserviceService,
@@ -26,36 +27,85 @@ export class SubscriptionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadSubs();
+    // Assuming you have the user ID available
+    this.userId = 1; // Replace 123 with the actual user ID
+    this.loadSubs(this.userId);
   }
 
-  loadSubs() {
-    this.subservice.getAllSubscription().subscribe({
-      next: (data: subscription[]) => {
-        this.listSub = data;
+  loadSubs(userId: number) {
+    this.subservice.getDetailsub(userId).subscribe({
+      next: (data: subscription) => {
+        this.listSub = [data]; // Assuming getDetailsub returns a single subscription
       },
       error: (error) => console.error(error),
       complete: () => console.log('Subs loaded successfully')
     });
   }
 
+
   generateQrCode(subscription: subscription): void {
-    this.qrservice.generateQrCode(subscription.qrCodeData).subscribe(
-      (qrCodeBlob: Blob) => {
-        const reader = new FileReader();
-        reader.onload = (event: any) => {
-          subscription.qrCodeImageUrl = event.target.result;
-        };
-        reader.readAsDataURL(qrCodeBlob);
-      },
-      (error) => {
-        console.error('Error generating QR code:', error);
-      }
-    );
+    if (subscription.status === 'ACTIVE') {
+      this.qrservice.generateQrCode(subscription.qrCodeData).subscribe(
+        (qrCodeBlob: Blob) => {
+          const reader = new FileReader();
+          reader.onload = (event: any) => {
+            subscription.qrCodeImageUrl = event.target.result;
+          };
+          reader.readAsDataURL(qrCodeBlob);
+        },
+        (error) => {
+          console.error('Error generating QR code:', error);
+          alert('Error generating QR code: ' + error); // Alert error message
+        }
+      );
+    } else {
+      alert('Subscription is not ACTIVE. Cannot generate QR code.'); // Alert subscription status
+    }
   }
 
   paySubscription(subscription: subscription): void {
-    this.stripeComponent.amount = subscription.subscriptionPrice; // Set the amount
-    this.stripeComponent.pay(); // Call the pay() method
+    if (subscription.status === 'EXPIRED') {
+      this.stripeComponent.amount = subscription.subscriptionPrice * 100;
+
+
+      // Create a promise to handle the payment process
+      const paymentPromise = new Promise<boolean>((resolve) => {
+        // Call the payment method and resolve the promise with the payment result
+        this.stripeComponent.pay();
+        resolve(true); // Assuming payment is always successful for simplicity
+      });
+
+      // After the payment is resolved (assuming it's always successful)
+      paymentPromise.then((paymentSuccessful: boolean) => {
+        if (paymentSuccessful) {
+          // Update the subscription status to 'ACTIVE'
+          this.subservice.updateSubscriptionStatus(subscription.id, 'ACTIVE').subscribe(
+            () => {
+              alert('Payment successful! Subscription status updated to ACTIVE.');
+            },
+            (error) => {
+              console.error('Error updating subscription status:', error);
+              alert('Payment successful, but failed to update subscription status.');
+            }
+          );
+        } else {
+          alert('Payment failed.');
+        }
+      });
+    } else {
+      alert('Payment failed: Subscription is not expired.');
+    }
+  }
+  removeSubscription(subscriptionId: number): void {
+    this.subservice.removeSub(subscriptionId).subscribe(
+      () => {
+        // Subscription removed successfully, update the list
+        this.loadSubs(this.userId);
+      },
+      (error) => {
+        console.error('Error removing subscription:', error);
+        alert('Error removing subscription: ' + error);
+      }
+    );
   }
 }

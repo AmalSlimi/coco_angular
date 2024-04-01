@@ -10,11 +10,13 @@ import { TripStopServiceService } from '../service/trip-stop-service.service';
 export class TripStopComponent {
   search: number = 0;
   listTripStop: TripStop[] = [];
+  dates: Date[] = [];
 
   constructor(private tripStopService: TripStopServiceService) {}
 
   ngOnInit() {
     this.loadTrips();
+
   }
 
   loadTrips() {
@@ -23,6 +25,7 @@ export class TripStopComponent {
       error: (error) => console.log(error),
       complete: () => console.log('Trips loaded successfully')
     });
+    
   }
 
   supp(id:number){
