@@ -14,9 +14,9 @@ import { EmailService } from 'src/app/frontOffice/busManagment/service/email.ser
 export class CheckSubComponent  implements OnInit{
   listSub: subscription[] = [];
   search: number = 0;
-  //email= ;
-  //subject= 'Expired Sub';
-  //corp= 'Cher Utilisateur, votre abonnement est expire ! ';
+  email= 'achref.ghribi@esprit.tn';
+  subject= 'Expired Sub';
+  corp= 'We regret to inform you that your subscription has expired. We hope you have enjoyed the benefits of our service during your subscription period. ';
 
   constructor(
     private subservice: SubserviceService,
@@ -56,7 +56,7 @@ export class CheckSubComponent  implements OnInit{
             // Update the remaining trips in the local list
             subscription.remainingTrips = newRemainingTrips;
             this.sendEmail();
-            
+
 
           },
           (error) => {
@@ -81,9 +81,10 @@ export class CheckSubComponent  implements OnInit{
 
 
   sendEmail() {
-    this.eservice.sendEmail('achref.ghribi@esprit.tn', 'Expired Sub', 'Cher Utilisateur, votre abonnement est expire ! ').subscribe(
+    this.eservice.sendEmail(this.email, this.subject, this.corp).subscribe(
       response => {
         console.log('Email envoyé avec succès :', response);
+        alert('Email envoyé avec succès ');
 
       },
       error => {

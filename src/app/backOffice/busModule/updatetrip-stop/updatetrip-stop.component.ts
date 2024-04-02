@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TripStop } from '../model/TripStop';
 import { StopServiceService } from '../service/stop-service.service';
 import { TripServiceService } from '../service/trip-service.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-updatetrip-stop',
@@ -68,10 +69,31 @@ export class UpdatetripStopComponent implements OnInit {
 
   updateTrip(): void {
     if (this.tripStopForm.valid) {
+      const { arrivalTime } = this.tripStopForm.value;
+
+      
+      const arrivalDate = new Date(arrivalTime);
+
+      // Add 5 minutes to the arrival time for departure time
+      const departureDate = new Date(arrivalDate.getTime() + 5 * 60000); // 5 minutes in milliseconds
+
+      // Format the arrival and departure times for datetime-local input
+      const formattedArrivalTime = formatDate(arrivalDate, 'yyyy-MM-ddTHH:mm', 'en-US');
+      const formattedDepartureTime = formatDate(departureDate, 'yyyy-MM-ddTHH:mm', 'en-US');
+
+      // Update the form controls with the formatted times
+      this.tripStopForm.patchValue({
+        arrivalTime: formattedArrivalTime,
+        departureTime: formattedDepartureTime
+      });
+
+      // Create the updatedTrip object
       const updatedTrip: TripStop = {
         ...this.tripStopForm.value,
         id: this.id
       };
+
+      // Call the service method to update the trip
       this.tripStopService.updateTripStop(updatedTrip).subscribe({
         next: (response) => {
           console.log('Trip updated successfully', response);
