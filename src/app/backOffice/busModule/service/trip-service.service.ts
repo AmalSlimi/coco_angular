@@ -34,5 +34,9 @@ export class TripServiceService {
   getDetailtrip(id: number): Observable<trip> {
     return this.http.get<trip>(this.baseUrl + 'get/' + id);
   }
- 
+  private formData: any = {};
+  setFormData(data: any) {
+    this.formData = data;
+  }
+
 }

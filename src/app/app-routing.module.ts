@@ -35,6 +35,7 @@ import { UtripComponent } from './frontOffice/busManagment/utrip/utrip.component
 import { AddsubscriptionComponent } from './frontOffice/busManagment/addsubscription/addsubscription.component';
 import { StripeComponent } from './frontOffice/busManagment/stripe/stripe.component';
 import { CheckSubComponent } from './backOffice/busModule/check-sub/check-sub.component';
+import { MapComponent } from './frontOffice/busManagment/map/map.component';
 
 
 
@@ -77,6 +78,7 @@ const routes: Routes = [
   {path: 'utrip', component: UtripComponent},
   {path:'add-sub/:id',component:AddsubscriptionComponent},
   {path: 'strip', component: StripeComponent},
+  {path: 'map', component: MapComponent},
 
 
 

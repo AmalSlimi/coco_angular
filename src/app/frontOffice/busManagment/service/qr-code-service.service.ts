@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class QrCodeServiceService {
 
-  private baseUrl = 'http://localhost:8085/spring2024/qr/qrcode/'; // Adaptation du chemin
+  private baseUrl = 'http://localhost:8085/spring2024/qr/qrcode/'; 
 
   constructor(private http: HttpClient) { }
 

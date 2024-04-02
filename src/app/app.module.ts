@@ -45,6 +45,10 @@ import { SubscriptionComponent } from './frontOffice/busManagment/subscription/s
 import { AddsubscriptionComponent } from './frontOffice/busManagment/addsubscription/addsubscription.component';
 import { StripeComponent } from './frontOffice/busManagment/stripe/stripe.component';
 import { CheckSubComponent } from './backOffice/busModule/check-sub/check-sub.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { MapComponent } from './frontOffice/busManagment/map/map.component';
+
+
 
 
 
@@ -95,6 +99,8 @@ import { CheckSubComponent } from './backOffice/busModule/check-sub/check-sub.co
     AddsubscriptionComponent,
     StripeComponent,
     CheckSubComponent,
+    MapComponent,
+
 
 
 
@@ -113,6 +119,8 @@ import { CheckSubComponent } from './backOffice/busModule/check-sub/check-sub.co
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    LeafletModule,
+
 
 
 

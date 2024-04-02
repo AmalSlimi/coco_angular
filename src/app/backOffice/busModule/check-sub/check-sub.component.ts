@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { subscription } from 'src/app/frontOffice/busManagment/model/subscription';
 import { SubserviceService } from 'src/app/frontOffice/busManagment/service/subservice.service';
 import { TripStopServiceService } from '../service/trip-stop-service.service';
+import { EmailService } from 'src/app/frontOffice/busManagment/service/email.service';
 
 @Component({
   selector: 'app-check-sub',
@@ -13,11 +14,13 @@ import { TripStopServiceService } from '../service/trip-stop-service.service';
 export class CheckSubComponent  implements OnInit{
   listSub: subscription[] = [];
   search: number = 0;
-
+  //email= ;
+  //subject= 'Expired Sub';
+  //corp= 'Cher Utilisateur, votre abonnement est expire ! ';
 
   constructor(
     private subservice: SubserviceService,
-
+    private eservice: EmailService,
     private http: HttpClient,
     private ac: ActivatedRoute,
     private router: Router,
@@ -36,9 +39,11 @@ export class CheckSubComponent  implements OnInit{
       complete: () => console.log('Subs loaded successfully')
     });
   }
+
   selectTab(subscriptionId: number) {
     this.search = subscriptionId;
   }
+
   updateRemainingTrips(subscription: subscription) {
     if (subscription.remainingTrips > 0) {
       const newRemainingTrips = subscription.remainingTrips - 1;
@@ -47,8 +52,12 @@ export class CheckSubComponent  implements OnInit{
         this.subservice.updateSubscriptionStatus(subscription.id, 'EXPIRED').subscribe(
           () => {
             console.log('Subscription status updated to EXPIRED.');
+            alert('Subscription status updated to EXPIRED.');
             // Update the remaining trips in the local list
             subscription.remainingTrips = newRemainingTrips;
+            this.sendEmail();
+            
+
           },
           (error) => {
             console.error('Error updating subscription status:', error);
@@ -70,4 +79,18 @@ export class CheckSubComponent  implements OnInit{
     }
   }
 
+
+  sendEmail() {
+    this.eservice.sendEmail('achref.ghribi@esprit.tn', 'Expired Sub', 'Cher Utilisateur, votre abonnement est expire ! ').subscribe(
+      response => {
+        console.log('Email envoyé avec succès :', response);
+
+      },
+      error => {
+        console.error('Erreur lors de l\'envoi de l\'email :', error);
+        // Gérez l'erreur
+      }
+    );
+  }
 }
+

@@ -11,6 +11,8 @@
           <div><strong>Arrival Location:</strong> {{ trip.arrivalLocation }}</div>
           <div><strong>Estimated Duration:</strong> {{ trip.estimatedDuration }}</div>
           <div><strong>Fare:</strong> {{ trip.fare }}</div>
+          <button (click)="showMap(trip.departureLocation, trip.arrivalLocation)" class="btn btn-primary">Show Map</button>
+
         </div>
       </div>
     </div>
