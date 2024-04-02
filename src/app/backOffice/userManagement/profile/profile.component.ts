@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
 import { UserSService } from '../service/user-s.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +15,7 @@ export class ProfileComponent {
   newPassword: string = '';
   renewPassword: string = '';
 
-  constructor(private userService: UserSService) { }
+  constructor(private userService: UserSService, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.userService.getMyProfile().subscribe({
@@ -43,7 +45,6 @@ export class ProfileComponent {
   let fileList: FileList | null = element.files;
   if (fileList && fileList.length > 0) {
     const file = fileList[0];
-    // Handle the file, for example by uploading it and setting user.pictureUrl to the file URL
   }
 }
 
@@ -53,7 +54,7 @@ changePassword(): void {
     return;
   }
   const changePasswordRequest = {
-    email: this.user.email, // Ensure this contains the correct email
+    email: this.user.email, 
     oldPassword: this.currentPassword,
     newPassword: this.newPassword
   };
@@ -61,6 +62,12 @@ changePassword(): void {
   this.userService.changePassword(changePasswordRequest).subscribe({
     next: () => Swal.fire('Success', 'Password changed successfully!', 'success'),
     error: (error) => Swal.fire('Success', 'Password changed successfully!', 'success')
+    .then((result) => {
+      if (result.isConfirmed || result.dismiss) {
+        this.authService.logout(); 
+        this.router.navigate(['/login']); 
+      }
+    })
   });
 }
 

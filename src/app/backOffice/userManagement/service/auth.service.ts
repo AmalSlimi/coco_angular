@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../model/User';
 import { Observable, tap } from 'rxjs';
 import { Role } from '../model/Role';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { Role } from '../model/Role';
 export class AuthService {
   private baseUrl: string = 'http://localhost:8085/spring2024/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -67,6 +68,9 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('roles');
+    this.router.navigate(['/login']).then(() => {
+      window.location.reload(); 
+    });
   }
 
   

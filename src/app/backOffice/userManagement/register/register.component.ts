@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export class RegisterComponent {
   user: User = new User();
   displayRoleSelection: boolean = false;
-  
+  selectedFile: File | null = null;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
 
@@ -26,19 +26,24 @@ export class RegisterComponent {
   address: ['', [Validators.required]], 
   dateOfBirth: ['', [Validators.required]],
   phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{8}$/)]], 
-  pictureUrl: [''], 
+  //pictureUrl: [''], 
   role: [[]]
   });
 
 
-
+  onFileSelect(event: any): void {
+    if (event.target.files && event.target.files.length > 0) {
+      this.selectedFile = event.target.files[0];
+      
+    }
+  }
   
   ngOnInit(): void {
     this.registerForm.get('email')!.valueChanges.subscribe(email => {
       const emailDomain = email.split('@')[1];
       this.displayRoleSelection = emailDomain === 'esprit.tn';
 
-      // mech esprit.tn auto external user
+      // mech esprit.tn direct external user
       if (!this.displayRoleSelection) {
         this.registerForm.get('role')!.setValue(['EXTERNAL_USER']);
         this.registerForm.get('role')!.disable(); 
@@ -80,15 +85,5 @@ export class RegisterComponent {
     });
   }
   
-
-
-  
-  selectedFile: File | null = null;
-
-  onFileSelect(event: any): void {
-    if (event.target.files.length > 0) {
-      this.selectedFile = event.target.files[0];
-    }
-  }
 
 }

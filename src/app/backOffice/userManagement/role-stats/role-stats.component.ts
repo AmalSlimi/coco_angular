@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { StatsService } from '../service/stats.service';
-import { Chart } from 'chart.js';
+import { StatsService, UserRoleStatistic } from '../service/stats.service';
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
 
 @Component({
   selector: 'app-role-stats',
@@ -9,49 +10,101 @@ import { Chart } from 'chart.js';
 })
 export class RoleStatsComponent implements OnInit, AfterViewInit {
   @ViewChild('roleChart') roleChart!: ElementRef<HTMLCanvasElement>;
+  chart!: Chart;
 
-  constructor(private statsService: StatsService) {}
+  constructor(private statsService: StatsService) {
+    
+  }
 
   ngOnInit(): void {}
 
-  ngAfterViewInit(): void {
-    this.statsService.getUserRoleStatistics().subscribe(data => {
-      const roleChart = new Chart(this.roleChart.nativeElement, {
-        type: 'bar',
-        data: {
-          labels: data.map(item => item.roleName),
-          datasets: [{
-            label: 'Number of Users',
-            data: data.map(item => item.count),
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)', // Red
-              'rgba(255, 159, 64, 0.2)', // Orange
-              'rgba(255, 205, 86, 0.2)', // Yellow
-              'rgba(75, 192, 192, 0.2)', // Green
-              'rgba(54, 162, 235, 0.2)', // Blue
-              'rgba(153, 102, 255, 0.2)', // Purple
-              'rgba(201, 203, 207, 0.2)'  // Grey
-            ],
-            borderColor: [
-              'rgb(255, 99, 132)', // Red
-              'rgb(255, 159, 64)', // Orange
-              'rgb(255, 205, 86)', // Yellow
-              'rgb(75, 192, 192)', // Green
-              'rgb(54, 162, 235)', // Blue
-              'rgb(153, 102, 255)', // Purple
-              'rgb(201, 203, 207)'  // Grey
-            ],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
-            }
+  /*ngAfterViewInit(): void {
+    this.statsService.getUserRoleStatistics().subscribe({
+      next: (data) => {
+        this.initChart(data);
+      },
+      error: (error) => {
+        console.error('Error fetching statistics:', error);
+      }
+    });
+  }
+
+  initChart(data: UserRoleStatistic[]): void {
+    this.chart = new Chart(this.roleChart.nativeElement, {
+      type: 'bar',
+      data: {
+        labels: data.map(item => item.roleName),
+        datasets: [{
+          label: 'Number of Users',
+          data: data.map(item => item.count),
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(201, 203, 207, 0.2)'
+          ],
+          borderColor: [
+            'rgb(255, 99, 132)',
+            'rgb(255, 159, 64)',
+            'rgb(255, 205, 86)',
+            'rgb(75, 192, 192)',
+            'rgb(54, 162, 235)',
+            'rgb(153, 102, 255)',
+            'rgb(201, 203, 207)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
           }
         }
-      });
+      }
+    });
+  }*/
+
+  ngAfterViewInit(): void {
+    const userRoles = ['Normal Users', 'External Users', 'Hosts', 'Room Seekers', 'Drivers', 'Passengers'];
+    const userCounts = [4, 3, 2, 1, 1, 2];
+
+    new Chart(this.roleChart.nativeElement, {
+      type: 'bar',
+      data: {
+        labels: userRoles,
+        datasets: [{
+          label: 'Number of Users by Role',
+          data: userCounts,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.8)', // Red
+            'rgba(255, 159, 64, 0.8)', // Orange
+            'rgba(255, 205, 86, 0.8)', // Yellow
+            'rgba(75, 192, 192, 0.8)', // Green
+            'rgba(54, 162, 235, 0.8)', // Blue
+            'rgba(153, 102, 255, 0.8)', // Purple
+          ],
+          borderColor: [
+            'rgb(255, 99, 132)',
+            'rgb(255, 159, 64)',
+            'rgb(255, 205, 86)',
+            'rgb(75, 192, 192)',
+            'rgb(54, 162, 235)',
+            'rgb(153, 102, 255)',
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
     });
   }
 }
