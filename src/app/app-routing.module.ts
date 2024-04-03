@@ -23,6 +23,12 @@ import { HomeFrontComponent } from './frontOffice/home-front/home-front.componen
 import { CategoryListComponent } from './category-list/category-list.component';
 import { RegisterCategoryProductComponent } from './register-category-product/register-category-product.component';
 import { EditCategoryComponent } from './edit-category-product/edit-category.component';
+import {SubcategoryListComponent} from "./subcategory-list/subcategory-list.component";
+import {RegisterSubcategoryComponent} from "./register-subcategory/register-subcategory.component";
+import {EditSubcategoryComponent} from "./edit-subcategory/edit-subcategory.component";
+import {ProductListComponent} from "./product-list/product-list.component";
+import {RegisterProductComponent} from "./register-product/register-product.component";
+import {EditProductComponent} from "./edit-product/edit-product.component";
 
 const routes: Routes = [
   {path:'',component:HomeBackComponent},
@@ -41,7 +47,12 @@ const routes: Routes = [
   {path:'category-list',component:CategoryListComponent},
   {path:'register-category-product', component:RegisterCategoryProductComponent},
   {path:'edit-category-product/:idCategory',component:EditCategoryComponent},
-
+  {path:'subcategory-list',component:SubcategoryListComponent},
+    {path:'register-subcategory', component:RegisterSubcategoryComponent},
+  {path:'edit-subcategory-product/:idSubCategory',component:EditSubcategoryComponent},
+  {path:'product-list',component:ProductListComponent},
+  {path:'register-product',component: RegisterProductComponent},
+  {path:'edit-product/:idProduct',component:EditProductComponent},
 
 
   // ghribii

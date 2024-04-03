@@ -38,7 +38,25 @@ h5,
 h6 {
   font-family: "Nunito", sans-serif;
 }
+table {
+  border: 1px solid black;
 
+}
+th{
+  position:sticky;
+  top:0px;
+  background-color:teal;
+  color : wheat;
+}
+.table-wrapper{
+  max-height:3px;
+  overflow-y:scroll;
+  margin:20px
+}
+th,td{
+  border:1px solid black;
+  padding:10px;
+}
 /*--------------------------------------------------------------
 # Main
 --------------------------------------------------------------*/

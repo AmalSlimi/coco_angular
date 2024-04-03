@@ -1,0 +1,90 @@
+<app-header-back></app-header-back>
+<app-navbar-back></app-navbar-back>
+<div class="container-fluid">
+    <div class="pt-5">
+        <div class="d-flex justify-content-center">
+            <nav class="nav bg-dark ">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" [routerLink]="['/product-list']">Product List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" [routerLink]="['/register-product']"> Add Product </a>
+                </li>
+            </nav>
+        </div>
+    </div>
+    <div class="card-header" style="width: 50%;margin:10px auto">
+        <div class="card-header">
+            ADD NEW CATEGORY
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="name"> name </label>
+                <input [(ngModel)]="producties.name" id="name" class="form-control" type="text" name="name" #name="ngModel">
+                <div class="text-danger" *ngIf="!producties.name && name.touched">
+                    Fill in the blanks
+                </div>
+            </div>
+            <div class="form-group">
+                <label> Type of Product </label>
+                <div>
+                    <label class="radio-inline">
+                        <input type="radio" [(ngModel)]="producties.typeProduct" name="productType" [value]="'LENT'"> Lent
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" [(ngModel)]="producties.typeProduct" name="productType" [value]="'SELL'"> Sell
+                    </label>
+                </div>
+                <div class="text-danger" *ngIf="!producties.typeProduct">
+                    Please select a type of product.
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="description"> description </label>
+                <input [(ngModel)]="producties.description" id="description" class="form-control" type="text" name="description" #description="ngModel">
+                <div class="text-danger" *ngIf="!producties.description && description.touched">
+                    Fill in the blanks
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input [(ngModel)]="producties.quantity" id="quantity" class="form-control" type="number" name="quantity" #quantity="ngModel" required>
+                <div class="text-danger" *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)">
+                    <div *ngIf="quantity.errors?.['required']">Quantity is required.</div>
+                    <div *ngIf="quantity.errors?.['pattern']">Please enter a valid quantity.</div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="weight">weight </label>
+                <input [(ngModel)]="producties.weight" id="weight" class="form-control" type="text" name="weight" #weight="ngModel">
+                <div class="text-danger" *ngIf="!producties.weight && weight.touched">
+                    Fill in the blanks
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input [(ngModel)]="producties.price" id="price" class="form-control" type="number" name="price" #price="ngModel" required>
+                <div class="text-danger" *ngIf="price.invalid && (price.dirty || price.touched)">
+                    <div *ngIf="price.errors?.['required']">Price is required.</div>
+                    <div *ngIf="price.errors?.['pattern']">Please enter a valid price.</div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" [disabled]="!producties.name" (click)="saveProduct()">SAVE</button>
+        </div>
+        <div class="card-footer" *ngIf="showAlert">
+            <div class="alert alert-success" role="alert">
+                <button class="close" (click)="closeAlert()">&times;</button>
+                <strong>Successfull Saved</strong>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer-back></app-footer-back>

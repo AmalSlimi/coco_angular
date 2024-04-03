@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {NgxPaginationModule}  from "ngx-pagination";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 import { AppRoutingModule } from './app-routing.module';
+//import * as BadWordsFilter from "bad-words";
 import { AppComponent } from './app.component';
 import { HomeBackComponent } from './backOffice/home-back/home-back.component';
 import { FooterBackComponent } from './backOffice/footer-back/footer-back.component';
@@ -30,9 +32,15 @@ import {HttpClientModule} from '@angular/common/http';
 import { CategoryListComponent } from './category-list/category-list.component';
 import {CategoryProductService} from "./MarketPlaceService/category-product.service";
 import { RegisterCategoryProductComponent } from './register-category-product/register-category-product.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { EditCategoryComponent } from './edit-category-product/edit-category.component';
-@NgModule({
+import { SubcategoryListComponent } from './subcategory-list/subcategory-list.component';
+import { RegisterSubcategoryComponent } from './register-subcategory/register-subcategory.component';
+import { EditSubcategoryComponent } from './edit-subcategory/edit-subcategory.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { RegisterProductComponent } from './register-product/register-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+  @NgModule({
   declarations: [
     AppComponent,
     HomeBackComponent,
@@ -60,7 +68,13 @@ import { EditCategoryComponent } from './edit-category-product/edit-category.com
     HomeFrontComponent,
     CategoryListComponent,
     RegisterCategoryProductComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    SubcategoryListComponent,
+    RegisterSubcategoryComponent,
+    EditSubcategoryComponent,
+    ProductListComponent,
+    RegisterProductComponent,
+    EditProductComponent
 
 
   ],
@@ -68,9 +82,15 @@ import { EditCategoryComponent } from './edit-category-product/edit-category.com
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
-  providers: [],
+  providers: [
+
+   /* { provide: 'Filter', useValue: new BadWordsFilter() }*/
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
