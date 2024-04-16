@@ -69,8 +69,8 @@ export class RoleStatsComponent implements OnInit, AfterViewInit {
   }*/
 
   ngAfterViewInit(): void {
-    const userRoles = ['Normal Users', 'External Users', 'Hosts', 'Room Seekers', 'Drivers', 'Passengers'];
-    const userCounts = [4, 3, 2, 1, 1, 2];
+    const userRoles = ['Normal Users', 'External Users', 'Hosts', 'Room Seekers', 'Drivers'];
+    const userCounts = [4, 3, 2, 1, 1];
 
     new Chart(this.roleChart.nativeElement, {
       type: 'bar',
@@ -85,7 +85,6 @@ export class RoleStatsComponent implements OnInit, AfterViewInit {
             'rgba(255, 205, 86, 0.8)', // Yellow
             'rgba(75, 192, 192, 0.8)', // Green
             'rgba(54, 162, 235, 0.8)', // Blue
-            'rgba(153, 102, 255, 0.8)', // Purple
           ],
           borderColor: [
             'rgb(255, 99, 132)',
@@ -93,7 +92,6 @@ export class RoleStatsComponent implements OnInit, AfterViewInit {
             'rgb(255, 205, 86)',
             'rgb(75, 192, 192)',
             'rgb(54, 162, 235)',
-            'rgb(153, 102, 255)',
           ],
           borderWidth: 1
         }]

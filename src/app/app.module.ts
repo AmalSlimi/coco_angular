@@ -1,5 +1,10 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,11 +31,8 @@ import { ApexchartsComponent } from './backOffice/charts/apexcharts/apexcharts.c
 import { EchartsComponent } from './backOffice/charts/echarts/echarts.component';
 import { ProfileComponent } from './backOffice/userManagement/profile/profile.component';
 import { RegisterComponent } from './backOffice/userManagement/register/register.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './backOffice/userManagement/login/login.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { HeaderFrontComponent } from './frontOffice/header-front/header-front.component';
 import { FooterFrontComponent } from './frontOffice/footer-front/footer-front.component';
 import { CarouselComponent } from './frontOffice/carousel/carousel.component';
@@ -46,6 +48,97 @@ import { AccessDeniedComponent } from './frontOffice/access-denied/access-denied
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { GenderStatsComponent } from './backOffice/userManagement/gender-stats/gender-stats.component';
 import { RoleStatsComponent } from './backOffice/userManagement/role-stats/role-stats.component';
+import { RegisterRideComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/register-ride/register-ride.component';
+import { EditRideComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/edit-ride/edit-ride.component';
+import { RideListComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/ride-list/ride-list.component';
+import { RegisterCarComponent } from './frontOffice/Carpooling_Front/Components_Front/Car_Front/register-car/register-car.component';
+import { EditCarComponent } from './frontOffice/Carpooling_Front/Components_Front/Car_Front/edit-car/edit-car.component';
+import { CarListComponent } from './frontOffice/Carpooling_Front/Components_Front/Car_Front/car-list/car-list.component';
+import { RegisterImageComponent } from './frontOffice/Carpooling_Front/Components_Front/Image_Front/register-image/register-image.component';
+import { ImageListComponent } from './frontOffice/Carpooling_Front/Components_Front/Image_Front/image-list/image-list.component';
+import { EditImageComponent } from './frontOffice/Carpooling_Front/Components_Front/Image_Front/edit-image/edit-image.component';
+import { AffectCarToRideComponent } from './frontOffice/Carpooling_Front/Components_Front/Car_Front/affect-car-to-ride/affect-car-to-ride.component';
+import { RegisterFavorieComponent } from './frontOffice/Carpooling_Front/Components_Front/Favorite_Front/register-favorie/register-favorie.component';
+import { EditFavoriteComponent } from './frontOffice/Carpooling_Front/Components_Front/Favorite_Front/edit-favorite/edit-favorite.component';
+import { FavoriteListComponent } from './frontOffice/Carpooling_Front/Components_Front/Favorite_Front/favorite-list/favorite-list.component';
+import { RegisterReservationComponent } from './frontOffice/Carpooling_Front/Components_Front/Reservation_Front/register-reservation/register-reservation.component';
+import { ReservationListComponent } from './frontOffice/Carpooling_Front/Components_Front/Reservation_Front/reservation-list/reservation-list.component';
+import { EditReservationComponent } from './frontOffice/Carpooling_Front/Components_Front/Reservation_Front/edit-reservation/edit-reservation.component';
+import { EditSecurityComponent } from './frontOffice/Carpooling_Front/Components_Front/Security_Front/edit-security/edit-security.component';
+import { SecurityListComponent } from './frontOffice/Carpooling_Front/Components_Front/Security_Front/security-list/security-list.component';
+import { RegisterSecurityComponent } from './frontOffice/Carpooling_Front/Components_Front/Security_Front/register-security/register-security.component';
+import { DisplayCardComponent } from './frontOffice/Carpooling_Front/Components_Front/display-card/display-card.component';
+import { AcceuilComponent } from './frontOffice/Carpooling_Front/Components_Front/Acceuil/acceuil/acceuil.component';
+import { FirstAddComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/add-Ride/first-add/first-add.component';
+import { InformationComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/add-Ride/information/information.component';
+import { ContactComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/add-Ride/contact/contact.component';
+import { SecurityComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/add-Ride/security/security.component';
+import { DisplayCarddComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/add-Ride/display-cardd/display-cardd.component';
+import { StepperComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/add-Ride/stepper/stepper.component';
+import { FinishComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/add-Ride/finish/finish.component';
+import { ConfirmComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/add-Ride/confirm/confirm.component';
+import { LeafletComponent } from './frontOffice/Carpooling_Front/Components_Front/Acceuil/leaflet/leaflet.component';
+import { SearchRidesComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/search-rides/search-rides.component';
+import { AddImageComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/add-Ride/add-image/add-image.component';
+import { AaffichComponent } from './frontOffice/Carpooling_Front/Components_Front/Image_Front/aaffich/aaffich.component';
+import { AffectImageToCarComponent } from './frontOffice/Carpooling_Front/Components_Front/Image_Front/affect-image-to-car/affect-image-to-car.component';
+import { RideDetailsComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/ride-details/ride-details.component';
+import { AddCarComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/add-Ride/add-car/add-car.component';
+import { FindRidesComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/find-rides/find-rides.component';
+import { FootComponent } from './frontOffice/foot/foot.component';
+import { DetailsRideComponent } from './frontOffice/Carpooling_Front/Components_Front/Ride_Front/details-ride/details-ride.component';
+
+import { MatCardModule } from '@angular/material/card';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { CdkStepperModule } from '@angular/cdk/stepper'
+import { AddBusComponent } from './backOffice/busModule/add-bus/add-bus.component';
+import { UpdateBusComponent } from './backOffice/busModule/update-bus/update-bus.component';
+import { UpdateStopComponent } from './backOffice/busModule/update-stop/update-stop.component';
+import { AddStopComponent } from './backOffice/busModule/add-stop/add-stop.component';
+import { AddtripComponent } from './backOffice/busModule/addtrip/addtrip.component';
+import { UpdateTripComponent } from './backOffice/busModule/updatetrip/updatetrip.component';
+import { AddtripStopComponent } from './backOffice/busModule/addtrip-stop/addtrip-stop.component';
+import { TripStopComponent } from './backOffice/busModule/trip-stop/trip-stop.component';
+import { UpdatetripStopComponent } from './backOffice/busModule/updatetrip-stop/updatetrip-stop.component';
+import { UtripComponent } from './frontOffice/busManagment/utrip/utrip.component';
+import { SubscriptionComponent } from './frontOffice/busManagment/subscription/subscription.component';
+import { AddsubscriptionComponent } from './frontOffice/busManagment/addsubscription/addsubscription.component';
+import { StripeComponent } from './frontOffice/busManagment/stripe/stripe.component';
+import { CheckSubComponent } from './backOffice/busModule/check-sub/check-sub.component';
+import { MapComponent } from './frontOffice/busManagment/map/map.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { CategoryListComponent } from './category-list/category-list.component';
+import { RegisterCategoryProductComponent } from './register-category-product/register-category-product.component';
+import { EditCategoryComponent } from './edit-category-product/edit-category.component';
+import { SubcategoryListComponent } from './subcategory-list/subcategory-list.component';
+import { RegisterSubcategoryComponent } from './register-subcategory/register-subcategory.component';
+import { EditSubcategoryComponent } from './edit-subcategory/edit-subcategory.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { RegisterProductComponent } from './register-product/register-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { AddSubToCatComponent } from './add-sub-to-cat/add-sub-to-cat.component';
+import { ProductsComponent } from './backOffice/products/products.component';
+import { RatingComponent } from './rating/rating.component';
+import { PictureproductComponent } from './pictureproduct/pictureproduct.component';
+import { FavoriteProductComponent } from './backOffice/favorite-product/favorite-product.component';
+import { AddpicturetoproductComponent } from './addpicturetoproduct/addpicturetoproduct.component';
+import { AddprodtosubcatComponent } from './addprodtosubcat/addprodtosubcat.component';
+import { AddpicturetoproductfrontComponent } from './addpicturetoproductfront/addpicturetoproductfront.component';
+import { AddproductfrontComponent } from './addproductfront/addproductfront.component';
+
+import {NgToastModule} from "ng-angular-popup";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
+import {NgxPaginationModule}  from "ngx-pagination";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
+
+
 
 @NgModule({
   declarations: [
@@ -72,6 +165,7 @@ import { RoleStatsComponent } from './backOffice/userManagement/role-stats/role-
     ApexchartsComponent,
     EchartsComponent,
     ProfileComponent,
+
     RegisterComponent,
     LoginComponent,
     HeaderFrontComponent,
@@ -87,10 +181,95 @@ import { RoleStatsComponent } from './backOffice/userManagement/role-stats/role-
     AccessDeniedComponent,
     GenderStatsComponent,
     RoleStatsComponent,
+
+    RegisterRideComponent,
+    EditRideComponent,
+    RideListComponent,
+    RegisterCarComponent,
+    EditCarComponent,
+    CarListComponent,
+    RegisterImageComponent,
+    ImageListComponent,
+    EditImageComponent,
+    AffectCarToRideComponent,
+    RegisterFavorieComponent,
+    EditFavoriteComponent,
+    FavoriteListComponent,
+    RegisterReservationComponent,
+    ReservationListComponent,
+    EditReservationComponent,
+    EditSecurityComponent,
+    SecurityListComponent,
+    RegisterSecurityComponent,
+    DisplayCardComponent,
+    AcceuilComponent,
+    FirstAddComponent,
+    InformationComponent,
+    ContactComponent,
+    SecurityComponent,
+    DisplayCarddComponent,
+    StepperComponent,
+    FinishComponent,
+    ConfirmComponent,
+    LeafletComponent,
+    SearchRidesComponent,
+    AddImageComponent,
+    AaffichComponent,
+    AffectImageToCarComponent,
+    RideDetailsComponent,
+    AddCarComponent,
+    AddImageComponent,
+    FindRidesComponent,
+    FootComponent,
+    DetailsRideComponent,
+
+    AddBusComponent,
+    UpdateBusComponent,
+    UpdateStopComponent,
+    AddStopComponent,
+    UpdateStopComponent,
+    AddStopComponent,
+    AddtripComponent,
+    UpdateTripComponent,
+    AddtripStopComponent,
+    AddtripStopComponent,
+    TripStopComponent,
+    UpdatetripStopComponent,
+    UtripComponent,
+    SubscriptionComponent,
+    AddsubscriptionComponent,
+    StripeComponent,
+    CheckSubComponent,
+    MapComponent,
+
+
+    CategoryListComponent,
+      RegisterCategoryProductComponent,
+      EditCategoryComponent,
+      SubcategoryListComponent,
+      RegisterSubcategoryComponent,
+      EditSubcategoryComponent,
+      ProductListComponent,
+      RegisterProductComponent,
+      EditProductComponent,
+      AddSubToCatComponent,
+      ProductsComponent,
+        
+      RatingComponent,
+      PictureproductComponent,
+      FavoriteProductComponent,
+      AddprodtosubcatComponent,
+      AddpicturetoproductComponent,
+      AddpicturetoproductfrontComponent,
+      AddproductfrontComponent,
+
+      
+
     
     
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -99,10 +278,28 @@ import { RoleStatsComponent } from './backOffice/userManagement/role-stats/role-
     RouterModule,
     NgApexchartsModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    CdkStepperModule,
+    LeafletModule,
+    MatCardModule,
+    MaterialFileInputModule,
+    MatIconModule,
+    MatFormFieldModule,
     
+    ToastrModule.forRoot(),
+    MatButtonModule,
+    MatInputModule,
+    MatSelectModule,
+    MatSnackBarModule,
     
+      NgToastModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
+    NgbModule,
+
     
   ],
+  exports:[CdkStepperModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
