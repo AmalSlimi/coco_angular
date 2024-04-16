@@ -137,6 +137,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import {NgxPaginationModule}  from "ngx-pagination";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
+import { PostFrontComponent } from './frontOffice/forum-front/post-front/post-front.component';
+import { PostDetailsComponent } from './frontOffice/forum-front/post-details/post-details.component';
+import { CommentFrontComponent } from './frontOffice/forum-front/comment-front/comment-front.component';
+import { RelativeTimePipe } from './frontOffice/forum-front/post-front/relative-time.pipe.ts';
 
 
 
@@ -263,7 +267,9 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
       AddpicturetoproductfrontComponent,
       AddproductfrontComponent,
 
-      
+      PostFrontComponent,
+  PostDetailsComponent,
+  CommentFrontComponent,
 
     
     
@@ -296,6 +302,8 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     NgxPaginationModule,
     Ng2SearchPipeModule,
     NgbModule,
+    RelativeTimePipe,
+
 
     
   ],

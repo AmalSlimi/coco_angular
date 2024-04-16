@@ -90,6 +90,9 @@ import { FavoriteProductComponent } from './backOffice/favorite-product/favorite
 import { AddpicturetoproductComponent } from './addpicturetoproduct/addpicturetoproduct.component';
 import { AddpicturetoproductfrontComponent } from './addpicturetoproductfront/addpicturetoproductfront.component';
 import { AddproductfrontComponent } from './addproductfront/addproductfront.component';
+import { PostFrontComponent } from './frontOffice/forum-front/post-front/post-front.component';
+import { PostDetailsComponent } from './frontOffice/forum-front/post-details/post-details.component';
+import { CommentFrontComponent } from './frontOffice/forum-front/comment-front/comment-front.component';
 
 const routes: Routes = [
   
@@ -274,6 +277,10 @@ const routes: Routes = [
   //ramsys
   {path:'post',component:PostComponent},
   {path:'comment',component:CommentComponent},
+  
+  { path: 'blog', component: PostFrontComponent},
+  { path: 'post-details/:id', component: PostDetailsComponent },
+  { path: 'post-comment/:id', component: CommentFrontComponent },
   
 
   
