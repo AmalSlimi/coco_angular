@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -21,8 +21,6 @@ import { ProductCategoryComponent } from './backOffice/marketPlaceModule/product
 import { BusComponent } from './backOffice/busModule/bus/bus.component';
 import { StopComponent } from './backOffice/busModule/stop/stop.component';
 import { TripComponent } from './backOffice/busModule/trip/trip.component';
-import { RoomComponent } from './backOffice/accommodationModule/room/room.component';
-import { AccommodationComponent } from './backOffice/accommodationModule/accommodation/accommodation.component';
 import { PostComponent } from './backOffice/forumModule/post/post.component';
 import { CommentComponent } from './backOffice/forumModule/comment/comment.component';
 import { DataTablesComponent } from './backOffice/data-tables/data-tables.component';
@@ -143,8 +141,37 @@ import { PostFrontComponent } from './frontOffice/forum-front/post-front/post-fr
 import { PostDetailsComponent } from './frontOffice/forum-front/post-details/post-details.component';
 import { CommentFrontComponent } from './frontOffice/forum-front/comment-front/comment-front.component';
 import { RelativeTimePipe } from './frontOffice/forum-front/post-front/relative-time.pipe.ts';
-
-
+import { CategoryComponent } from './frontOffice/accommodationModule/accommodationModule/category/category.component';
+import { UpdateCategoryComponent } from './frontOffice/accommodationModule/accommodationModule/update-category/update-category.component';
+import { SubCategoryComponent } from './frontOffice/accommodationModule/accommodationModule/sub-category/sub-category.component';
+import { AddSubCategoryComponent } from './frontOffice/accommodationModule/accommodationModule/add-sub-category/add-sub-category.component';
+import { UpdateSubcategoryComponent } from './frontOffice/accommodationModule/accommodationModule/update-subcategory/update-subcategory.component';
+import { AddRoomComponent } from './frontOffice/accommodationModule/accommodationModule/add-room/add-room.component';
+import { AddAccommodationComponent } from './frontOffice/accommodationModule/accommodationModule/add-accommodation/add-accommodation.component';
+import { AddCategoryComponent } from './frontOffice/accommodationModule/accommodationModule/add-category/add-category.component';
+import { UpdateRoomComponent } from './frontOffice/accommodationModule/accommodationModule/update-room/update-room.component';
+import { UpdateAccommodationComponent } from './frontOffice/accommodationModule/accommodationModule/update-accommodation/update-accommodation.component';
+import { DetailsAccomodationComponent } from './frontOffice/accommodationModule/accommodationModule/details-accomodation/details-accomodation.component';
+import { DetailsRoomComponent } from './frontOffice/accommodationModule/accommodationModule/details-room/details-room.component';
+import { AccomodationBackComponent } from './backOffice/accomodation-back/accomodation-back.component';
+import { AddAccBackComponent } from './backOffice/add-acc-back/add-acc-back.component';
+import { UpdateAccBackComponent } from './backOffice/update-acc-back/update-acc-back.component';
+import { RoomBackComponent } from './backOffice/room-back/room-back.component';
+import { AddRoomBackComponent } from './backOffice/add-room-back/add-room-back.component';
+import { UpdateRoomBackComponent } from './backOffice/update-room-back/update-room-back.component';
+import { CategoryBackComponent } from './backOffice/category-back/category-back.component';
+import { AddCatBackComponent } from './backOffice/add-cat-back/add-cat-back.component';
+import { UpdateCatBackComponent } from './backOffice/update-cat-back/update-cat-back.component';
+import { SubCatBackComponent } from './backOffice/sub-cat-back/sub-cat-back.component';
+import { AddSubCatBackComponent } from './backOffice/add-sub-cat-back/add-sub-cat-back.component';
+import { UpdateSubCatBackComponent } from './backOffice/update-sub-cat-back/update-sub-cat-back.component';
+import { DetailsRoomBackComponent } from './backOffice/details-room-back/details-room-back.component';
+import { DetailAccBackComponent } from './backOffice/detail-acc-back/detail-acc-back.component';
+import { FilterPipe } from './app-filter.pipe';
+import { MappComponent } from './frontOffice/accommodationModule/mapp/map.component';
+import { NgxCaptchaModule } from 'ngx-captcha';
+import { RoomComponent } from './frontOffice/accommodationModule/accommodationModule/room/room.component';
+import { AccommodationComponent } from './frontOffice/accommodationModule/accommodationModule/accommodation/accommodation.component';
 
 @NgModule({
   declarations: [
@@ -188,6 +215,7 @@ import { RelativeTimePipe } from './frontOffice/forum-front/post-front/relative-
     AccessDeniedComponent,
     GenderStatsComponent,
     RoleStatsComponent,
+    
 
     RegisterRideComponent,
     EditRideComponent,
@@ -274,6 +302,39 @@ import { RelativeTimePipe } from './frontOffice/forum-front/post-front/relative-
   PostDetailsComponent,
   CommentFrontComponent,
 
+  
+    CategoryComponent,
+    UpdateCategoryComponent,
+    SubCategoryComponent,
+    AddSubCategoryComponent,
+    UpdateSubcategoryComponent,
+    AddRoomComponent,
+    AddAccommodationComponent,
+    AddCategoryComponent,
+    UpdateRoomComponent,
+    UpdateAccommodationComponent,
+    DetailsAccomodationComponent,
+    DetailsRoomComponent,
+    MappComponent,
+    
+    FilterPipe,
+    AccomodationBackComponent,
+    AddAccBackComponent,
+    UpdateAccBackComponent,
+    RoomBackComponent,
+    AddRoomBackComponent,
+    UpdateRoomBackComponent,
+    CategoryBackComponent,
+    AddCatBackComponent,
+    UpdateCatBackComponent,
+    SubCatBackComponent,
+    AddSubCatBackComponent,
+    UpdateSubCatBackComponent,
+    DetailAccBackComponent,
+    DetailsRoomBackComponent,
+  
+  
+
     
     
   ],
@@ -306,10 +367,12 @@ import { RelativeTimePipe } from './frontOffice/forum-front/post-front/relative-
     Ng2SearchPipeModule,
     NgbModule,
     RelativeTimePipe,
+    NgxCaptchaModule,
 
 
     
   ],
+  schemas: [NO_ERRORS_SCHEMA] ,  
   exports:[CdkStepperModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
