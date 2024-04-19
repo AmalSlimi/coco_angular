@@ -1,4 +1,4 @@
-import {Pictureproduct} from "./pictureproduct";
+import {Pictureproduct} from "../MarketPlace/pictureproduct";
 
 enum TypeProduct {
   LENT = 'LENT',

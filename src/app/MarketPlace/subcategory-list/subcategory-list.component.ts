@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoryProduct} from "../category-product";
 import {CategoryProductService} from "../MarketPlaceService/category-product.service";
-import {ProductComponent} from "../backOffice/marketPlaceModule/product/product.component";
+import {ProductComponent} from "../../backOffice/marketPlaceModule/product/product.component";
 import {SubcategoryProductService} from "../MarketPlaceService/subcategory-product.service";
 import {SubCategoryProduct} from "../subcategory-product";
 

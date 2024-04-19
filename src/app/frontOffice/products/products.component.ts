@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../MarketPlaceService/product.service';
-import { Product } from '../../product';
-import {FavoriteproductService} from "../../MarketPlaceService/favoriteproduct.service";
-import {UserService} from "../../MarketPlaceService/user.service";
+import { ProductService } from '../../MarketPlace/MarketPlaceService/product.service';
+import { Product } from '../../MarketPlace/product';
+import {FavoriteproductService} from "../../MarketPlace/MarketPlaceService/favoriteproduct.service";
+import {UserService} from "../../MarketPlace/MarketPlaceService/user.service";
 import {Router} from "@angular/router";
 import {NgToastService} from "ng-angular-popup";
-import {Pictureproduct} from "../../pictureproduct";
+import {Pictureproduct} from "../../MarketPlace/pictureproduct";
 import {Observable} from "rxjs";
 
 @Component({

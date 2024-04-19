@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from "../../product";
-import {FavoriteproductService} from "../../MarketPlaceService/favoriteproduct.service";
+import {Product} from "../../MarketPlace/product";
+import {FavoriteproductService} from "../../MarketPlace/MarketPlaceService/favoriteproduct.service";
 
 import {Router} from "@angular/router";
 @Component({

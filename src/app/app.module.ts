@@ -113,30 +113,32 @@ import { StripeComponent } from './frontOffice/busManagment/stripe/stripe.compon
 import { CheckSubComponent } from './backOffice/busModule/check-sub/check-sub.component';
 import { MapComponent } from './frontOffice/busManagment/map/map.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { CategoryListComponent } from './category-list/category-list.component';
-import { RegisterCategoryProductComponent } from './register-category-product/register-category-product.component';
-import { EditCategoryComponent } from './edit-category-product/edit-category.component';
-import { SubcategoryListComponent } from './subcategory-list/subcategory-list.component';
-import { RegisterSubcategoryComponent } from './register-subcategory/register-subcategory.component';
-import { EditSubcategoryComponent } from './edit-subcategory/edit-subcategory.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { RegisterProductComponent } from './register-product/register-product.component';
-import { EditProductComponent } from './edit-product/edit-product.component';
-import { AddSubToCatComponent } from './add-sub-to-cat/add-sub-to-cat.component';
-import { ProductsComponent } from './backOffice/products/products.component';
-import { RatingComponent } from './rating/rating.component';
-import { PictureproductComponent } from './pictureproduct/pictureproduct.component';
-import { FavoriteProductComponent } from './backOffice/favorite-product/favorite-product.component';
-import { AddpicturetoproductComponent } from './addpicturetoproduct/addpicturetoproduct.component';
-import { AddprodtosubcatComponent } from './addprodtosubcat/addprodtosubcat.component';
-import { AddpicturetoproductfrontComponent } from './addpicturetoproductfront/addpicturetoproductfront.component';
-import { AddproductfrontComponent } from './addproductfront/addproductfront.component';
+import { CategoryListComponent } from './MarketPlace/category-list/category-list.component';
+import { RegisterCategoryProductComponent } from './MarketPlace/register-category-product/register-category-product.component';
+import { EditCategoryComponent } from './MarketPlace/edit-category-product/edit-category.component';
+import { SubcategoryListComponent } from './MarketPlace/subcategory-list/subcategory-list.component';
+import { RegisterSubcategoryComponent } from './MarketPlace/register-subcategory/register-subcategory.component';
+import { EditSubcategoryComponent } from './MarketPlace/edit-subcategory/edit-subcategory.component';
+import { ProductListComponent } from './MarketPlace/product-list/product-list.component';
+import { RegisterProductComponent } from './MarketPlace/register-product/register-product.component';
+import { EditProductComponent } from './MarketPlace/edit-product/edit-product.component';
+import { AddSubToCatComponent } from './MarketPlace/add-sub-to-cat/add-sub-to-cat.component';
+import { RatingComponent } from './MarketPlace/rating/rating.component';
+import { PictureproductComponent } from './MarketPlace/pictureproduct/pictureproduct.component';
+import { AddpicturetoproductComponent } from './MarketPlace/addpicturetoproduct/addpicturetoproduct.component';
+import { AddprodtosubcatComponent } from './MarketPlace/addprodtosubcat/addprodtosubcat.component';
+import { AddpicturetoproductfrontComponent } from './MarketPlace/addpicturetoproductfront/addpicturetoproductfront.component';
+import { AddproductfrontComponent } from './MarketPlace/addproductfront/addproductfront.component';
 
 import {NgToastModule} from "ng-angular-popup";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import {NgxPaginationModule}  from "ngx-pagination";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {ProductsComponent} from "./frontOffice/products/products.component";
+import { FavoriteProductComponent } from './frontOffice/favorite-product/favorite-product.component';
+
+
 import { PostFrontComponent } from './frontOffice/forum-front/post-front/post-front.component';
 import { PostDetailsComponent } from './frontOffice/forum-front/post-details/post-details.component';
 import { CommentFrontComponent } from './frontOffice/forum-front/comment-front/comment-front.component';
@@ -169,6 +171,7 @@ import { RelativeTimePipe } from './frontOffice/forum-front/post-front/relative-
     ApexchartsComponent,
     EchartsComponent,
     ProfileComponent,
+
 
     RegisterComponent,
     LoginComponent,

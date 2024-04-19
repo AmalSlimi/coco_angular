@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../MarketPlaceService/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from '../product';
+import {Product} from "../product";
 
 @Component({
   selector: 'app-edit-product',
