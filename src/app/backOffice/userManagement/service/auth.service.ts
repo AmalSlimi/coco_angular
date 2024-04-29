@@ -20,6 +20,7 @@ export class AuthService {
     })
   };
 
+  
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}auth/login`, { email, password }, this.httpOptions)
       .pipe(tap(res => {
@@ -71,6 +72,15 @@ export class AuthService {
     this.router.navigate(['/login']).then(() => {
       window.location.reload(); 
     });
+  }
+
+  setCurrentUser(user: any): void {
+    localStorage.setItem('userconnect', JSON.stringify(user));
+  }
+
+  getCurrentUser(): any {
+    const user = localStorage.getItem('userconnect');
+    return user ? JSON.parse(user) : null;
   }
 
   

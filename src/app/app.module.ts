@@ -12,8 +12,8 @@ import { HomeBackComponent } from './backOffice/home-back/home-back.component';
 import { FooterBackComponent } from './backOffice/footer-back/footer-back.component';
 import { HeaderBackComponent } from './backOffice/header-back/header-back.component';
 import { NavbarBackComponent } from './backOffice/navbar-back/navbar-back.component';
-import { FormElementsComponent } from './backOffice/form-back/form-elements/form-elements.component';
-import { FormLayoutsComponent } from './backOffice/form-back/form-layouts/form-layouts.component';
+import { FormElementsComponent } from './backOffice/Elements/form-back/form-elements/form-elements.component';
+import { FormLayoutsComponent } from './backOffice/Elements/form-back/form-layouts/form-layouts.component';
 import { CarComponent } from './backOffice/carpoolModule/car/car.component';
 import { DriversComponent } from './backOffice/carpoolModule/drivers/drivers.component';
 import { ProductComponent } from './backOffice/marketPlaceModule/product/product.component';
@@ -23,10 +23,10 @@ import { StopComponent } from './backOffice/busModule/stop/stop.component';
 import { TripComponent } from './backOffice/busModule/trip/trip.component';
 import { PostComponent } from './backOffice/forumModule/post/post.component';
 import { CommentComponent } from './backOffice/forumModule/comment/comment.component';
-import { DataTablesComponent } from './backOffice/data-tables/data-tables.component';
-import { ChartJsComponent } from './backOffice/charts/chart-js/chart-js.component';
-import { ApexchartsComponent } from './backOffice/charts/apexcharts/apexcharts.component';
-import { EchartsComponent } from './backOffice/charts/echarts/echarts.component';
+import { DataTablesComponent } from './backOffice/Elements/data-tables/data-tables.component';
+import { ChartJsComponent } from './backOffice/Elements/charts/chart-js/chart-js.component';
+import { ApexchartsComponent } from './backOffice/Elements/charts/apexcharts/apexcharts.component';
+import { EchartsComponent } from './backOffice/Elements/charts/echarts/echarts.component';
 import { ProfileComponent } from './backOffice/userManagement/profile/profile.component';
 import { RegisterComponent } from './backOffice/userManagement/register/register.component';
 import { LoginComponent } from './backOffice/userManagement/login/login.component';
@@ -153,25 +153,29 @@ import { UpdateRoomComponent } from './frontOffice/accommodationModule/accommoda
 import { UpdateAccommodationComponent } from './frontOffice/accommodationModule/accommodationModule/update-accommodation/update-accommodation.component';
 import { DetailsAccomodationComponent } from './frontOffice/accommodationModule/accommodationModule/details-accomodation/details-accomodation.component';
 import { DetailsRoomComponent } from './frontOffice/accommodationModule/accommodationModule/details-room/details-room.component';
-import { AccomodationBackComponent } from './backOffice/accomodation-back/accomodation-back.component';
-import { AddAccBackComponent } from './backOffice/add-acc-back/add-acc-back.component';
-import { UpdateAccBackComponent } from './backOffice/update-acc-back/update-acc-back.component';
-import { RoomBackComponent } from './backOffice/room-back/room-back.component';
-import { AddRoomBackComponent } from './backOffice/add-room-back/add-room-back.component';
-import { UpdateRoomBackComponent } from './backOffice/update-room-back/update-room-back.component';
-import { CategoryBackComponent } from './backOffice/category-back/category-back.component';
-import { AddCatBackComponent } from './backOffice/add-cat-back/add-cat-back.component';
-import { UpdateCatBackComponent } from './backOffice/update-cat-back/update-cat-back.component';
-import { SubCatBackComponent } from './backOffice/sub-cat-back/sub-cat-back.component';
-import { AddSubCatBackComponent } from './backOffice/add-sub-cat-back/add-sub-cat-back.component';
-import { UpdateSubCatBackComponent } from './backOffice/update-sub-cat-back/update-sub-cat-back.component';
-import { DetailsRoomBackComponent } from './backOffice/details-room-back/details-room-back.component';
-import { DetailAccBackComponent } from './backOffice/detail-acc-back/detail-acc-back.component';
+import { AccomodationBackComponent } from './backOffice/accommodationModule/accomodation-back/accomodation-back.component';
+import { AddAccBackComponent } from './backOffice/accommodationModule/add-acc-back/add-acc-back.component';
+import { UpdateAccBackComponent } from './backOffice/accommodationModule/update-acc-back/update-acc-back.component';
+import { RoomBackComponent } from './backOffice/accommodationModule/room-back/room-back.component';
+import { AddRoomBackComponent } from './backOffice/accommodationModule/add-room-back/add-room-back.component';
+import { UpdateRoomBackComponent } from './backOffice/accommodationModule/update-room-back/update-room-back.component';
+import { CategoryBackComponent } from './backOffice/accommodationModule/category-back/category-back.component';
+import { AddCatBackComponent } from './backOffice/accommodationModule/add-cat-back/add-cat-back.component';
+import { UpdateCatBackComponent } from './backOffice/accommodationModule/update-cat-back/update-cat-back.component';
+import { SubCatBackComponent } from './backOffice/accommodationModule/sub-cat-back/sub-cat-back.component';
+import { AddSubCatBackComponent } from './backOffice/accommodationModule/add-sub-cat-back/add-sub-cat-back.component';
+import { UpdateSubCatBackComponent } from './backOffice/accommodationModule/update-sub-cat-back/update-sub-cat-back.component';
+import { DetailsRoomBackComponent } from './backOffice/accommodationModule/details-room-back/details-room-back.component';
+import { DetailAccBackComponent } from './backOffice/accommodationModule/detail-acc-back/detail-acc-back.component';
 import { FilterPipe } from './app-filter.pipe';
 import { MappComponent } from './frontOffice/accommodationModule/mapp/map.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { RoomComponent } from './frontOffice/accommodationModule/accommodationModule/room/room.component';
 import { AccommodationComponent } from './frontOffice/accommodationModule/accommodationModule/accommodation/accommodation.component';
+import { ReclamationComponent } from './frontOffice/reclamationManagement/reclamation/reclamation.component';
+import { ResponseComponent } from './frontOffice/reclamationManagement/response/response.component';
+
+
 
 @NgModule({
   declarations: [
@@ -332,6 +336,8 @@ import { AccommodationComponent } from './frontOffice/accommodationModule/accomm
     UpdateSubCatBackComponent,
     DetailAccBackComponent,
     DetailsRoomBackComponent,
+    ReclamationComponent,
+    ResponseComponent,
   
   
 

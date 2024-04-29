@@ -25,7 +25,7 @@ export class UserSService {
       }),
     };
 
-    return this.http.get<any>(`${this.baseUrl}users`, httpOptions);
+    return this.http.get<any>(`${this.baseUrl}admin/users`, httpOptions);
   }
 
 
