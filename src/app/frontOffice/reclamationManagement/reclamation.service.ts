@@ -21,4 +21,26 @@ export class ReclamationService {
     });
   }
   
+  getMyReclamations(): Observable<Reclamation[]> {
+    return this.http.get<Reclamation[]>(`${this.apiUrl}/my-reclamations`, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+
+  getReclamations(): Observable<Reclamation[]> {
+    return this.http.get<Reclamation[]>(`${this.apiUrl}/all`, {
+      headers: new HttpHeaders({ 'Authorization': `Bearer ${localStorage.getItem('token')}` })
+    });
+  }
+
+  updateReclamation(reclamation: Reclamation): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${reclamation.id}`, reclamation, {
+      headers: new HttpHeaders({ 'Authorization': `Bearer ${localStorage.getItem('token')}` })
+    });
+  }
+
+
 }

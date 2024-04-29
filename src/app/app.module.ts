@@ -174,6 +174,8 @@ import { RoomComponent } from './frontOffice/accommodationModule/accommodationMo
 import { AccommodationComponent } from './frontOffice/accommodationModule/accommodationModule/accommodation/accommodation.component';
 import { ReclamationComponent } from './frontOffice/reclamationManagement/reclamation/reclamation.component';
 import { ResponseComponent } from './frontOffice/reclamationManagement/response/response.component';
+import { MyreclamationsComponent } from './frontOffice/reclamationManagement/myreclamations/myreclamations.component';
+import { AllreclamationsComponent } from './frontOffice/reclamationManagement/allreclamations/allreclamations.component';
 
 
 
@@ -338,6 +340,8 @@ import { ResponseComponent } from './frontOffice/reclamationManagement/response/
     DetailsRoomBackComponent,
     ReclamationComponent,
     ResponseComponent,
+    MyreclamationsComponent,
+    AllreclamationsComponent,
   
   
 

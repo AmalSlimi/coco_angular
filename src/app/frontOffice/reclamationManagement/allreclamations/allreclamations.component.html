@@ -1,0 +1,21 @@
+<app-header-back></app-header-back>
+<app-navbar-back></app-navbar-back>
+
+<div class="content-container">
+    <h2 class="text-center">All Reclamations</h2>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let reclamation of reclamations">
+        <h5>{{ reclamation.title }}</h5>
+        <p>{{ reclamation.description }}</p>
+        <div>Status: <strong>{{ reclamation.state }}</strong></div>
+        <div>Type: <strong>{{ reclamation.type }}</strong></div>
+        <div>Date: <strong>{{ reclamation.date | date:'medium' }}</strong></div>
+      </li>
+    </ul>
+  </div>
+  
+  
+
+
+<app-footer-back></app-footer-back>

@@ -1,0 +1,14 @@
+<app-header-front></app-header-front>
+<div class="container">
+    <h2>My Reclamations</h2>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let reclamation of myReclamations">
+        <h5>{{ reclamation.title }}</h5>
+        <p>{{ reclamation.description }}</p>
+        <small>State: <strong>{{ reclamation.state }}</strong></small>
+      </li>
+    </ul>
+  </div>
+  
+<app-footer-front></app-footer-front>

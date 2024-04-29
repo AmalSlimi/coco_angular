@@ -120,6 +120,8 @@ import { UpdateSubCatBackComponent } from './backOffice/accommodationModule/upda
 import { RoomComponent } from './frontOffice/accommodationModule/accommodationModule/room/room.component';
 import { AccommodationComponent } from './frontOffice/accommodationModule/accommodationModule/accommodation/accommodation.component';
 import { ReclamationComponent } from './frontOffice/reclamationManagement/reclamation/reclamation.component';
+import { MyreclamationsComponent } from './frontOffice/reclamationManagement/myreclamations/myreclamations.component';
+import { AllreclamationsComponent } from './frontOffice/reclamationManagement/allreclamations/allreclamations.component';
 
 const routes: Routes = [
   
@@ -249,8 +251,10 @@ const routes: Routes = [
   },
   //reclamation 
   {path:'reclamation',component:ReclamationComponent},
+  {path:'myReclamation',component:MyreclamationsComponent},
+  {path:'allReclamations',component:AllreclamationsComponent},
 
-  
+
   //sysy
   {path:'product',component:ProductComponent},
   {path:'productcategory',component:ProductCategoryComponent},
