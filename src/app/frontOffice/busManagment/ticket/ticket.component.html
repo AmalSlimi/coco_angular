@@ -1,0 +1,110 @@
+<app-header-front></app-header-front>
+
+<main id="main" class="main">
+  <div class="row justify-content-center mb-3">
+    <div class="col-6 text-center">
+      <button class="btn btn-success" (click)="generatePDF()">Get Your Ticket</button>
+    </div>
+  </div>
+  <div class="container" #content>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card-deck mt-5">
+          <div class="card" *ngFor="let s of listTicket">
+            <div class="card-body">
+              <h5 class="card-title">Ticket Details</h5>
+              <div class="container mt-3"></div>
+
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Passenger :</strong> {{ s.user.username}}</li>
+                <li class="list-group-item"><strong>validityDate :</strong> {{ s.validityDate }}</li>
+                <li class="list-group-item"><strong>Payment Method:</strong> {{ s.paymentMethod }}</li>
+                <li class="list-group-item"><strong>Status:</strong> {{ s.status }}</li>
+                <li class="list-group-item"><strong>Price:</strong> {{ s.price }} DT</li>
+
+              </ul>
+              <div class="btn-group mt-3" role="group">
+                <button type="button" class="btn btn-danger" (click)="removeTicket(s.id)">Get A new Ticket</button>
+                <button type="button" class="btn"
+                    [ngClass]="{'btn-success': s.status === 'ACTIVE', 'btn-dark': s.status !== 'ACTIVE'}"
+                    (click)="openPaymentModal(s)"
+                    [disabled]="s.status === 'ACTIVE' || s.paymentMethod === 'CASH'">
+                    <i class="fas fa-money-bill-alt mr-2"></i>
+                    {{ s.status === 'ACTIVE' ? 'Paid✔️' : (s.paymentMethod === 'CASH' ? 'Pay Cash💲' : 'Pay💳') }}
+                    <ng-container *ngIf="s.status === 'ACTIVE'">
+                      <i class="fas fa-check-circle text-success ml-1"></i>
+                    </ng-container>
+                  </button>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Modal de détails de paiement -->
+<div id="paymentModal" class="modal" *ngIf="selectedticket">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Payment Details</h5>
+        <button type="button" class="close" (click)="closePaymentModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="ticketForm" (ngSubmit)="payTicket(selectedticket)">
+          <div class="form-group">
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" class="form-control" formControlName="cardNumber" placeholder="1234 1234 1234 1234 " (input)="formatCardNumber($event)" required>
+            <div *ngIf="ticketForm.get('cardNumber')?.hasError('invalidLength')" class="invalid-feedback">
+              Card number must be exactly 16 digits.
+            </div>
+            <div *ngIf="isInvalidControl('cardNumber')" class="invalid-feedback">
+              Please provide a valid card number.
+            </div>
+          </div>
+
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="expirationDate">Expiration Date:</label>
+              <input type="text" id="expirationDate" class="form-control" formControlName="expirationDate" placeholder="MM/YYYY" required>
+              <div *ngIf="isInvalidControl('expirationDate')" class="invalid-feedback">
+                Please provide a valid expiration date (MM/YYYY).
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="securityCode">Security Code:</label>
+              <div class="input-group">
+                <input type="{{ securityCodeVisible ? 'text' : 'password' }}" id="securityCode" class="form-control" formControlName="securityCode" maxlength="4" placeholder="****" required>
+                <div class="input-group-append">
+                  <label class="input-group-text" (click)="toggleSecurityVisibility()" style="cursor: pointer;">
+                    <span>👁️‍🗨️</span>
+                  </label>
+                </div>
+              </div>
+              <div *ngIf="isInvalidControl('securityCode')" class="invalid-feedback">
+                Please provide a valid security code (4 digits).
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closePaymentModal()">Close</button>
+        <button type="button" class="btn btn-success"
+          (click)="payTicket(selectedticket)"
+          [disabled]="ticketForm.invalid">
+          Pay {{ selectedticket.price }} DT
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer-front></app-footer-front>

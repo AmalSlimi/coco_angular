@@ -1,0 +1,26 @@
+<app-header-front></app-header-front>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Choose Your Ticket</h2>
+  <form class="ticket-form" (ngSubmit)="addTicket()">
+    <div class="form-group">
+      <label for="tripStop">Select Trip Stop:</label>
+      <select class="form-control" id="tripStop" [(ngModel)]="selectedTripStop" name="tripStop" required>
+        <option value="" disabled selected>Select Trip Stop</option>
+        <option *ngFor="let tripStop of tripStops" [ngValue]="tripStop">{{ tripStop.id }} - Price: {{ tripStop.amount }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="validityDate">Validity Date:</label>
+      <input type="date" class="form-control" id="validityDate" [value]="localDate" disabled>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary btn-lg">Get Ticket</button>
+    </div>
+  </form>
+  <div *ngIf="ticketAdded" class="alert alert-success mt-4">
+    Ticket added successfully!
+  </div>
+</div>
+
+<app-footer-front></app-footer-front>
