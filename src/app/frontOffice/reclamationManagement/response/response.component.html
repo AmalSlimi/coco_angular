@@ -1,0 +1,14 @@
+<app-header-back></app-header-back>
+<app-navbar-back></app-navbar-back>
+
+<div class="response-form-container">
+  <form (ngSubmit)="submitResponse()" class="response-form">
+      <div class="form-group">
+        <label for="message">Response Message:</label>
+        <textarea id="message" [(ngModel)]="response.message" name="message" class="form-control" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit Response</button>
+  </form>
+</div>
+
+<app-footer-back></app-footer-back>

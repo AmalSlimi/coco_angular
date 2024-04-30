@@ -1,5 +1,5 @@
-export class Gender {
-    MALE = 0 ;
-    FEMALE= 1 ;
-    
-}
+export enum Gender {
+    MALE = 'MALE',
+    FEMALE = 'FEMALE',
+  }
+  

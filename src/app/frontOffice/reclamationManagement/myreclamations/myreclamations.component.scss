@@ -1,0 +1,39 @@
+.container {
+    margin-top: 20px;
+  }
+  
+  .list-group-item {
+    margin-top: 10px;
+    background-color: #f7f7f7;
+    border-left: 5px solid #007bff;
+  
+    h5 {
+      color: #333;
+    }
+  
+    p {
+      margin-bottom: 5px;
+      color: #666;
+    }
+  
+    small {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  }
+  
+  .card {
+    margin-top: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #e3e6f0;
+  }
+  
+  .card-body {
+    padding: 10px;
+  }
+  
+  .card-text {
+    margin: 0;
+  }
+  

@@ -3,7 +3,8 @@ import { UserSService } from '../service/user-s.service';
 import { User } from '../model/User';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+//import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,7 @@ export class LoginComponent {
         } else if(userRole === 'EXTERNAL_USER') {
           this.router.navigate(['/external-user']);
         } else {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/coco']);
         }
   
         // Show a success alert

@@ -30,15 +30,11 @@ export class MyProfileComponent {
   saveProfile(): void {
     this.userService.updateProfile(this.user).subscribe({
       next: (response) => {
-        // Handle successful profile update
         console.log("Profile updated successfully:", response);
-        this.isEditing = false; // Exit edit mode
-        // Optionally, show a success message to the user
+        this.isEditing = false; 
       },
       error: (error) => {
-        // Handle error case
         console.error("Error updating profile:", error);
-        // Optionally, show an error message to the user
       }
     });
   }

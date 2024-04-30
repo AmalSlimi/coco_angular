@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../model/User';
 import { Observable, tap } from 'rxjs';
+import { Role } from '../model/Role';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -10,7 +12,7 @@ import { Observable, tap } from 'rxjs';
 export class AuthService {
   private baseUrl: string = 'http://localhost:8085/spring2024/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -18,12 +20,15 @@ export class AuthService {
     })
   };
 
+  
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}auth/login`, { email, password }, this.httpOptions)
       .pipe(tap(res => {
-        if (res && res.accessToken) { // Assuming the token is named 'accessToken' in the response
-          localStorage.setItem('token', res.accessToken); // Use 'token' as the key
+        if (res && res.accessToken) {
+          localStorage.setItem('token', res.accessToken);
+          localStorage.setItem('roles', JSON.stringify(res.roles)); 
           console.log('Token stored');
+          
         }
       }));
     
@@ -31,7 +36,7 @@ export class AuthService {
   
 
   register(user: any): Observable<any> {
-    console.log("Sending registration data: ", user); // Debug log
+    console.log("Sending registration data: ", user); 
     return this.http.post<any>(`${this.baseUrl}auth/signup`, user, this.httpOptions);
   }
   
@@ -49,10 +54,34 @@ export class AuthService {
     return !!token; 
   }
 
-  logout(): void {
-    localStorage.removeItem('token'); 
+  getRoles(): Role[] {
+    const roles = localStorage.getItem('roles');
+    console.log('Roles from storage:', roles);
+    return roles ? JSON.parse(roles) : [];
+}
+
+  hasRole(role: Role): boolean {
+    const roles = this.getRoles();
+    console.log('Checking role:', role, 'Available roles:', roles);
+    return roles.includes(role);
   }
-  
+
+  logout(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('roles');
+    this.router.navigate(['/login']).then(() => {
+      window.location.reload(); 
+    });
+  }
+
+  setCurrentUser(user: any): void {
+    localStorage.setItem('userconnect', JSON.stringify(user));
+  }
+
+  getCurrentUser(): any {
+    const user = localStorage.getItem('userconnect');
+    return user ? JSON.parse(user) : null;
+  }
 
   
 }
