@@ -1,0 +1,32 @@
+body {
+    display: flex;
+  }
+  
+  .navbar-container {
+    width: 200px; /* Adjust based on your navbar's width */
+  }
+  
+  .response-container {
+    flex-grow: 1; /* Ensures it takes the remaining space */
+    margin-left: 20px; /* Spacing between navbar and the content */
+    margin-top: 20px; /* Top margin for aesthetics */
+    padding: 20px; /* Padding inside the content area */
+  }
+  
+  
+
+.container {
+    padding-top: 70px; // Adjust according to your navbar height
+    padding-bottom: 20px;
+  }
+  
+  .table-responsive {
+    margin: 0 auto;
+    max-width: 90%; // Adjust width based on your preference
+  }
+  
+  .table {
+    margin-top: 20px;
+    text-align: center;
+  }
+  

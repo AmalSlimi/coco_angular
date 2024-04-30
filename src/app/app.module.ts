@@ -176,6 +176,8 @@ import { ReclamationComponent } from './frontOffice/reclamationManagement/reclam
 import { ResponseComponent } from './frontOffice/reclamationManagement/response/response.component';
 import { MyreclamationsComponent } from './frontOffice/reclamationManagement/myreclamations/myreclamations.component';
 import { AllreclamationsComponent } from './frontOffice/reclamationManagement/allreclamations/allreclamations.component';
+import { UpdateReclamationComponent } from './frontOffice/reclamationManagement/update-reclamation/update-reclamation.component';
+import { ResponseListComponent } from './frontOffice/reclamationManagement/response-list/response-list.component';
 
 
 
@@ -342,6 +344,8 @@ import { AllreclamationsComponent } from './frontOffice/reclamationManagement/al
     ResponseComponent,
     MyreclamationsComponent,
     AllreclamationsComponent,
+    UpdateReclamationComponent,
+    ResponseListComponent,
   
   
 
@@ -380,6 +384,7 @@ import { AllreclamationsComponent } from './frontOffice/reclamationManagement/al
     NgxCaptchaModule,
 
 
+    
     
   ],
   schemas: [NO_ERRORS_SCHEMA] ,  

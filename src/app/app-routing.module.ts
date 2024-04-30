@@ -122,6 +122,9 @@ import { AccommodationComponent } from './frontOffice/accommodationModule/accomm
 import { ReclamationComponent } from './frontOffice/reclamationManagement/reclamation/reclamation.component';
 import { MyreclamationsComponent } from './frontOffice/reclamationManagement/myreclamations/myreclamations.component';
 import { AllreclamationsComponent } from './frontOffice/reclamationManagement/allreclamations/allreclamations.component';
+import { UpdateReclamationComponent } from './frontOffice/reclamationManagement/update-reclamation/update-reclamation.component';
+import { ResponseComponent } from './frontOffice/reclamationManagement/response/response.component';
+import { ResponseListComponent } from './frontOffice/reclamationManagement/response-list/response-list.component';
 
 const routes: Routes = [
   
@@ -253,6 +256,10 @@ const routes: Routes = [
   {path:'reclamation',component:ReclamationComponent},
   {path:'myReclamation',component:MyreclamationsComponent},
   {path:'allReclamations',component:AllreclamationsComponent},
+  
+  {path:'update-reclamation/:id',component:UpdateReclamationComponent},
+  {path:'response/:id',component:ResponseComponent},
+  {path:'responseList',component:ResponseListComponent},
 
 
   //sysy

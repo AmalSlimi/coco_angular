@@ -1,0 +1,4 @@
+export enum ReclamationType {
+    SERVICE_COMPLAINTS, FEED_BACK, PRICING_DISPUTE , SAFETY_ISSUE ,TIMING_ISSUES
+  }
+  

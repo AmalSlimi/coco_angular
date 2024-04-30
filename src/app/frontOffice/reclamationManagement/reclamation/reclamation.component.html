@@ -3,15 +3,25 @@
     <h2>Add Reclamation</h2>
     <form (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" id="title" [(ngModel)]="reclamation.title" name="title" class="form-control" required>
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" id="title" [(ngModel)]="reclamation.title" name="title" required>
       </div>
       <div class="form-group">
-        <label for="description">Description</label>
-        <textarea id="description" [(ngModel)]="reclamation.description" name="description" class="form-control" required></textarea>
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" [(ngModel)]="reclamation.description" name="description" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="type">Type:</label>
+        <select class="form-control" id="type" [(ngModel)]="reclamation.type" name="type" required>
+          <option *ngFor="let type of reclamationTypes" [value]="type">{{type}}</option>
+        </select>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-secondary" (click)="navigateToMyReclamations()">My Reclamations</button>
+
     </form>
-    <p>{{ message }}</p>
+    <div *ngIf="message" class="alert alert-info">{{ message }}</div>
+
   </div>
+  
   <app-footer-front></app-footer-front>

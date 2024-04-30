@@ -8,14 +8,22 @@
       <li class="list-group-item" *ngFor="let reclamation of reclamations">
         <h5>{{ reclamation.title }}</h5>
         <p>{{ reclamation.description }}</p>
-        <div>Status: <strong>{{ reclamation.state }}</strong></div>
+        <div>
+          Status: 
+          <strong *ngIf="reclamation.state === 'CLOSED'">{{ reclamation.state }}</strong>
+          <select *ngIf="reclamation.state !== 'CLOSED'" [(ngModel)]="reclamation.state" class="form-select" aria-label="Default select example">
+            <option *ngFor="let state of states" [value]="state">{{state}}</option>
+          </select>
+          <button *ngIf="reclamation.state !== 'CLOSED'" class="btn btn-primary" (click)="updateState(reclamation)">Update State</button>
+        </div>
         <div>Type: <strong>{{ reclamation.type }}</strong></div>
         <div>Date: <strong>{{ reclamation.date | date:'medium' }}</strong></div>
+        <button *ngIf="reclamation.state !== 'CLOSED'" class="btn btn-secondary" (click)="respondToReclamation(reclamation.id)">Respond</button>
+
+        <button class="btn btn-danger" (click)="deleteReclamation(reclamation.id)">Delete</button>
+
       </li>
     </ul>
   </div>
   
-  
-
-
 <app-footer-back></app-footer-back>

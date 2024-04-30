@@ -30,5 +30,41 @@ export class MyreclamationsComponent {
     });
   }
 
-  
+  editReclamation(id: number): void {
+    this.router.navigate(['/update-reclamation', id]);
+}
+
+deleteReclamation(id: number): void {
+  if(confirm('Are you sure you want to delete this reclamation?')) {
+    this.reclamationService.deleteReclamation(id).subscribe({
+      next: () => {
+        this.myReclamations = this.myReclamations.filter(reclamation => reclamation.id !== id);
+        alert('Reclamation deleted successfully');
+      },
+      error: (error) => {
+        alert('Failed to delete reclamation');
+        console.error(error);
+      }
+    });
+  }
+}  
+
+toggleResponses(reclamation: Reclamation): void {
+  if (!reclamation.responses) {
+    this.reclamationService.getResponsesByReclamation(reclamation.id).subscribe({
+      next: (responses) => {
+        reclamation.responses = responses;
+        if (responses.length === 0) {
+          alert('No responses available for this reclamation.');
+        }
+      },
+      error: (err) => {
+        console.error('Failed to load responses', err);
+        alert('Failed to load responses');
+      }
+    });
+  } else {
+    delete reclamation.responses; 
+  }
+}
 }
