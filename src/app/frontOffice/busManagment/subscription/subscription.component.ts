@@ -37,8 +37,8 @@ export class SubscriptionComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Assuming you have the user ID available
-    this.userId = 1; // Replace 123 with the actual user ID
+
+    this.userId = 1; 
     this.loadSubs(this.userId);
     this.initializeForm();
   }
@@ -66,11 +66,11 @@ export class SubscriptionComponent implements OnInit {
         },
         (error) => {
           console.error('Error generating QR code:', error);
-          alert('Error generating QR code: ' + error); // Alert error message
+          alert('Error generating QR code: ' + error);
         }
       );
     } else {
-      alert('Subscription is not ACTIVE. Cannot generate QR code.'); // Alert subscription status
+      alert('Subscription is not ACTIVE. Cannot generate QR code.');
     }
   }
 

@@ -1,9 +1,11 @@
 <app-header-front></app-header-front>
 
 <main id="main" class="main">
-  <div class="row justify-content-center mb-3">
-    <div class="col-6 text-center">
-      <button class="btn btn-success" (click)="generatePDF()">Get Your Ticket</button>
+  <div class="container">
+    <div class="row justify-content-center mb-3">
+      <div class="col-6 text-center">
+        <button class="btn btn-success" (click)="generatePDF()">Get Your Ticket</button>
+      </div>
     </div>
   </div>
   <div class="container" #content>
@@ -11,20 +13,32 @@
       <div class="col-md-6 offset-md-3">
         <div class="card-deck mt-5">
           <div class="card" *ngFor="let s of listTicket">
-            <div class="card-body">
+            <div class="card-body" #ticketContainer>
               <h5 class="card-title">Ticket Details</h5>
-              <div class="container mt-3"></div>
+              <div class="container mt-3">
+               <!-- PDF Ticket Frame -->
+<div class="pdf-ticket">
+  <div class="d-flex align-items-start justify-content-between">
+    <div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Passenger:</strong> {{ s.user.username }}</li>
+        <li class="list-group-item"><strong>Validity Date:</strong> {{ s.validityDate }}</li>
+        <li class="list-group-item"><strong>Payment Method:</strong> {{ s.paymentMethod }}</li>
+        <li class="list-group-item"><strong>Status:</strong> {{ s.status }}</li>
+        <li class="list-group-item"><strong>Price:</strong> {{ s.price }} DT</li>
+      </ul>
+    </div>
+    <div class="text-right">
+      <!-- Utiliser des styles CSS pour ajuster la taille de l'image -->
+      <img class="user-picture" [src]="s.user.pictureUrl" alt="User Picture" style="max-width: 100px; max-height: 100px;">
+    </div>
+  </div>
+</div>
+<!-- End PDF Ticket Frame -->
 
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>Passenger :</strong> {{ s.user.username}}</li>
-                <li class="list-group-item"><strong>validityDate :</strong> {{ s.validityDate }}</li>
-                <li class="list-group-item"><strong>Payment Method:</strong> {{ s.paymentMethod }}</li>
-                <li class="list-group-item"><strong>Status:</strong> {{ s.status }}</li>
-                <li class="list-group-item"><strong>Price:</strong> {{ s.price }} DT</li>
-
-              </ul>
+              </div>
               <div class="btn-group mt-3" role="group">
-                <button type="button" class="btn btn-danger" (click)="removeTicket(s.id)">Get A new Ticket</button>
+                <button type="button" class="btn btn-danger" (click)="removeTicket(s.id)">Get A New Ticket</button>
                 <button type="button" class="btn"
                     [ngClass]="{'btn-success': s.status === 'ACTIVE', 'btn-dark': s.status !== 'ACTIVE'}"
                     (click)="openPaymentModal(s)"
@@ -35,9 +49,11 @@
                       <i class="fas fa-check-circle text-success ml-1"></i>
                     </ng-container>
                   </button>
-
+                  <button type="button" class="btn btn-success" (click)="generateQrCode(s)">Generate QR Code</button>
               </div>
-
+              <div class="mt-3 text-center">
+                <img *ngIf="s.qrCodeImageUrl2" [src]="s.qrCodeImageUrl2" alt="QR Code" class="img-fluid">
+              </div>
             </div>
           </div>
         </div>

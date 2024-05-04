@@ -7,6 +7,6 @@ export class TripStop {
   arrivalTime!: string;
   departureTime!: string;
   amount!: number;
-  
+  stop?: stop;
 
 }

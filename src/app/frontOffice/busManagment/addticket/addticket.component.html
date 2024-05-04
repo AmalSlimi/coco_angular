@@ -7,7 +7,7 @@
       <label for="tripStop">Select Trip Stop:</label>
       <select class="form-control" id="tripStop" [(ngModel)]="selectedTripStop" name="tripStop" required>
         <option value="" disabled selected>Select Trip Stop</option>
-        <option *ngFor="let tripStop of tripStops" [ngValue]="tripStop">{{ tripStop.id }} - Price: {{ tripStop.amount }}</option>
+        <option *ngFor="let tripStop of tripStops" [ngValue]="tripStop">{{ tripStop.stop?.name }} - Price: {{ tripStop.amount }}</option>
       </select>
     </div>
     <div class="form-group">

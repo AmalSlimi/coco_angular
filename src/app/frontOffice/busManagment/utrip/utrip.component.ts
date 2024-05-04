@@ -28,6 +28,9 @@ export class UtripComponent implements OnInit {
     // Redirect to the map component with query parameters for departure and arrival locations
     this.router.navigate(['/map'], { queryParams: { departureLocation, arrivalLocation } });
   }
+  getTicket(idTrip: number) {
+    this.router.navigate(['/add-ticket', idTrip]);
+  }
 
 
 

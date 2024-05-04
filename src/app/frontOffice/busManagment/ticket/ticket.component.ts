@@ -9,6 +9,7 @@ import { subscription } from '../model/subscription';
 import { User } from 'src/app/MarketPlace/user';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
+import { QrCodeServiceService } from '../service/qr-code-service.service';
 
 @Component({
   selector: 'app-ticket',
@@ -22,12 +23,14 @@ export class TicketComponent implements OnInit {
   @ViewChild('content') content!: ElementRef;
   ticketForm!: FormGroup;
   selectedticket: ticket | null = null;
+  @ViewChild('ticketContainer') ticketContainer!: ElementRef;
   securityCodeVisible = false;
 
 
 
   constructor(
     private ticketservice: TicketService,
+    private qrservice: QrCodeServiceService,
 
     private http: HttpClient,
     private ac: ActivatedRoute,
@@ -58,7 +61,7 @@ export class TicketComponent implements OnInit {
       () => {
         // Subscription removed successfully, update the list
         this.loadTicket(this.userId);
-        this.router.navigate(['/add-ticket/:id']);
+        this.router.navigate(['/utrip']);
       },
       (error) => {
         console.error('Error removing ticket:', error);
@@ -102,24 +105,22 @@ export class TicketComponent implements OnInit {
     }
   }
   generatePDF(): void {
-    if (this.selectedticket && this.selectedticket.status === 'ACTIVE') {
-      const data = this.content.nativeElement;
-
-      html2canvas(data).then(canvas => {
-        // Get the height and width of the canvas
+    const ticketContainer = this.ticketContainer.nativeElement.querySelector('.pdf-ticket');
+    if (ticketContainer) {
+      html2canvas(ticketContainer).then(canvas => {
         const contentDataURL = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'mm', 'a4'); // PDF dimensions: portrait, millimeters, A4 format
-        const position = 0;
+        const pdf = new jsPDF('p', 'mm', 'a4');
         const imgWidth = 208;
         const imgHeight = canvas.height * imgWidth / canvas.width;
-
-        pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-        pdf.save('ticket.pdf'); // Download the PDF with a specified name
+        pdf.addImage(contentDataURL, 'PNG', 0, 0, imgWidth, imgHeight);
+        pdf.save('ticket.pdf');
       });
     } else {
-      alert('Ticket status is not PAID. Cannot generate PDF.');
+      alert('Error: No ticket details found.');
     }
   }
+
+
 
   initializeForm(): void {
     // Initialisation du formulaire avec FormBuilder
@@ -188,6 +189,25 @@ export class TicketComponent implements OnInit {
   }
   toggleSecurityVisibility(): void {
     this.securityCodeVisible = !this.securityCodeVisible;
+  }
+  generateQrCode(ticket: ticket): void {
+    if (ticket.status === 'ACTIVE' && ticket.qrCodeData2) {
+      this.qrservice.generateQrCode(ticket.qrCodeData2).subscribe(
+        (qrCodeBlob: Blob) => {
+          const reader = new FileReader();
+          reader.onload = (event: any) => {
+            ticket.qrCodeImageUrl2 = event.target.result;
+          };
+          reader.readAsDataURL(qrCodeBlob);
+        },
+        (error) => {
+          console.error('Error generating QR code:', error);
+          alert('Error generating QR code: ' + error); // Alert error message
+        }
+      );
+    } else {
+      alert('Subscription is not ACTIVE or QR code data is missing. Cannot generate QR code.'); // Alert subscription status or missing data
+    }
   }
 
 }
