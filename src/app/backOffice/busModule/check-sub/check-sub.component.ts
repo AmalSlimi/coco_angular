@@ -5,6 +5,7 @@ import { subscription } from 'src/app/frontOffice/busManagment/model/subscriptio
 import { SubserviceService } from 'src/app/frontOffice/busManagment/service/subservice.service';
 import { TripStopServiceService } from '../service/trip-stop-service.service';
 import { EmailService } from 'src/app/frontOffice/busManagment/service/email.service';
+import { UserSService } from '../../userManagement/service/user-s.service';
 
 @Component({
   selector: 'app-check-sub',
@@ -13,14 +14,16 @@ import { EmailService } from 'src/app/frontOffice/busManagment/service/email.ser
 })
 export class CheckSubComponent  implements OnInit{
   listSub: subscription[] = [];
+  user: any = {};
   search: number = 0;
-  email= 'achref.ghribi@esprit.tn';
+  email : string ='achref.ghribi@esprit.tn';
   subject= 'Expired Sub';
   corp= 'We regret to inform you that your subscription has expired. We hope you have enjoyed the benefits of our service during your subscription period. ';
 
   constructor(
     private subservice: SubserviceService,
     private eservice: EmailService,
+    private us: UserSService,
     private http: HttpClient,
     private ac: ActivatedRoute,
     private router: Router,
@@ -28,6 +31,16 @@ export class CheckSubComponent  implements OnInit{
 
   ngOnInit() {
     this.loadSubs();
+    this.us.getMyProfile().subscribe({
+      next: (profile) => {
+        this.user = profile;
+
+
+      },
+      error: (error) => {
+        console.error('Error fetching profile', error);
+      }
+    });
   }
 
   loadSubs() {
@@ -55,6 +68,7 @@ export class CheckSubComponent  implements OnInit{
             alert('Subscription status updated to EXPIRED.');
             // Update the remaining trips in the local list
             subscription.remainingTrips = newRemainingTrips;
+
             this.sendEmail();
 
 

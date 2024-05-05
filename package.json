@@ -26,6 +26,7 @@
     "@kurkle/color": "^0.3.2",
     "@ng-bootstrap/ng-bootstrap": "^5.2.3",
     "@popperjs/core": "^2.11.8",
+    "angular-calendar": "^0.31.1",
     "angular2-qrcode": "^2.0.3",
     "apexcharts": "^3.48.0",
     "bad-words": "^3.0.4",

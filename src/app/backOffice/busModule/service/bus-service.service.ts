@@ -24,12 +24,20 @@ export class BusServiceService {
   removeBus(id:number){
     return this.http.delete(this.baseUrl + 'remove' +'/'+id)
   }
-  
+
   UpdateBus(b: bus) : Observable<bus> {
     return this.http.put<bus> ( this.baseUrl + 'update', b);
   }
   getDetailbus(id: number): Observable<bus> {
     return this.http.get<bus>(this.baseUrl + 'get/' + id);
   }
+  assignBusToTrip(busId: number, tripId: number): Observable<any> {
+    const url = `${this.baseUrl}assign-bus-to-trip?busId=${busId}&tripId=${tripId}`;
+
+    return this.http.post(url, null, { responseType: 'text' }); // Set responseType to 'text'
+  }
+
+
+
 
 }

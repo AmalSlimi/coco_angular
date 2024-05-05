@@ -28,9 +28,9 @@ export class SubserviceService {
     return this.http.put<subscription>(url, {}, { headers });
   }
 
-  getDetailsub(id: number): Observable<any> {
+  getDetailsub(): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    return this.http.get<any>(this.baseUrl + 'get/' + id, { headers });
+    return this.http.get<any>(this.baseUrl + 'get' , { headers });
   }
 
   updateremainingTrips(subscriptionId: number, newremainingTrips: number): Observable<subscription> {

@@ -11,6 +11,7 @@ import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { QrCodeServiceService } from '../service/qr-code-service.service';
 import { AudioService } from '../service/audio.service';
+import { number } from 'echarts';
 
 @Component({
   selector: 'app-ticket',
@@ -43,8 +44,8 @@ export class TicketComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Assuming you have the user ID available
-    this.userId = 1;
+
+    this.userId = 9999999;
     this.loadTicket(this.userId);
     this.initializeForm();
     this.audioservice.stopSound();
@@ -62,7 +63,7 @@ export class TicketComponent implements OnInit {
   removeTicket(ticketId: number): void {
     this.ticketservice.removeTicket(ticketId).subscribe(
       () => {
-        // Subscription removed successfully, update the list
+
         this.loadTicket(this.userId);
         this.router.navigate(['/utrip']);
       },
@@ -77,18 +78,18 @@ export class TicketComponent implements OnInit {
       this.stripeComponent.amount = ticket.price * 100;
 
 
-      // Create a promise to handle the payment process
+
       const paymentPromise = new Promise<boolean>((resolve) => {
-        // Call the payment method and resolve the promise with the payment result
+
         this.stripeComponent.pay();
-        resolve(true); // Assuming payment is always successful for simplicity
+        resolve(true);
       });
 
-      // After the payment is resolved (assuming it's always successful)
+
       paymentPromise.then((paymentSuccessful: boolean) => {
         if (paymentSuccessful) {
           ticket.status = 'ACTIVE';
-          // Update the subscription status to 'ACTIVE'
+
           this.ticketservice.updateTicketStatus(ticket.id, 'ACTIVE').subscribe(
             () => {
               alert('Payment successful! Subscription status updated to ACTIVE.');

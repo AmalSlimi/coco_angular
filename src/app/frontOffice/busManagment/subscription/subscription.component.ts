@@ -18,7 +18,7 @@ import { AudioService } from '../service/audio.service';
 export class SubscriptionComponent implements OnInit {
   listSub: subscription[] = [];
   stripeComponent: StripeComponent;
-  userId!: number;
+
   @ViewChild('content') content!: ElementRef;
   subForm!: FormGroup;
   selectedsub: subscription | null = null;
@@ -40,14 +40,14 @@ export class SubscriptionComponent implements OnInit {
 
   ngOnInit() {
 
-    this.userId = 1;
-    this.loadSubs(this.userId);
+
+    this.loadSubs();
     this.initializeForm();
     this.audioservice.stopSound();
   }
 
-  loadSubs(userId: number) {
-    this.subservice.getDetailsub(userId).subscribe({
+  loadSubs() {
+    this.subservice.getDetailsub().subscribe({
       next: (data: subscription) => {
         this.listSub = [data]; // Assuming getDetailsub returns a single subscription
       },
@@ -116,7 +116,7 @@ export class SubscriptionComponent implements OnInit {
     this.subservice.removeSub(subscriptionId).subscribe(
       () => {
         // Subscription removed successfully, update the list
-        this.loadSubs(this.userId);
+        this.loadSubs();
       },
       (error) => {
         console.error('Error removing subscription:', error);

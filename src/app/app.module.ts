@@ -176,6 +176,7 @@ import { TicketComponent } from './frontOffice/busManagment/ticket/ticket.compon
 import { AddticketComponent } from './frontOffice/busManagment/addticket/addticket.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -337,6 +338,7 @@ import { AddticketComponent } from './frontOffice/busManagment/addticket/addtick
     DetailsRoomBackComponent,
     TicketComponent,
     AddticketComponent,
+    
 
 
 

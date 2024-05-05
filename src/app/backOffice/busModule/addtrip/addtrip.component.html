@@ -4,6 +4,13 @@
 <main id="main" class="main">
   <form [formGroup]="TripForm" (ngSubmit)="save()">
     <div class="form-group">
+      <label for="inputname">Name</label>
+      <input type="text" class="form-control" formControlName="name" id="inputname" placeholder="name">
+      <div class="alert alert-danger" *ngIf="TripForm.controls['name'].invalid && TripForm.controls['name'].touched">
+        <p *ngIf="TripForm.controls['name'].hasError('required')">name is required</p>
+      </div>
+    </div>
+    <div class="form-group">
       <label for="inputDepartureLocation">Departure Location</label>
       <input type="text" class="form-control" formControlName="departureLocation" id="inputDepartureLocation" placeholder="Departure Location">
       <div class="alert alert-danger" *ngIf="TripForm.controls['departureLocation'].invalid && TripForm.controls['departureLocation'].touched">

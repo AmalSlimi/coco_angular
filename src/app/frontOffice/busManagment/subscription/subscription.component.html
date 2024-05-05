@@ -1,7 +1,7 @@
 <app-header-front></app-header-front>
 
 <main id="main" class="main">
- 
+
   <div class="container" #content>
     <div class="row">
       <div class="col-md-6 offset-md-3">
@@ -12,11 +12,15 @@
               <div class="container mt-3"></div>
 
               <ul class="list-group list-group-flush">
+
                 <li class="list-group-item"><strong>Remaining Trips:</strong> {{ s.remainingTrips }}</li>
                 <li class="list-group-item"><strong>Trip Stops:</strong> {{ s.tripStops }}</li>
                 <li class="list-group-item"><strong>Payment Method:</strong> {{ s.subscriptionPaymentMethod }}</li>
                 <li class="list-group-item"><strong>Status:</strong> {{ s.status }}</li>
                 <li class="list-group-item"><strong>Price:</strong> {{ s.subscriptionPrice }}</li>
+                
+
+
               </ul>
               <div class="btn-group mt-3" role="group">
                 <button type="button" class="btn btn-danger" (click)="removeSubscription(s.id)">Cancel Subscription</button>
