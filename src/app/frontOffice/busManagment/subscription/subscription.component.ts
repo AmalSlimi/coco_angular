@@ -8,6 +8,7 @@ import { StripeComponent } from '../stripe/stripe.component';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AudioService } from '../service/audio.service';
 
 @Component({
   selector: 'app-subscription',
@@ -28,6 +29,7 @@ export class SubscriptionComponent implements OnInit {
   constructor(
     private subservice: SubserviceService,
     private qrservice: QrCodeServiceService,
+    private audioservice: AudioService,
     private http: HttpClient,
     private ac: ActivatedRoute,
     private fb: FormBuilder,
@@ -38,9 +40,10 @@ export class SubscriptionComponent implements OnInit {
 
   ngOnInit() {
 
-    this.userId = 1; 
+    this.userId = 1;
     this.loadSubs(this.userId);
     this.initializeForm();
+    this.audioservice.stopSound();
   }
 
   loadSubs(userId: number) {

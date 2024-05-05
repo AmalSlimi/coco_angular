@@ -6,6 +6,7 @@ import { TripStopServiceService } from 'src/app/backOffice/busModule/service/tri
 import { ticket } from '../model/ticket';
 import { StopServiceService} from 'src/app/backOffice/busModule/service/stop-service.service';
 import { stop } from 'src/app/backOffice/busModule/model/stop';
+import { AudioService } from '../service/audio.service';
 
 @Component({
   selector: 'app-addticket',
@@ -27,13 +28,15 @@ export class AddticketComponent {
     private ticketservice: TicketService,
     private tripstopservice: TripStopServiceService,
     private stopservice: StopServiceService,
+    private audioservice: AudioService,
 
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.idTrip = +params['id']; 
+      this.idTrip = +params['id'];
       this.fetchTripStops(this.idTrip);
+      this.audioservice.stopSound();
     });
   }
 

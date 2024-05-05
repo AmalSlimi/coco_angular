@@ -10,6 +10,7 @@ import { User } from 'src/app/MarketPlace/user';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { QrCodeServiceService } from '../service/qr-code-service.service';
+import { AudioService } from '../service/audio.service';
 
 @Component({
   selector: 'app-ticket',
@@ -31,6 +32,7 @@ export class TicketComponent implements OnInit {
   constructor(
     private ticketservice: TicketService,
     private qrservice: QrCodeServiceService,
+    private audioservice: AudioService,
 
     private http: HttpClient,
     private ac: ActivatedRoute,
@@ -45,6 +47,7 @@ export class TicketComponent implements OnInit {
     this.userId = 1;
     this.loadTicket(this.userId);
     this.initializeForm();
+    this.audioservice.stopSound();
 
   }
   loadTicket(userId: number) {

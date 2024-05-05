@@ -175,6 +175,7 @@ import { AccommodationComponent } from './frontOffice/accommodationModule/accomm
 import { TicketComponent } from './frontOffice/busManagment/ticket/ticket.component';
 import { AddticketComponent } from './frontOffice/busManagment/addticket/addticket.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -217,7 +218,7 @@ import { AddticketComponent } from './frontOffice/busManagment/addticket/addtick
     AccessDeniedComponent,
     GenderStatsComponent,
     RoleStatsComponent,
-    
+
 
     RegisterRideComponent,
     EditRideComponent,
@@ -291,7 +292,7 @@ import { AddticketComponent } from './frontOffice/busManagment/addticket/addtick
       EditProductComponent,
       AddSubToCatComponent,
       ProductsComponent,
-        
+
       RatingComponent,
       PictureproductComponent,
       FavoriteProductComponent,
@@ -304,7 +305,7 @@ import { AddticketComponent } from './frontOffice/busManagment/addticket/addtick
   PostDetailsComponent,
   CommentFrontComponent,
 
-  
+
     CategoryComponent,
     UpdateCategoryComponent,
     SubCategoryComponent,
@@ -318,7 +319,7 @@ import { AddticketComponent } from './frontOffice/busManagment/addticket/addtick
     DetailsAccomodationComponent,
     DetailsRoomComponent,
     MappComponent,
-    
+
     FilterPipe,
     AccomodationBackComponent,
     AddAccBackComponent,
@@ -336,14 +337,15 @@ import { AddticketComponent } from './frontOffice/busManagment/addticket/addtick
     DetailsRoomBackComponent,
     TicketComponent,
     AddticketComponent,
-  
-  
 
-    
-    
+
+
+
+
+
   ],
   imports: [
-    
+
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -359,13 +361,13 @@ import { AddticketComponent } from './frontOffice/busManagment/addticket/addtick
     MaterialFileInputModule,
     MatIconModule,
     MatFormFieldModule,
-    
+
     ToastrModule.forRoot(),
     MatButtonModule,
     MatInputModule,
     MatSelectModule,
     MatSnackBarModule,
-    
+
       NgToastModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
@@ -374,9 +376,9 @@ import { AddticketComponent } from './frontOffice/busManagment/addticket/addtick
     NgxCaptchaModule,
 
 
-    
+
   ],
-  schemas: [NO_ERRORS_SCHEMA] ,  
+  schemas: [NO_ERRORS_SCHEMA] ,
   exports:[CdkStepperModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

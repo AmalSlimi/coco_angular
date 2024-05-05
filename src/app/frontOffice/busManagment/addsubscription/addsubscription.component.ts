@@ -1,37 +1,58 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // Importer le Router pour la navigation
 import { subscription } from '../model/subscription';
 import { SubserviceService } from '../service/subservice.service';
 import { QrCodeServiceService } from '../service/qr-code-service.service';
+import { AudioService } from '../service/audio.service';
+
+import { Component, OnDestroy } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-addsubscription',
   templateUrl: './addsubscription.component.html',
   styleUrls: ['./addsubscription.component.scss']
 })
-export class AddsubscriptionComponent {
+export class AddsubscriptionComponent implements OnDestroy {
   subscription: subscription = new subscription();
   subscriptionAdded: boolean = false;
-  qrCodeGenerated: boolean = false;
+  private navigationSubscription: Subscription;
 
   constructor(
-    private router: Router, // Injecter le Router
+    private router: Router,
     private subservice: SubserviceService,
-    private qrservice: QrCodeServiceService
-  ) {}
+    private audioservice: AudioService,
+  ) {
+    this.navigationSubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        console.log("Navigation ended");
+        this.audioservice.stopSound();
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.navigationSubscription) {
+      this.navigationSubscription.unsubscribe();
+    }
+  }
+
+  ngOnInit() {
+    const soundUrl = "assets/frontOffice/sub.mp3";
+    this.audioservice.playSound(soundUrl);
+  }
 
   addSubscription(): void {
-    this.subservice.addSubscription( this.subscription).subscribe(
+    this.subservice.addSubscription(this.subscription).subscribe(
       (data) => {
         console.log('Subscription added successfully:', data);
         this.subscriptionAdded = true;
-        // Naviguer vers la page de l'abonnement après l'ajout réussi
-        this.router.navigate(['/sub']); // Assurez-vous que '/subscription' est le chemin correct vers la page de l'abonnement
+        // Navigate to the subscription page after successful addition
+        this.router.navigate(['/sub']);
       },
       (error) => {
         console.error('Error adding subscription:', error);
-        // Afficher une alerte en cas d'erreur
-        alert('Error adding subscription: ' + error); // Vous pouvez personnaliser le message d'alerte selon vos besoins
+        // Show an alert in case of error
+        alert('Error adding subscription: ' + error);
       }
     );
   }

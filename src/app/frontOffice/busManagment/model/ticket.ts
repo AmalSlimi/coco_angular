@@ -10,11 +10,13 @@ export class ticket {
   status!: string;
   paymentMethod!: string;
   price!: number;
-  qrCodeData2!: string;
-  qrCodeImageUrl2?: string;
+
   tripstop!: TripStop;
   user!: User;
-  
+
+  qrCodeData2!: string;
+  qrCodeImageUrl2?: string;
+
 
 
 
