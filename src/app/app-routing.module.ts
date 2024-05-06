@@ -125,15 +125,19 @@ import { AllreclamationsComponent } from './frontOffice/reclamationManagement/al
 import { UpdateReclamationComponent } from './frontOffice/reclamationManagement/update-reclamation/update-reclamation.component';
 import { ResponseComponent } from './frontOffice/reclamationManagement/response/response.component';
 import { ResponseListComponent } from './frontOffice/reclamationManagement/response-list/response-list.component';
+import { WelcomePageComponent } from './frontOffice/welcome-page/welcome-page.component';
+import { ForgetPasswordComponent } from './frontOffice/userModule/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './frontOffice/userModule/reset-password/reset-password.component';
+import { ChatbotService } from './ChatBot/chatbot.service';
 
 const routes: Routes = [
-  
+
+//default route
+  {path:'WelcomeToCoco',component:WelcomePageComponent},
+  {path:'', redirectTo :'/WelcomeToCoco', pathMatch:'full'},
   {path:'signup',component:RegisterComponent},
   {path:'login',component:LoginComponent},
-  //default route
-  {path:'', redirectTo :'/login', pathMatch:'full'},
   
-
   //amal
   {
     path: 'admin',
@@ -151,7 +155,9 @@ const routes: Routes = [
 {path:'myProfile',component:MyProfileComponent},
 {path:'external-user',component:ExternalUserComponent},
 {path:'dashboard',component:DashboardComponent},
-  
+{ path: 'forget-password', component: ForgetPasswordComponent },
+{ path: 'resetpassword/:passwordResetToken', component: ResetPasswordComponent },
+{path:'chatbot',component:ChatbotService},
 
 
   //special

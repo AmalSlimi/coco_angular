@@ -9,7 +9,9 @@ import { TDocumentDefinitions } from 'pdfmake/interfaces';
 import { AccomodationService } from 'src/app/frontOffice/accommodationModule/accommodationModule/Services/accomodation.service';
 import { Accomodation } from 'src/app/frontOffice/accommodationModule/models/accomodationModel';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import * as saveAs from 'file-saver';
+//import * as saveAs from 'file-saver';
+import { saveAs } from 'file-saver';
+
 interface Accommodation {
   accommodationID: any;
   address:string;

@@ -1,29 +1,38 @@
 <app-header-back></app-header-back>
 <app-navbar-back></app-navbar-back>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<div class="content-container">
+</head>
+<div class="content-container" style="margin-left: 300px;">
     <h2 class="text-center">All Reclamations</h2>
     <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let reclamation of reclamations">
-        <h5>{{ reclamation.title }}</h5>
-        <p>{{ reclamation.description }}</p>
-        <div>
-          Status: 
-          <strong *ngIf="reclamation.state === 'CLOSED'">{{ reclamation.state }}</strong>
-          <select *ngIf="reclamation.state !== 'CLOSED'" [(ngModel)]="reclamation.state" class="form-select" aria-label="Default select example">
-            <option *ngFor="let state of states" [value]="state">{{state}}</option>
-          </select>
-          <button *ngIf="reclamation.state !== 'CLOSED'" class="btn btn-primary" (click)="updateState(reclamation)">Update State</button>
+    <div class="row">
+      <div class="col-lg-6" *ngFor="let reclamation of reclamations">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ reclamation.title }}</h5>
+            <p class="card-text">{{ reclamation.description }}</p>
+            <div>Status: 
+              <strong *ngIf="reclamation.state === 'CLOSED'">{{ reclamation.state }}</strong>
+              <select *ngIf="reclamation.state !== 'CLOSED'" [(ngModel)]="reclamation.state" class="form-select" aria-label="Default select example">
+                <option *ngFor="let state of states" [value]="state">{{state}}</option>
+              </select>
+              <button *ngIf="reclamation.state !== 'CLOSED'" class="btn btn-primary" (click)="updateState(reclamation)">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+            </div>
+            <div>Type: <strong>{{ reclamation.type }}</strong></div>
+            <div>Date: <strong>{{ reclamation.date | date:'medium' }}</strong></div>
+            <button *ngIf="reclamation.state !== 'CLOSED'" class="btn btn-secondary" (click)="respondToReclamation(reclamation.id)">
+                <i class="fas fa-reply"></i>
+            </button>
+            <button class="btn btn-danger" (click)="deleteReclamation(reclamation.id)">
+                <i class="fas fa-trash"></i>
+            </button>          </div>
         </div>
-        <div>Type: <strong>{{ reclamation.type }}</strong></div>
-        <div>Date: <strong>{{ reclamation.date | date:'medium' }}</strong></div>
-        <button *ngIf="reclamation.state !== 'CLOSED'" class="btn btn-secondary" (click)="respondToReclamation(reclamation.id)">Respond</button>
+      </div>
+    </div>
+</div>
 
-        <button class="btn btn-danger" (click)="deleteReclamation(reclamation.id)">Delete</button>
-
-      </li>
-    </ul>
-  </div>
-  
 <app-footer-back></app-footer-back>

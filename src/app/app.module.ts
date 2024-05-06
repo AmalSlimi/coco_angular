@@ -178,6 +178,10 @@ import { MyreclamationsComponent } from './frontOffice/reclamationManagement/myr
 import { AllreclamationsComponent } from './frontOffice/reclamationManagement/allreclamations/allreclamations.component';
 import { UpdateReclamationComponent } from './frontOffice/reclamationManagement/update-reclamation/update-reclamation.component';
 import { ResponseListComponent } from './frontOffice/reclamationManagement/response-list/response-list.component';
+import { WelcomePageComponent } from './frontOffice/welcome-page/welcome-page.component';
+import { ForgetPasswordComponent } from './frontOffice/userModule/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './frontOffice/userModule/reset-password/reset-password.component';
+import { ChatbotComponent } from './ChatBot/chatbot/chatbot.component';
 
 
 
@@ -346,6 +350,11 @@ import { ResponseListComponent } from './frontOffice/reclamationManagement/respo
     AllreclamationsComponent,
     UpdateReclamationComponent,
     ResponseListComponent,
+    WelcomePageComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent,
+    ChatbotComponent,
+    
   
   
 
@@ -363,6 +372,7 @@ import { ResponseListComponent } from './frontOffice/reclamationManagement/respo
     NgApexchartsModule,
     BrowserModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     CdkStepperModule,
     LeafletModule,
     MatCardModule,
@@ -370,7 +380,7 @@ import { ResponseListComponent } from './frontOffice/reclamationManagement/respo
     MatIconModule,
     MatFormFieldModule,
     
-    ToastrModule.forRoot(),
+    
     MatButtonModule,
     MatInputModule,
     MatSelectModule,

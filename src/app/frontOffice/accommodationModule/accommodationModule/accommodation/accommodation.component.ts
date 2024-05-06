@@ -12,7 +12,9 @@ import { OpenStreetMapProvider, GeoSearchControl } from 'leaflet-geosearch';
 import { Accomodation } from '../../models/accomodationModel'; // Assuming this is the correct model
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FileResponse } from '../../models/FileResponse';
-import * as saveAs from 'file-saver';
+//import * as saveAs from 'file-saver';
+import { saveAs } from 'file-saver';
+
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({

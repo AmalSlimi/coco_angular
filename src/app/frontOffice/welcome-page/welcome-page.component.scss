@@ -1,0 +1,235 @@
+
+.body {
+    background-color: #b5d1ce;  
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+
+//////////////////////////////////////////////
+
+  .header-section .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-section .logo img {
+    max-height: 60px; 
+    margin-right: 2px; 
+  }
+  
+  .header-section .logo .logo-text {
+    font-family: 'Poppins', sans-serif; 
+    font-size: 24px; 
+    font-weight: bold;
+    color: #3b191e; 
+  }
+  
+  .nav-menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-menu ul li a {
+    color: #280505; 
+}
+  .hn-social {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .hn-social a {
+    margin: 0 5px; 
+  }
+  
+  .label1 {
+    background-color: #e8f5e9; 
+    color: #256029; 
+    padding: 8px 16px; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    display: inline-block; 
+    margin: 5px 0; 
+    font-size: 1rem; 
+}
+
+.dark {
+    color: #3b0d0d; 
+    font-weight: bold; 
+    font-size: 1.2rem; 
+    display: block; 
+}
+
+
+/* Button styling */
+.btn {
+    padding: 8px 12px;
+    margin: 0 5px;
+    background-color: #291f20; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+
+
+.login-btn {
+    background-color: #555; 
+}
+
+.login-btn:hover {
+    background-color: #444; 
+}
+
+.signup-btn {
+    background-color: #491c06; 
+}
+
+.signup-btn:hover {
+    background-color: #6b2c22; 
+}
+
+.auth-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////carousel///////////////////
+.carousal-container{
+  margin-top: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%; 
+  width: 700px; 
+  margin-bottom: 16px;
+}
+
+
+
+
+.container {
+  position: relative;
+}
+
+.carousel-item {
+  height: 100vh;  
+  width: 100vw;
+  position: relative;
+}
+
+.carousel-item img {
+  height: 100%;  
+  width: 100%; 
+    
+  object-fit: cover; 
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-item.active .row {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.5); 
+  padding: 20px; 
+  border-radius: 10px; 
+}
+
+/////////////////////////////////
+   
+.hs-item .hc-inner-text {
+  background: #ffffff;
+  padding: 40px;
+  overflow: hidden;
+  opacity: 0;
+  position: relative;
+  top: 100px;
+  display: inline-block;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.hc-inner-text .hc-text {
+  float: left;
+  margin-right: 18px;
+}
+.hc-inner-text .hc-text h4 {
+  color: #111111;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.hc-inner-text .hc-text p {
+  color: #666666;
+}
+.hc-inner-text .hc-text p span {
+  color: #00C89E;
+}
+.hc-inner-text .hc-text .label {
+  font-size: 12px;
+  display: inline-block;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 2px 10px;
+  background: #3068b2;
+  font-weight: 600;
+  margin-right: 10px;
+}
+.hc-inner-text .hc-text h5 {
+  color: #00C89E;
+  font-weight: 700;
+  display: inline-block;
+}
+.hs-item .hc-inner-text .hc-text h5 span {
+  color: #666666;
+  font-weight: 400;
+  font-size: 14px;
+}
+.hc-inner-text .hc-widget {
+  overflow: hidden;
+  width: 185px;
+  position: relative;
+  right: -52px;
+  top: 18px;
+}
+.hc-inner-text .hc-widget li {
+  font-size: 15px;
+  color: #111111;
+  font-weight: 500;
+  list-style: none;
+  width: 50%;
+  float: left;
+  margin-bottom: 20px;
+}
+.hc-inner-text .hc-widget li i {
+  font-size: 14px;
+  color: #666666;
+  margin-right: 4px;
+}

@@ -16,7 +16,6 @@ export class UserSService {
   };
   
   getAllUsers(): Observable<any> {
-    // Assuming you store the JWT token in localStorage after login
     const token = localStorage.getItem('authToken');
     const httpOptions = {
       headers: new HttpHeaders({
@@ -30,7 +29,6 @@ export class UserSService {
 
 
   deleteUser(id: number): Observable<any> {
-    // Assuming you store the JWT token in localStorage after login
     const token = localStorage.getItem('authToken');
     const httpOptions = {
       headers: new HttpHeaders({
@@ -51,20 +49,16 @@ export class UserSService {
       }),
     };
   
-    return this.http.get<User>(`${this.baseUrl}user/profile`, httpOptions); // Note: Removed the slash before "user/profile"
+    return this.http.get<User>(`${this.baseUrl}user/profile`, httpOptions); 
   }
   
-  updateProfile(user: User): Observable<any> {
-    const token = localStorage.getItem('authToken');
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      }),
-    };
-  
-    return this.http.put(`${this.baseUrl}user/profile`, user, httpOptions); // Note: Removed the slash before "user/profile"
+  updateProfile(profileData: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}user/profile`, profileData);
   }
+  
+  
+  
+  
   
   changePassword(changePasswordRequest: {email: string, oldPassword: string, newPassword: string}): Observable<any> {
     const url = `${this.baseUrl}user/change-password`;
@@ -76,5 +70,8 @@ searchUsers(searchTerm: string): Observable<any> {
   return this.http.get<any>(url, this.httpOptions);
 }
 
+updateRole(roleName: string): Observable<any> {
+  return this.http.post(`${this.baseUrl}user/updateRole`, { role: roleName });
+}
 
 }
