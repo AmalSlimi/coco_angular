@@ -78,6 +78,7 @@ export class AuthService {
 
   getCurrentUser(): any {
     const user = localStorage.getItem('userconnect');
+
     return user ? JSON.parse(user) : null;
   }
 

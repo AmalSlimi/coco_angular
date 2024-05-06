@@ -21,8 +21,7 @@ export class AddproductfrontComponent {
 
 
   constructor(private productservice: ProductService, private http: HttpClient, private router: Router,private imageService: PictureproductService) {
-    this.producties.pictureProduct = new Pictureproduct();
-  }
+    this.producties.pictureProducts = [new Pictureproduct()];  }
 
   ngOnInit() {
     this.fetchImages();
@@ -36,11 +35,13 @@ export class AddproductfrontComponent {
     console.log('Request body:', body);
     this.showAlert = true;
 
-    this.http.post('http://localhost:8085/spring2024/AddProduct', body, { headers })
-        .subscribe(
+   // this.http.post('http://localhost:8085/spring2024/AddProducts', body, { headers })
+    this.productservice.addProduit(this.producties)
+
+      .subscribe(
             response => {
               console.log('Success:', response);
-              this.router.navigate(['/addpicturetoproductfront']);
+              this.router.navigate(['/products']);
             },
             error => {
               console.error('Error saving product:', error);
@@ -73,6 +74,7 @@ export class AddproductfrontComponent {
       this.imageService.upload(this.image).subscribe(
           data => {
             this.fetchImages();
+            this.producties.imageUrl = data.imageUrl;
           },
           err => {
             this.reset();

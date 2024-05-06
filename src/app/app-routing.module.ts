@@ -119,21 +119,24 @@ import { AddSubCatBackComponent } from './backOffice/add-sub-cat-back/add-sub-ca
 import { UpdateSubCatBackComponent } from './backOffice/update-sub-cat-back/update-sub-cat-back.component';
 import { RoomComponent } from './frontOffice/accommodationModule/accommodationModule/room/room.component';
 import { AccommodationComponent } from './frontOffice/accommodationModule/accommodationModule/accommodation/accommodation.component';
+import {MyproductsComponent} from "./MarketPlace/myproducts/myproducts.component";
+import {UpdatemyproductsComponent} from "./MarketPlace/updatemyproducts/updatemyproducts.component";
+import {CartComponent} from "./MarketPlace/cart/cart.component";
 
 const routes: Routes = [
-  
+
   {path:'signup',component:RegisterComponent},
   {path:'login',component:LoginComponent},
   //default route
   {path:'', redirectTo :'/login', pathMatch:'full'},
-  
+
 
   //amal
   {
     path: 'admin',
     component: HomeBackComponent,
     canActivate: [AuthGuard]
-    
+
   },
 
   {path:'profile',component:ProfileComponent,canActivate: [AuthGuard]},
@@ -145,7 +148,7 @@ const routes: Routes = [
 {path:'myProfile',component:MyProfileComponent},
 {path:'external-user',component:ExternalUserComponent},
 {path:'dashboard',component:DashboardComponent},
-  
+
 
   //special
   {path:'car',component:CarComponent},
@@ -260,7 +263,8 @@ const routes: Routes = [
   {path:'edit-product/:idProduct',component:EditProductComponent},
    {path:'addcattosub/:idCategory/subcategories',component:AddSubToCatComponent},
   {path:'addprodtosubcat/:idProduct/products',component:AddprodtosubcatComponent},
-
+  {path:'myproducts',component:MyproductsComponent},
+  {path:'updatemyproduct/:idProduct',component:UpdatemyproductsComponent},
   // {path:'addcattosub/:idCategory/subcategories/:idSubCategory',component:AddSubToCatComponent},
   {path:'products',component:ProductsComponent},
   {path:'rating',component:RatingComponent},
@@ -269,6 +273,11 @@ const routes: Routes = [
   {path:'addpicturetoproduct',component:AddpicturetoproductComponent},
   {path:'addpicturetoproductfront',component:AddpicturetoproductfrontComponent},
   {path:'addproductfront',component:AddproductfrontComponent},
+  {path:'cart',component:CartComponent},
+
+
+
+
 
   // ghribii
   {path:'bus',component:BusComponent},
@@ -293,7 +302,7 @@ const routes: Routes = [
   {path:'add-sub/:id',component:AddsubscriptionComponent},
   {path: 'strip', component: StripeComponent},
   {path: 'map', component: MapComponent},
-  
+
 
 
   //hdayla
@@ -312,39 +321,39 @@ const routes: Routes = [
   { path: 'update-subcategory/:id', component: UpdateSubcategoryComponent },
   {path:'addSubCat',component:AddSubCategoryComponent},
 
-  
-    
-    
+
+
+
       { path: 'accomodation', component: AccomodationBackComponent },
       { path: 'addAcc', component: AddAccBackComponent },
       { path: 'updateAcc/:id', component: UpdateAccBackComponent },
       { path: 'getAccommodationById/:id', component: DetailAccBackComponent },
-  
+
       { path: 'room', component: RoomBackComponent },
       { path: 'addRoom', component: AddRoomBackComponent },
       { path: 'updateRoom/:id', component: UpdateRoomBackComponent },
       { path: 'getRoomById/:id', component: DetailsRoomBackComponent },
-  
+
       { path: 'cat', component: CategoryBackComponent },
       { path: 'addCat', component: AddCatBackComponent },
       { path: 'updateCat/:id', component: UpdateCatBackComponent },
-  
+
       { path: 'subcat', component: SubCatBackComponent },
       { path: 'addSubCat', component: AddSubCatBackComponent },
       { path: 'updateSubCat/:id', component: UpdateSubCatBackComponent },
-    
+
 
   //ramsys
 
   {path:'post',component:PostComponent},
   {path:'comment',component:CommentComponent},
-  
+
   { path: 'blog', component: PostFrontComponent},
   { path: 'post-details/:id', component: PostDetailsComponent },
   { path: 'post-comment/:id', component: CommentFrontComponent },
-  
 
-  
+
+
   //charts
   {path:'chartjs',component:ChartJsComponent},
   {path:'apexcharts',component:ApexchartsComponent},
@@ -355,9 +364,8 @@ const routes: Routes = [
  //table
  {path:'table',component:DataTablesComponent},
 
- 
+
  { path: 'access-denied', component: AccessDeniedComponent },
- 
 
 
 
@@ -366,10 +374,11 @@ const routes: Routes = [
 
 
 
-  
 
 
-  
+
+
+
 
 ];
 

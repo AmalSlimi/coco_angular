@@ -8,6 +8,8 @@ import {NgToastService} from "ng-angular-popup";
 import {Pictureproduct} from "../../MarketPlace/pictureproduct";
 import {Observable} from "rxjs";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {AuthService} from "../../backOffice/userManagement/service/auth.service";
+import {FavoriteProduct} from "../../MarketPlace/favoriteproduct";
 
 
 @Component({
@@ -25,22 +27,28 @@ export class ProductsComponent implements OnInit {
     maxPrice: number | undefined;
     selectedType: string | undefined;
     idProduct!:number;
+    productId!:any;
   isProductInFavorites: boolean = false;
   notificationMessage: string | null = null;
   p:number = 1;
   itemsPerPage:number=8;
   totalProduct:any;
+    showDetails: { [key: number]: boolean } = {};
 
 
-    constructor(private productService: ProductService, private favoriteProductService: FavoriteproductService,private router:Router , private toast : NgToastService,    private snackBar: MatSnackBar  // Inject MatSnackBar here
+    toggleDetails(idProduct: number) {
+        this.showDetails[idProduct] = !this.showDetails[idProduct];
+    }
+    constructor(private productService: ProductService, private favoriteProductService: FavoriteproductService,private router:Router , private toast : NgToastService,    private snackBar: MatSnackBar  ,private authorService : AuthService
     ) { }
 
     ngOnInit() {
         this.loadProducts();
+
     }
 
     loadProducts() {
-        this.productService.getAllProducts().subscribe((response: Product[]) => {
+        this.productService.getAllProduct().subscribe((response: Product[]) => {
             this.products = response;
             this.applyFilters();
             this.totalProduct = response.length;
@@ -88,56 +96,33 @@ export class ProductsComponent implements OnInit {
             }
         );
     }
-    /*addToFavorites(idProduct: number) {
-        this.favoriteProductService.getUserById(1).subscribe(
-            (user) => {
+
+    addToFavorites(idProduct: number) {
+        if (idProduct) {
+            this.favoriteProductService.getMyFavorites().subscribe((favoriteProduct: FavoriteProduct) => {
+                if (favoriteProduct.idProducts.includes(idProduct)) {
+                    console.log('Product is already in favorites.');
+                    alert('Le produit existe déjà dans la liste de favoris.');
+                    this.toast.error({detail:"Failure Message",summary:"Product is already in your Favorite List",duration:20000});
+                    return;
+                }
+
+                console.log('Adding product to favorites:', idProduct);
                 this.favoriteProductService.addToFavorites(idProduct).subscribe(
                     () => {
                         console.log('Product added to favorites successfully.');
+                        alert('Votre produit a été ajouté à votre liste de favoris.');
+                        this.toast.success({detail:"Success Message",summary:"Product is in your Favorite List",duration:20000});
                     },
                     (error: any) => {
                         console.error('Error adding product to favorites:', error);
                     }
                 );
-            },
-            (error: any) => {
-                console.error('Error getting user ID:', error);
-            }
-        );
-    }*/
-    addToFavorites(idProduct: number) {
-        if (idProduct) {
-            if (this.isProductInFavorites) {
-                console.log('Product is already in favorites.');
-                // Gérer le cas où le produit est déjà dans les favoris, comme afficher un message ou désactiver le bouton
-                return;
-            }
-
-            console.log('Adding product to favorites:', idProduct);
-            alert('Votre produit a été ajouté à votre liste de favoris.');
-            this.toast.success({detail:"Success Message",summary:"Product is in your Favorite List",duration:50000})
-            this.favoriteProductService.getUserById(1).subscribe(
-                (user) => {
-                    this.favoriteProductService.addToFavorites(idProduct).subscribe(
-                        () => {
-                            console.log('Product added to favorites successfully.');
-                            alert('Votre produit a été ajouté à votre liste de favoris.');
-                            // Rafraîchir la liste des produits ou mettre à jour isProductInFavorites ici si nécessaire
-                        },
-                        (error: any) => {
-                            console.error('Error adding product to favorites:', error);
-                        }
-                    );
-                },
-                (error: any) => {
-                    console.error('Error getting user ID:', error);
-                }
-            );
+            });
         } else {
             console.error('Invalid idProduct:', idProduct);
         }
     }
-
 
 
     removeFromFavorites(idProduct: number) {
@@ -162,10 +147,18 @@ export class ProductsComponent implements OnInit {
       }
     );
   }
-  addtoCart(idProduct: number) {
-      this.productService.addToCart(idProduct).subscribe(res => {
-        this.snackBar.open('Product added to cart successfully', 'Close', { duration: 5000 });
-      })
-  }
+    /*addtoCart(productId: any) {
+        this.productService.addToCart(productId).subscribe(
+            res => {
+                this.snackBar.open('Product added to cart successfully', 'Close', { duration: 5000 });
+            },
+            err => {
+                console.error('Error when adding to cart:', err);
+            }
+        );
+    }*/
+    addtoCart(productId: any)
+    { this.productService.addToCart(productId).subscribe( res => { this.snackBar.open('Product added to cart successfully', 'Close', { duration: 5000 }); }, err => { console.error('Error when adding to cart:', err); } );
+        this.snackBar.open('Product added to cart successfully', 'Close', { duration: 5000 }); }
 
 }

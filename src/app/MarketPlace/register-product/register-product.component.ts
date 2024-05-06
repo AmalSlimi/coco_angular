@@ -21,8 +21,7 @@ export class RegisterProductComponent {
 
 
   constructor(private productservice: ProductService, private http: HttpClient, private router: Router,private imageService: PictureproductService) {
-    this.producties.pictureProduct = new Pictureproduct();
-  }
+    this.producties.pictureProducts = [new Pictureproduct()];  }
 
   ngOnInit() {
     this.fetchImages();
@@ -36,7 +35,8 @@ export class RegisterProductComponent {
     console.log('Request body:', body);
     this.showAlert = true;
 
-    this.http.post('http://localhost:8085/spring2024/AddProduct', body, { headers })
+    //this.http.post('http://localhost:8085/spring2024/AddProduct', body, { headers })
+    this.productservice.addProduit(this.producties)
       .subscribe(
         response => {
           console.log('Success:', response);

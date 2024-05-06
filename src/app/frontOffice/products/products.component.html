@@ -32,13 +32,29 @@
           <!--<img [src]="product.pictureProduct.imageUrl" [alt]="product.pictureProduct.idpicture">-->
 
 
-          <img src="http://res.cloudinary.com/dka2ywu6t/image/upload/v1712023689/i7xkyrxwrptuocoftmey.png">
+          <div>
+          <!--<img src="http://res.cloudinary.com/dka2ywu6t/image/upload/v1712023689/i7xkyrxwrptuocoftmey.png">-->
+            <img [src]="product.imageUrl" class="card-img-top" alt="Product image" height="175px">
+          </div>
           <h5 class="card-title">{{product.name}}</h5>
           <p class="card-text"><strong>Price:</strong> {{product.price}}</p>
           <p class="card-text"><strong>Type:</strong> {{product.typeProduct}}</p>
           <app-rating [idProduct]="product.idProduct"></app-rating>
+
+
+          <button class="btn btn-primary float-right button-details small-button" (click)="toggleDetails(product.idProduct)">
+            {{ showDetails[product.idProduct] ? '-' : '+' }}
+          </button>
           <button class="btn btn-primary float-right" (click)="addToFavorites(product.idProduct)" >Add to Favorites</button>
           <button mat-raised-button color="primary" class="update-button float-left"(click)="addtoCart(product.idProduct)">Add to Cart</button>
+          <!-- Clearfix div -->
+          <div style="clear: both;"></div>
+
+          <div *ngIf="showDetails[product.idProduct]">
+            <p><strong>Weight:</strong> {{product.weight}}</p>
+            <p><strong>Description:</strong> {{product.description}}</p>
+            <p><strong>Quantity:</strong> {{product.quantity}}</p>
+          </div>
           <!--<button class="btn btn-danger" (click)="removeFromFavorites(product.idProduct)">Remove from Favorites</button>  Nouveau bouton  -->
          <!-- <button style='font-size:24px'>Button <i class='fas fa-heart'(click)="addToFavorites(product.idProduct)"></i></button>-->
         </div>

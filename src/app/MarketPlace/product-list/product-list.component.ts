@@ -26,7 +26,7 @@ export class ProductListComponent {
     this.loadCategories()
   }
   loadCategories() {
-    this.productservice.getAllProducts().subscribe((response : any)=>{
+   this.productservice.getAllProduct().subscribe((response : any)=>{
       this.products = response ;
     });
 

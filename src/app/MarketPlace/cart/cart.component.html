@@ -1,0 +1,44 @@
+<app-header-front></app-header-front>
+
+<div *ngIf="cartItems.length > 0; else emptyCart">
+<div class="cart-container">
+    <div class="card-item" *ngFor="let item of cartItems">
+        <div class="product-info">
+            <!--<img [src]="item.imageUrl" class="card-img-top" alt="product-image">-->
+            <img src="assets/img/giphy.gif" class="card-img-top" alt="product-image">
+        </div>
+        <div class="product-details">
+            <div class="item-row">
+                <div class="item-name" [ngClass]="{ 'highlight' : item.highlighted}">
+                    {{ item.productName }}
+                </div>
+                <div class="item-price">{{ item.price | currency }}</div>
+                <div class="quantity-controls">
+                    <button mat-icon-button [disabled]="item.quantity == 1">
+                        <mat-icon>remove_circle_outline</mat-icon>
+                    </button>
+                    <span class="quantity">{{ item.quantity }}</span>
+                    <button mat-icon-button>
+                        <mat-icon>add_circle_outline</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="total-price">
+    Total Amount : {{ order.totalAmount | currency }}
+</div>
+    <div class="total-price">
+         Amount : {{ order.amount | currency }}
+    </div>
+    <button mat-raised-button color="primary">Place Order</button>
+</div>
+</div>
+
+<ng-template #emptyCart>
+    <div class="empty-cart">
+        <mat-icon class="icon"> remove_shopping_cart</mat-icon>
+        <span>Nothing to see here</span>
+    </div>
+</ng-template>
+<app-footer-front></app-footer-front>

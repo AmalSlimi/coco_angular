@@ -13,9 +13,12 @@ export class Product {
   quantity!:number
   weight!:string
   price!:number
+  imageName?:string;
+  imageUrl?:string
+  imageId?:string;
+  //userId?: number;
   typeProduct!: TypeProduct
-  pictureProduct: Pictureproduct = new Pictureproduct();
-
+  pictureProducts: Pictureproduct[] = [];
   getTypeAsString(): string {
     return TypeProduct[this.typeProduct];
   }

@@ -3,6 +3,9 @@ import { Product } from './product';
 
 export class FavoriteProduct {
   idfav: number;
+  idUser!: number;
+  idProducts!: number[];
+
   user: User;
   products: Product[];
 

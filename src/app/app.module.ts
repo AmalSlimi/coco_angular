@@ -172,6 +172,10 @@ import { MappComponent } from './frontOffice/accommodationModule/mapp/map.compon
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { RoomComponent } from './frontOffice/accommodationModule/accommodationModule/room/room.component';
 import { AccommodationComponent } from './frontOffice/accommodationModule/accommodationModule/accommodation/accommodation.component';
+import {MyproductsComponent} from "./MarketPlace/myproducts/myproducts.component";
+import { UpdatemyproductsComponent } from './MarketPlace/updatemyproducts/updatemyproducts.component';
+import { CartComponent } from './MarketPlace/cart/cart.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -215,7 +219,7 @@ import { AccommodationComponent } from './frontOffice/accommodationModule/accomm
     AccessDeniedComponent,
     GenderStatsComponent,
     RoleStatsComponent,
-    
+
 
     RegisterRideComponent,
     EditRideComponent,
@@ -289,7 +293,7 @@ import { AccommodationComponent } from './frontOffice/accommodationModule/accomm
       EditProductComponent,
       AddSubToCatComponent,
       ProductsComponent,
-        
+
       RatingComponent,
       PictureproductComponent,
       FavoriteProductComponent,
@@ -302,7 +306,7 @@ import { AccommodationComponent } from './frontOffice/accommodationModule/accomm
   PostDetailsComponent,
   CommentFrontComponent,
 
-  
+
     CategoryComponent,
     UpdateCategoryComponent,
     SubCategoryComponent,
@@ -316,7 +320,8 @@ import { AccommodationComponent } from './frontOffice/accommodationModule/accomm
     DetailsAccomodationComponent,
     DetailsRoomComponent,
     MappComponent,
-    
+
+
     FilterPipe,
     AccomodationBackComponent,
     AddAccBackComponent,
@@ -332,14 +337,17 @@ import { AccommodationComponent } from './frontOffice/accommodationModule/accomm
     UpdateSubCatBackComponent,
     DetailAccBackComponent,
     DetailsRoomBackComponent,
-  
-  
+    MyproductsComponent,
+    UpdatemyproductsComponent,
+    CartComponent,
 
-    
-    
+
+
+
+
   ],
   imports: [
-    
+
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -355,24 +363,26 @@ import { AccommodationComponent } from './frontOffice/accommodationModule/accomm
     MaterialFileInputModule,
     MatIconModule,
     MatFormFieldModule,
-    
+
     ToastrModule.forRoot(),
     MatButtonModule,
     MatInputModule,
     MatSelectModule,
     MatSnackBarModule,
-    
+
       NgToastModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
     NgbModule,
     RelativeTimePipe,
     NgxCaptchaModule,
+    MatDialogModule
 
 
-    
+
+
   ],
-  schemas: [NO_ERRORS_SCHEMA] ,  
+  schemas: [NO_ERRORS_SCHEMA] ,
   exports:[CdkStepperModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
