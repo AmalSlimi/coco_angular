@@ -1,0 +1,86 @@
+<!-- <app-header-front></app-header-front>
+
+<div class="payment-container" style="margin-bottom: 100px;">
+    <div class="payment-details">
+      <h2>Payment Details</h2>
+      <p><strong>Username:</strong> {{ currentUser.username }}</p>
+      <p><strong>Email:</strong> {{ currentUser.email }}</p>
+      <p><strong>Sold:</strong> {{ solds }}TND</p>
+          
+      <p><strong>Booking price:</strong> {{ bookingPrice }}TND</p>
+
+
+
+
+    </div>
+    <button class="payment-button" (click)="initiatePayment()">Proceed with Payment</button>
+    &nbsp;&nbsp;
+    <button class="btn btn-danger" *ngIf="paymentSuccessful" (click)="generatePDF()"><i class="bi bi-file-pdf"></i>PDF</button>
+
+    <div *ngIf="paymentSuccessful" class="flash-message success">
+      <p>Payment successful!</p>
+      <p>Thank you for your payment.</p>
+    </div>
+    <div *ngIf="insufficientBalance" class="alert alert-danger" role="alert">
+      Insufficient Sold. Please recharge your account!
+    </div>
+
+    <div *ngIf="paymentFailed" class="flash-message error">
+      <p>Payment failed!</p>
+      <p>Please try again later.</p>
+    </div>
+
+</div>
+<app-footer-front></app-footer-front>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Activation du carrousel pour chaque élément
+  $('[id^="roomCarousel"]').each(function () {
+    $(this).carousel();
+  });
+</script> -->
+
+
+
+
+<!-- Header -->
+<app-header-front></app-header-front>
+
+<!-- Payment Container -->
+<div class="payment-container" style="padding: 20px; margin-bottom: 50px; background-color: #f8f9fa;">
+  
+  <!-- Payment Details -->
+  <div class="payment-details" style="border: 1px solid #ddd; padding: 20px; border-radius: 10px; background-color: white;">
+    <h2 style="text-align: center; color: #333;">Payment Details</h2>
+    <p><strong>Username:</strong> {{ currentUser.username }}</p>
+    <p><strong>Email:</strong> {{ currentUser.email }}</p>
+    <p><strong>Sold:</strong> {{ solds }} TND</p>
+    <p><strong>Booking Price:</strong> {{ bookingPrice }} TND</p>
+  </div>
+  
+  <!-- Payment Actions -->
+  <div style="text-align: center; margin-top: 20px;">
+    <button class="btn btn-primary" (click)="initiatePayment()">Proceed with Payment</button>
+    &nbsp;
+    <button class="btn btn-danger" *ngIf="paymentSuccessful" (click)="generatePDF()"><i class="bi bi-file-pdf"></i> PDF</button>
+  </div>
+  
+  <!-- Messages Flash -->
+  <div style="margin-top: 20px;">
+    <div *ngIf="paymentSuccessful" class="alert alert-success" role="alert">
+      Payment successful! Thank you for your payment.
+    </div>
+    <div *ngIf="insufficientBalance" class="alert alert-danger" role="alert">
+      Insufficient balance. Please recharge your account!
+    </div>
+    <div *ngIf="paymentFailed" class="alert alert-warning" role="alert">
+      Payment failed. Please try again later.
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<app-footer-front></app-footer-front>

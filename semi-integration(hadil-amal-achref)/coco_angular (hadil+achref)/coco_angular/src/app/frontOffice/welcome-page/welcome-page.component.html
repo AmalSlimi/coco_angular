@@ -1,0 +1,198 @@
+<script>
+    // Démarrez le carrousel automatiquement toutes les 5 secondes
+    var carousel = new bootstrap.Carousel(document.getElementById('carouselExampleIndicators'), {
+      interval: 5000 // 5000 millisecondes = 5 secondes
+    });
+  </script>
+  
+  <!--******************************************** -->
+<div class="body">
+  <div class="header-section">
+    <div class="hs-nav">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-9">
+            <div class="logo">
+              <a routerLink="#">
+                <img src="assets/frontOffice/img/logo.png" alt="CO&CO Logo">
+                <span class="logo-text">CO&CO Esprit</span>
+              </a>
+            </div>
+            <nav class="nav-menu">
+              <ul>
+                <li><a routerLink="#">Home</a></li>
+                <li><a routerLink="#">Capooling</a></li>
+                <li><a routerLink="#">Accommodation</a></li>            
+                <li><a routerLink="#">MarketPlace</a></li>           
+                <li><a routerLink="#">Bus</a></li>
+                <li><a routerLink="#">Blog</a></li>
+                <li><a routerLink="#">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-lg-3">
+            <div class="auth-buttons">
+                <button class="btn login-btn" routerLink="/login">Login</button>
+                <button class="btn signup-btn" routerLink="/signup">Sign Up</button>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      </div>
+    <div class="carousel-inner carousal-container">
+      <div class="carousel-item active">
+        <div class="container">
+          <img src="assets/frontOffice/img/hero/coco.jpg" class="d-block w-100" alt="3">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-12">
+                <div class="hc-inner-text">
+                    <div class="hc-text">
+                      <h4>Welcome to Coco Services</h4>
+                      <p><span class="icon_pin_alt"></span> Your one-stop hub for daily needs in Esprit</p>
+                      <div class="label">Explore Our Services</div>
+                      <h5>Connecting you to convenience and community</h5>
+                    </div>
+                    <div class="hc-widget1">
+                      <ul>
+                        <li><i class="fa fa-home"></i> Accommodation</li>
+                        <li><i class="fa fa-car"></i> Carpooling</li>
+                        <li><i class="fa fa-bus"></i> Bus Service</li>
+                        <li><i class="fa fa-shopping-cart"></i> Marketplace</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item ">
+        <div class="container ">
+          <img src="assets/frontOffice/img/hero/rent.jpg" class="d-block w-100" alt="1">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-12">
+                <div class="hc-inner-text">
+                    <div class="hc-text">
+                      <h4>Residences</h4>
+                      <p><span class="icon_pin_alt"></span> Ariana, Tunis</p>
+                      <div class="label1">For Rent</div>
+                      <h7 class="dark">350 DT<span>/month</span></h7>
+                    </div>
+                    <div class="hc-widget">
+                      <ul>
+                        <li><i class="fa fa-object-group"></i> 120 m²</li>
+                        <li><i class="fa fa-bathtub"></i> 01</li>
+                        <li><i class="fa fa-bed"></i> 02</li>
+                        <li><i class="fa fa-car"></i> 01</li> 
+                      </ul>
+                    </div>
+                  </div>
+                  
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="carousel-item">
+        <div class="container">
+          <img src="assets/frontOffice/img/hero/carpool.jpg" class="d-block w-100" alt="2">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-12">
+                <div class="hc-inner-text">
+                    <div class="hc-text">
+                      <h4>Tunis to Esprit Carpool</h4>
+                      <p><span class="icon_pin_alt"></span> Depart: Tunis Centre</p>
+                      <div class="label">Available</div>
+                      <h7 class="dark">8 DT<span>/trip</span></h7>
+                    </div>
+                    <div class="hc-widget">
+                      <ul>
+                        <li><i class="fa fa-clock-o"></i>9:00AM</li>
+                        <li><i class="fa fa-clock-o"></i>5:00PM</li>
+                        <li><i class="fa fa-user-circle"></i> 3 seats </li>
+                        <li><i class="fa fa-car"></i> Audi</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="carousel-item">
+        <div class="container">
+          <img src="assets/frontOffice/img/hero/productt.png" class="d-block w-100" alt="3">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-12">
+                <div class="hc-inner-text">
+                    <div class="hc-text">
+                      <h4>Welcome to Coco Online Marketplace</h4>
+                      <p><span class="icon_pin_alt"></span> Your one-stop shop for all your needs</p>
+                      <div class="label">Explore Now</div>
+                      <h5>Discover. Connect. Enjoy.</h5>
+                    </div>
+                    <div class="hc-widget">
+                      <ul>
+                        <li><i class="fa fa-product-hunt"></i> Wide Range of Products</li>
+                        <li><i class="fa fa-users"></i> Trusted by Thousands</li>
+                        <li><i class="fa fa-thumbs-up"></i> Excellent Customer Service</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="container">
+          <img src="assets/frontOffice/img/hero/bus.jpg" class="d-block w-100" alt="3">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-12">
+              <div class="hc-inner-text">
+                    <div class="hc-text">
+                      <h4>Welcome to Coco Esprit Bus Service</h4>
+                      <p><span class="icon_pin_alt"></span> Serving all major routes around Esprit Campus</p>
+                      <div class="label">Book Your Ride</div>
+                        <h5>Safe & Reliable Transportation</h5>
+                    </div>
+                    <div class="hc-widget1">
+                        <ul>
+                            <li><i class="fa fa-clock-o"></i> Frequent departures every 1h </li>
+                            <li><i class="fa fa-map-marker"></i> Multiple stops </li>
+                            <li><i class="fa fa-ticket"></i> Affordable rates starting at DT 1.0 </li>
+                          </ul>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+  
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,27 @@
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #f6d365;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+    }
+
+
+    #profileSettingsDropdown {
+        color: #333; /* Change text color */
+        background-color: #f8f9fa; /* Light background for the button */
+        border-color: #dcdcdc; /* Light border color */
+    }
+    
+    .dropdown-item {
+        color: #555; /* Darker text color for better readability */
+    }
+    
+    .dropdown-item:hover {
+        background-color: #e9ecef; /* Light hover effect for dropdown items */
+    }
+    
+      

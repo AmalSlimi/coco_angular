@@ -1,0 +1,58 @@
+<app-header-back></app-header-back>
+<app-navbar-back></app-navbar-back>
+
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Responses Overview</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/admin">Home</a></li>
+        <li class="breadcrumb-item">Tables</li>
+        <li class="breadcrumb-item active">Responses</li>
+      </ol>
+    </nav>
+  </div>
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Responses Table</h5>
+            <p>This table displays a list of all responses. Admins can view details such as message, reclamation title, and username of the sender.</p>
+
+            <!-- Table with stripped rows -->
+            <table class="table datatable">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Message</th>
+                  <th scope="col">Reclamation Title</th>
+                  <th scope="col">Sender</th>
+                  <th scope="col">Actions</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let response of responses; let i = index">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ response.message }}</td>
+                  <td>{{ response.reclamationTitle }}</td>
+                  <td>{{ response.userName }}</td>
+                  <td>
+                    <button class="btn btn-danger" (click)="deleteResponse(response.id)">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+<app-footer-back></app-footer-back>

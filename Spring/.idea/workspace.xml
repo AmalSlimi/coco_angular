@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="be536e14-1a35-4ab2-9e66-d4cecc06edea" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/FirstProject/src/main/java/tn/esprit/firstproject/entities/Bloc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FirstProject/src/main/java/tn/esprit/firstproject/entities/Foyer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FirstProject/src/main/java/tn/esprit/firstproject/entities/Universite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot/examenRevision/src/main/java/com/esprit/examenrevision/entity/Clinique.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot/examenRevision/src/main/java/com/esprit/examenrevision/entity/Medecin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot/examenRevision/src/main/java/com/esprit/examenrevision/entity/Patient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot/examenRevision/src/main/java/com/esprit/examenrevision/entity/RendezVous.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot/examenRevision/src/main/java/com/esprit/examenrevision/entity/Specialite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot/examenRevision/src/main/java/com/esprit/examenrevision/repository/CliniqueRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot/examenRevision/src/main/java/com/esprit/examenrevision/repository/MedecinRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot/examenRevision/src/main/java/com/esprit/examenrevision/repository/PatientRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot/examenRevision/src/main/java/com/esprit/examenrevision/repository/RendezVousRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot/examenRevision/src/main/java/com/esprit/examenrevision/service/ServiceExamen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringBoot/examenRevision/src/main/java/com/esprit/examenrevision/service/ServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hadil/src/main/java/tn/esprit/hadil/configuration/CalculAspect.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2ZV8zi1MPvHdE6QnTCSE3iEfkcu" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/milou/Desktop/Spring",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="be536e14-1a35-4ab2-9e66-d4cecc06edea" name="Changes" comment="" />
+      <created>1702496150016</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702496150016</updated>
+      <workItem from="1702496151062" duration="63000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

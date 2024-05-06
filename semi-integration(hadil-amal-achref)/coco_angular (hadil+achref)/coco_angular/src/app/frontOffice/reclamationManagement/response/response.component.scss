@@ -1,0 +1,22 @@
+.response-form-container {
+    padding-top: 70px; /* Adjust this value based on the height of your navbar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 140px); /* Assuming the navbar and footer together might take up around 140px */
+  }
+  
+  .response-form {
+    width: 100%;
+    max-width: 500px; /* Set a max-width for the form */
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: adds shadow for better visibility */
+    background: white; /* Ensures the form is visible on any background */
+    border-radius: 8px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  

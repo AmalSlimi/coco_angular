@@ -1,0 +1,44 @@
+<app-header-back></app-header-back>
+<app-navbar-back></app-navbar-back>
+
+<main id="main" class="main">
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          
+          <th>Availability</th>
+          <th>Brand</th>
+          <th>GPS Coordinate</th>
+          <th>License Plate Number</th>
+          <th>Model</th>
+          <th>Seating Capacity</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bus of listBus">
+
+          <td>{{ bus.availability }}</td>
+          <td>{{ bus.brand }}</td>
+          <td>{{ bus.gpsCoordinates }}</td>
+          <td>{{ bus.licensePlateNumber }}</td>
+          <td>{{ bus.model }}</td>
+          <td>{{ bus.seatingCapacity }}</td>
+          <td>
+            <div class="button-container">
+              <select [(ngModel)]="selectedTrip" name="selectedTrip" class="select-trip">
+                <option *ngFor="let trip of listTrips" [value]="trip.idTrip">{{ trip.name }}</option>
+              </select>
+              <button class="btn btn-primary assign-btn" (click)="assignBusToTrip(bus.id, selectedTrip)">Assign to Trip</button>
+              <button class="btn btn-warning delete-btn" (click)="supp(bus.id)">Delete</button>
+              <button class="btn btn-danger update-btn" [routerLink]="['/update-bus', bus.id]">Update</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<app-footer-back></app-footer-back>
