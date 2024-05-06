@@ -1,101 +1,292 @@
-/* Style for the main container */
-.main {
-  padding: 20px;
+// /* Style for the main container */
+// .main {
+//   padding: 20px;
+// }
+
+// /* Style for the "Add Accomodation" button */
+// .btn {
+
+//   color: #fff;
+//   border: none;
+//   border-radius: 20px;
+
+//   text-decoration: none;
+//   display: inline-block;
+
+//   transition: background-color 0.3s ease;
+//   height: 30px;
+// }
+
+// .btn:hover {
+//   background-color:#FF81D0;
+// }
+
+// /* Style for the card */
+// .card {
+//   border-radius: 10px;
+//   overflow: hidden;
+//   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+//   transition: transform 0.3s ease;
+//   height: 500px;
+// }
+// .price-badge {
+//   position: absolute;
+//   top: 80%;
+//   left: 50%;
+//   background-color: #919151;
+//   color: white;
+//   font-weight: bold;
+//   padding: 5px 10px;
+//   border-radius: 5px;
+//   font-size: 1.2rem;
+// }
+
+// .card:hover {
+//   transform: translateY(-5px);
+// }
+
+// /* Style for the card image */
+// .file-image{
+//   width: 100%;
+//   height: 200px; /* Standardize the height of images */
+//   object-fit: cover;
+// }
+
+// /* Style for the "FOR RENT" label */
+// .label {
+//   position: absolute;
+//   top: 10px;
+//   left: 10px;
+//   background-color: red;
+//   color: white;
+//   font-weight: bold;
+//   border-style: none;
+//   border-color: red;
+//   padding: 5px 10px;
+//   border-radius: 5px;
+// }
+
+// /* Style for the card body */
+// .card-body {
+//   padding: 20px;
+
+// }
+
+// /* Style for the card title */
+// .card-title {
+//   font-size: 1.2rem;
+//   font-weight: bold;
+//   margin-bottom: 10px;
+// }
+
+// /* Style for the card footer */
+// .card-footer {
+//   padding: 10px;
+//   background-color: #f9f9f9;
+//   border-top: 1px solid #ddd;
+//   text-align: center;
+//   height: 40px;
+// }
+
+// /* Style for the buttons in the card footer */
+// .card-footer .btn {
+//   margin-right: 5px;
+// }
+
+// .card-footer .btn:last-child {
+//   margin-right: 0;
+// }
+// #aa{
+//   background-color: #105057;
+// }
+
+
+
+
+
+
+
+
+/* Bouton Ajouter Hébergement */
+#btnn {
+  background-color: #05bbf2; /* Couleur de fond */
+  border-color: #05bbf2;    /* Couleur de la bordure */
+  color: white;             /* Couleur du texte */
+  border-radius: 10px;      /* Coins arrondis */
+  padding: 10px;            /* Espacement intérieur */
+  transition: all 0.3s;     /* Transition douce au survol */
+  
+  
+  &:hover {
+    background-color: #039bd2; /* Couleur au survol */
+    border-color: #039bd2;     /* Bordure au survol */
+  }
 }
 
-/* Style for the "Add Accomodation" button */
-.btn {
+/* Icônes des boutons */
+.bi-trash3{
+    fill :red;  /* Couleur de l'icône de suppression */
+  }
+  .bi-pencil {
+    fill: #052077;  /* Couleur de l'icône de modification */
+  }
+  .bi-eye{
+    fill: #FFA500;   /* Couleur de l'icône de visualisation */
+  }
 
-  color: #fff;
-  border: none;
-  border-radius: 20px;
 
-  text-decoration: none;
-  display: inline-block;
-
-  transition: background-color 0.3s ease;
-  height: 30px;
-}
-
-.btn:hover {
-  background-color:#FF81D0;
-}
-
-/* Style for the card */
+/* Style des cartes */
 .card {
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  height: 500px;
-}
-.price-badge {
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  background-color: #919151;
-  color: white;
-  font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre */
+  border-radius: 10px;                     /* Coins arrondis */
+  transition: 0.3s;                        /* Transition douce */
+  
+  &:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre au survol */
+  }
 }
 
-.card:hover {
-  transform: translateY(-5px);
-}
-
-/* Style for the card image */
-.file-image{
-  width: 100%;
-  height: 200px; /* Standardize the height of images */
-  object-fit: cover;
-}
-
-/* Style for the "FOR RENT" label */
-.label {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: red;
-  color: white;
-  font-weight: bold;
-  border-style: none;
-  border-color: red;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
-/* Style for the card body */
 .card-body {
-  padding: 20px;
-
+  padding: 1rem; /* Espacement intérieur */
+  color: #2c3e50; /* Couleur du texte */
 }
 
-/* Style for the card title */
-.card-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-/* Style for the card footer */
 .card-footer {
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-top: 1px solid #ddd;
-  text-align: center;
-  height: 40px;
+  background-color: #f8f9fa; /* Couleur de fond */
+  border-top: 1px solid #dee2e6; /* Bordure supérieure */
+  padding: 0.75rem 1rem; /* Espacement intérieur */
 }
 
-/* Style for the buttons in the card footer */
-.card-footer .btn {
-  margin-right: 5px;
+.card-footer button {
+  margin-right: 5px; /* Espacement entre les boutons */
 }
 
-.card-footer .btn:last-child {
-  margin-right: 0;
+/* Alignement des images dans les cartes */
+.image-container {
+  width: 100%;  /* Largeur du conteneur */
+  height: 200px;  /* Hauteur fixe */
+  overflow: hidden;  /* Masquer les débordements */
+  display: flex; /* Disposition flexible */
+  justify-content: center; /* Centrage horizontal */
+  align-items: center; /* Centrage vertical */
 }
-#aa{
-  background-color: #105057;
+
+.image-container img {
+  width: 100%;  /* L'image prend toute la largeur du conteneur */
+  height: 100%;  /* L'image prend toute la hauteur du conteneur */
+  object-fit: cover;  /* Pour éviter la distorsion */
+  border-radius: 10px;  /* Coins arrondis */
 }
+
+/* Style du curseur pour le contrôle du prix */
+input[type="range"] {
+  width: 100%; /* Assurez-vous que le curseur prend toute la largeur disponible */
+  background-color: #e0e0e0; /* Couleur de fond du curseur */
+  border-radius: 5px; /* Coins légèrement arrondis */
+  height: 5px; /* Épaisseur du curseur */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  background-color: #05bbf2; /* Couleur du bouton du curseur */
+  border: 2px solid #039bd2; /* Bordure du bouton du curseur */
+  height: 15px; /* Taille du bouton */
+  width: 15px;  /* Largeur du bouton */
+  border-radius: 50%; /* Forme ronde */
+  cursor: pointer; /* Afficher le curseur pointeur */
+}
+
+.btn {
+  padding: 10px; /* Espacement intérieur */
+  transition: all 0.3s; /* Transition douce pour hover */
+}
+
+.btn-transparent {
+  background: transparent; /* Pas de couleur de fond */
+  border: none; /* Pas de bordure */
+}
+
+.btn-transparent:hover {
+  opacity: 0.8; /* Changement d'opacité au survol */
+}
+
+
+
+
+.price-label {
+  font-size: 1.5em; /* Taille de police agrandie */
+  font-weight: bold; /* Texte en gras */
+  color: #333; /* Couleur du texte */
+}
+
+.slider-container {
+  width: 100%; /* Le curseur prend toute la largeur */
+}
+
+.custom-slider {
+  // -webkit-appearance: none; /* Supprimer le style par défaut */
+  width: 100%; /* Prendre toute la largeur */
+  height: 8px; /* Épaisseur du curseur */
+  background: #ccc; /* Couleur du curseur */
+  border-radius: 5px; /* Coins arrondis */
+  transition: 0.2s; /* Transition douce */
+}
+
+
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Supprimer le style par défaut */
+  background-color: #05bbf2; /* Couleur du bouton */
+  border: 2px solid #039bd2; /* Bordure du bouton */
+  height: 20px; /* Hauteur du bouton */
+  width: 20px; /* Largeur du bouton */
+  border-radius: 50%; /* Forme arrondie */
+  cursor: pointer; /* Afficher le curseur en mode pointer */
+}
+
+.price-values {
+  font-size: 1em; /* Taille de police standard */
+  color: #555; /* Couleur du texte */
+  width: 100%; /* Prendre toute la largeur */
+  display: flex; /* Disposition flexible */
+  justify-content: space-between; /* Espacement entre les valeurs */
+}
+
+
+
+// search-bar
+
+.search-bar {
+  display: flex; /* Disposition en ligne */
+  align-items: center; /* Alignement vertical */
+  justify-content: space-between; /* Espacement entre les éléments */
+  max-width: 700px; /* Largeur maximale pour la barre de recherche */
+  padding: 10px; /* Espacement intérieur */
+  border: 1px solid #ccc; /* Bordure légère */
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+}
+
+.search-input {
+  flex-grow: 1; /* Prendre toute la largeur disponible */
+  border: none; /* Pas de bordure */
+  padding: 10px; /* Espacement intérieur */
+  border-radius: 10px; /* Coins arrondis */
+  outline: none; /* Supprimer le contour lors du focus */
+}
+
+.search-button {
+  background: transparent; /* Fond transparent */
+  border: none; /* Pas de bordure */
+  transition: background 0.3s; /* Transition douce */
+}
+
+.search-button:hover {
+  background: #f0f0f0; /* Fond au survol */
+}
+
+.search-button svg {
+  color: #555; /* Couleur de l'icône */
+}
+
+
+
+

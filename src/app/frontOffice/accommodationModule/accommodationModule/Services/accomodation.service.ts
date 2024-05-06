@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Accomodation } from '../../models/accomodationModel'
+import { User } from '../../models/UserModel';
 
 @Injectable({
   providedIn: 'root'
@@ -42,13 +43,18 @@ export class AccomodationService {
   getAccommodationByIdWithCategory(id: number): Observable<Accomodation> {
     return this.http.get<Accomodation>(`${this.apiUrl}/getAccomodationByIdWithCategory/${id}`);
   }
-  uploadImage(accommodationId: number, image: File): Observable<any> {
+  uploadImage(accomodationId: number, image: File): Observable<any> {
     const formData = new FormData();
     formData.append('image', image);
 
-    return this.http.post(`${this.apiUrl}/${accommodationId}/image`, formData);
+    return this.http.post(`${this.apiUrl}/${accomodationId}/image`, formData);
   }
-  getImageForAcc(accommodationId: number): Observable<Blob> {
-    return this.http.get(`${this.apiUrl}/${accommodationId}/image`, { responseType: 'blob' });
+  getImageForAcc(accomodationId: number): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/${accomodationId}/image`, { responseType: 'blob' });
   }
+  private formData: any = {};
+  setFormData(data: any) {
+    this.formData = data;
+  }
+ 
 }

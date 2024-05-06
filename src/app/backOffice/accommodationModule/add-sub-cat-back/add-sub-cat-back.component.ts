@@ -34,7 +34,7 @@ export class AddSubCatBackComponent implements OnInit {
     this.subCategoryService.addSubCategory(this.subcategory).subscribe(
       response => {
         console.log('SubCategory added successfully:', response);
-        this.router.navigate(['/admin/subcat']);
+        this.router.navigate(['/subcat']);
 
       },
       error => {

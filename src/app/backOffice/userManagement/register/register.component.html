@@ -105,6 +105,16 @@
                           <!-- Add more roles as needed -->
                         </select>
                       </div>
+
+                    <div class="col-12">
+                      <form [formGroup]="registerForm" class="recaptcha-form">
+                        <ngx-recaptcha2 #captchaElem
+                          [siteKey]="siteKey"
+                          formControlName="recaptcha">
+                        </ngx-recaptcha2>
+                      </form>
+                    </div>
+
                       <div class="col-12">
                         <button class="btn btn-primary w-100" type="submit" [disabled]="!registerForm.valid">Create Account</button>
                       </div>

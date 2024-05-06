@@ -55,7 +55,7 @@ export class AddAccBackComponent implements OnInit{
         } else {
           console.log('error uploading image!');
         }
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/accomodation']);
 
       },
       (error) => {

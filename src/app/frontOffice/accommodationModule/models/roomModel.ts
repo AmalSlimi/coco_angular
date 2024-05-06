@@ -5,6 +5,7 @@ export class Room
   rent !: number
   amenities!: string
   roomDetails!: string
+  bookingPrice: number = 20;
   accommodationID!: number;
   imageNames !: string[];
   imagePaths !: string[];
@@ -12,7 +13,7 @@ export class Room
   imagesBase64!: string[]; // Add this line to define imagesBase64 property
   imageUrls!: string[]; // Add this property to hold image URLs
   accommodationName!: string;
-
+  VisitDate!:Date;
 
 
 

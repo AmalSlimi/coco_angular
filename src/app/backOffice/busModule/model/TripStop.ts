@@ -1,3 +1,5 @@
+import { stop } from "./stop";
+
 export class TripStop {
   id!: number;
   idTrip!: number;
@@ -5,4 +7,6 @@ export class TripStop {
   arrivalTime!: string;
   departureTime!: string;
   amount!: number;
+  stop?: stop;
+
 }

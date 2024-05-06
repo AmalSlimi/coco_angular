@@ -22,7 +22,7 @@ export class AddCatBackComponent implements OnInit {
     this.categoryService.addCategory(this.category).subscribe(
       response => {
         console.log('Category added successfully:', response);
-        this.router.navigate(['/admin/cat']);
+        this.router.navigate(['/cat']);
       },
       error => {
         console.error('Error adding category:', error);

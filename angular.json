@@ -40,6 +40,9 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/leaflet-search/dist/leaflet-search.min.css",
               "node_modules/leaflet-geosearch/dist/geosearch.css",
+              "src/assets/backoffice/css/style.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+
               "src/assets/backoffice/css/style.css"
 
             ],

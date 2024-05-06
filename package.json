@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@abacritt/angularx-social-login": "^2.2.0",
     "@angular/animations": "^15.2.0",
     "@angular/cdk": "^15.2.9",
     "@angular/common": "^15.2.0",
@@ -38,7 +39,9 @@
     "echarts": "^5.5.0",
     "file-saver": "^2.0.5",
     "font-awesome": "^4.7.0",
+    "html2canvas": "^1.4.1",
     "jquery": "^3.7.1",
+    "jspdf": "^2.5.1",
     "jwt-decode": "^4.0.0",
     "leaflet": "1",
     "leaflet-control-geocoder": "^2.4.0",

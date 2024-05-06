@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../model/User';
 import { Observable } from 'rxjs';
+import { Sold } from 'src/app/frontOffice/accommodationModule/models/Sold';
 
 @Injectable({
   providedIn: 'root'
@@ -73,5 +74,25 @@ searchUsers(searchTerm: string): Observable<any> {
 updateRole(roleName: string): Observable<any> {
   return this.http.post(`${this.baseUrl}user/updateRole`, { role: roleName });
 }
+
+
+/***************hadil*****************/
+getCurrent(): Observable<User> {
+  return this.http.get<User>(`http://localhost:8085/spring2024/user/current`);
+}
+
+createSoldForUser(userId: number, accountSoldValue: number): Observable<Sold> {
+  return this.http.post<Sold>('http://localhost:8085/spring2024/api/sold/create', { userId, accountSoldValue });
+}
+/***************** */
+
+findCurrentUserSoldByIdUser(userId: number): Observable<Sold> {
+  return this.http.get<Sold>(`http://localhost:8085/spring2024/api/sold/`+ userId);
+}
+updateSoldForUser(userId: number, newAccountSoldValue: number): Observable<Sold> {
+  return this.http.put<Sold>(`http://localhost:8085/spring2024/api/sold/update/${userId}?newAccountSoldValue=${newAccountSoldValue}`, {});
+}
+/********** end hadil**/
+
 
 }

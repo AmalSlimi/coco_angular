@@ -34,6 +34,12 @@ export class TripStopServiceService {
   getDetailtrip(id: number): Observable<TripStop> {
     return this.http.get<TripStop>(this.baseUrl + 'get/' + id);
   }
+  gettripStopsbyTrip(id: number): Observable<TripStop[]> {
+    return this.http.get<TripStop[]>(this.baseUrl + 'getbyidtrip/' + id);
+  }
+  getStopbyTripStop(id: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + 'getbyidtripstop/' + id);
+  }
   tri(){
    return this.http.get<TripStop[]>(this.baseUrl + 'tri');
 

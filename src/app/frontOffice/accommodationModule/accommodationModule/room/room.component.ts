@@ -1,10 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomService } from '../Services/room.service';
 import { Room } from '../../models/roomModel';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as saveAs from 'file-saver';
 import { Accomodation } from '../../models/accomodationModel';
+import { User } from 'src/app/backOffice/userManagement/model/User';
+import { CustomerDataService } from '../Services/customer-data.service';
+import { UserSService } from 'src/app/backOffice/userManagement/service/user-s.service';
+
+//import { Router } from '@angular/router';
+
+
+
+
 
 @Component({
   selector: 'app-room',
@@ -14,8 +23,8 @@ import { Accomodation } from '../../models/accomodationModel';
 export class RoomComponent implements OnInit {
   rooms: Room[] = [];
   selectedImage: File | null = null;
-imagePaths: any;
-accomodations: Accomodation[] = [];
+  imagePaths: any;
+  accomodations: Accomodation[] = [];
 
 priceRange!: string;
 minRent: number = 80;
@@ -24,12 +33,29 @@ filteredRooms: Room[] = [];
 roomImages: { [roomId: number]: string[] } = {};
 currentImageIndex: number = 0;
 room: any;
-  constructor(private roomService: RoomService, private router: Router,private http: HttpClient) { }
+rent!:Room;
+currentUser!: User;
+bookingPrice: number=20;
+
+constructor(private route: ActivatedRoute, private customerDataService: CustomerDataService,private roomService: RoomService, private userService: UserSService, private router: Router,private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.getCurrent();
     this.fetchRooms();
-    this.initializeRoomImages(); // Appeler la méthode d'initialisation des images
+    this.initializeRoomImages();
+    this.route.queryParams.subscribe(params => {
+      this.rent = params['rent'];
+      console.log("room rent", this.rent);
+    });
+  }
 
+
+  getCurrent(): void {
+    this.userService.getCurrent()
+      .subscribe(user => {
+        this.currentUser = user;
+        console.log('Utilisateur courant:', this.currentUser);
+      });
   }
   initializeRoomImages(): void {
     this.rooms.forEach(room => {
@@ -45,7 +71,6 @@ room: any;
       this.filteredRooms = this.rooms;
     }
   }
-  // Dans votre fichier TypeScript
 activeImageIndex = 0;
 
 nextImage() {
@@ -57,15 +82,16 @@ nextImage() {
  }
 
 
+
 previousImage() {
  this.activeImageIndex = (this.activeImageIndex - 1 + this.room.imageUrls.length) % this.room.imageUrls.length;
 }
 
   fetchRooms(): void {
+    console.log("*****");
     this.roomService.getAllRooms().subscribe(
       rooms => {
         this.rooms = rooms;
-        this.fetchAccommodationNames();
         this.filterRooms();
 
       },
@@ -81,31 +107,25 @@ previousImage() {
   filterByLowestRent() {
     this.rooms.sort((a, b) => a.rent - b.rent);
   }
-//   filterByPriceRange() {
-//     if (this.priceRange) {
-//       const [minPrice, maxPrice] = this.priceRange.split('-').map(Number);
-//       this.rooms = this.rooms.filter(room => room.rent >= minPrice && room.rent <= maxPrice);
-//     } else {
-//       this.fetchRooms();
-//     }
-// }
 
 filterByPriceRange() {
   this.filteredRooms = this.rooms.filter(room => room.rent >= this.minRent && room.rent <= this.maxRent);
 }
 
-  fetchAccommodationNames(): void {
-    for (const room of this.rooms) {
-      this.roomService.getAccommodationNameByRoomId(room.roomID).subscribe(
-        name => {
-          room.accommodationName = name;
-        },
-        error => {
-          console.error('Error fetching accommodation name:', error);
-        }
-      );
-    }
+
+fetchAccommodationNames(): void {
+  for (const room of this.rooms) {
+    this.roomService.getAccommodationNameByRoomId(room.roomID).subscribe(
+      name => {
+        room.accommodationName = name;
+      },
+      error => {
+        console.error('Error fetching accommodation name:', error);
+      }
+    );
   }
+}
+
   deleteRoom(roomID: number): void {
     this.roomService.deleteRoom(roomID).subscribe(
       () => {
@@ -119,10 +139,16 @@ filterByPriceRange() {
   }
 
   editRoom(roomID: number): void {
-    this.router.navigate(['/update', roomID]);
+    this.router.navigate(['/updateF', roomID]);
   }
   navigateToViewDetails( roomID:number):void{ console.log('Room ID:', roomID);
-  this.router.navigate(['/getRoomById', roomID]);
+  this.router.navigate(['/getRoomByIdF', roomID]);
 }
 
+
+
+openCreateCustomer(): void {
+
+  this.router.navigate(['/create-customer']); // Navigate to the create customer route
+}
 }

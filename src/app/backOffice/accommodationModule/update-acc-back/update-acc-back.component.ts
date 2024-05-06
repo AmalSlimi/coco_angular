@@ -22,20 +22,32 @@ export class UpdateAccBackComponent implements OnInit{
   }
 
   ngOnInit(): void {
-  }
-
-  update(f: NgForm): void {
-    this.accomodationService.updateAccomodation(this.id,this.accomodation).subscribe(
-      response => {
-        console.log('accomodation updated successfully:', response);
-        this.router.navigate(['/getAllAccomodation'])
-
+     // Charger les détails de l'hébergement à partir de l'ID
+     this.accomodationService.getAccomodationById(this.id).subscribe(
+      (response: Accomodation) => {
+        this.accomodation = response; // Préremplir les détails de l'hébergement
       },
       error => {
-        console.error('Error adding accomodation:', error);
+        console.error('Error retrieving accomodation:', error);
       }
     );
   }
+
+  update(f: NgForm): void {
+      this.accomodationService.updateAccomodation(this.id, this.accomodation).subscribe(
+        response => {
+          console.log('Accomodation updated successfully:', response);
+          // Redirection vers la page des hébergements après une mise à jour réussie
+          this.router.navigate(['/accomodation']);
+        },
+        error => {
+          console.error('Error updating accomodation:', error);
+        }
+      );
+
+    }
+  
+
   siteKey : string="6LeBnZUpAAAAAEDMtn5PQAEpTInPp0rB_fR60D-A";
 }
 

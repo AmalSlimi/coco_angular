@@ -61,7 +61,7 @@ export class CategoryBackComponent implements OnInit{
     this.onhide();
   }
   navigateToUpdateCategory(categoryID: number): void {
-    this.router.navigate(['/admin/updateCat', categoryID]);
+    this.router.navigate(['/updateCat', categoryID]);
   }
   onhide(){
     this.modelServie.hide(1);
@@ -69,7 +69,7 @@ export class CategoryBackComponent implements OnInit{
     generateQRCode(cats: Category): string {
       const qrOptions = {
         color: {
-          dark: '#000000',
+        dark: '#000000',
         light: '#FFC0CB'
         }
       };

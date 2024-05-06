@@ -15,6 +15,8 @@ export class RegisterComponent {
   user: User = new User();
   displayRoleSelection: boolean = false;
   selectedFile: File | null = null;
+  siteKey : string="6LeBnZUpAAAAAEDMtn5PQAEpTInPp0rB_fR60D-A";
+
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
 
@@ -27,7 +29,9 @@ export class RegisterComponent {
   dateOfBirth: ['', [Validators.required]],
   phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{8}$/)]], 
   //pictureUrl: [''], 
-  role: [[]]
+  role: [[]],
+  recaptcha: ['', Validators.required]
+ 
   });
 
 
@@ -51,6 +55,8 @@ export class RegisterComponent {
         this.registerForm.get('role')!.enable(); 
       }
     });
+
+    
   }
 
   register(): void {
@@ -85,5 +91,9 @@ export class RegisterComponent {
     });
   }
   
+  
+
+
+
 
 }

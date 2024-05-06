@@ -4,5 +4,6 @@ export class trip {
   arrivalLocation!: string;
   estimatedDuration!: string;
   fare!: string;
+  name!: string;
 
 }

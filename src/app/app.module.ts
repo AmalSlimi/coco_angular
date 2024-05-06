@@ -153,20 +153,6 @@ import { UpdateRoomComponent } from './frontOffice/accommodationModule/accommoda
 import { UpdateAccommodationComponent } from './frontOffice/accommodationModule/accommodationModule/update-accommodation/update-accommodation.component';
 import { DetailsAccomodationComponent } from './frontOffice/accommodationModule/accommodationModule/details-accomodation/details-accomodation.component';
 import { DetailsRoomComponent } from './frontOffice/accommodationModule/accommodationModule/details-room/details-room.component';
-import { AccomodationBackComponent } from './backOffice/accommodationModule/accomodation-back/accomodation-back.component';
-import { AddAccBackComponent } from './backOffice/accommodationModule/add-acc-back/add-acc-back.component';
-import { UpdateAccBackComponent } from './backOffice/accommodationModule/update-acc-back/update-acc-back.component';
-import { RoomBackComponent } from './backOffice/accommodationModule/room-back/room-back.component';
-import { AddRoomBackComponent } from './backOffice/accommodationModule/add-room-back/add-room-back.component';
-import { UpdateRoomBackComponent } from './backOffice/accommodationModule/update-room-back/update-room-back.component';
-import { CategoryBackComponent } from './backOffice/accommodationModule/category-back/category-back.component';
-import { AddCatBackComponent } from './backOffice/accommodationModule/add-cat-back/add-cat-back.component';
-import { UpdateCatBackComponent } from './backOffice/accommodationModule/update-cat-back/update-cat-back.component';
-import { SubCatBackComponent } from './backOffice/accommodationModule/sub-cat-back/sub-cat-back.component';
-import { AddSubCatBackComponent } from './backOffice/accommodationModule/add-sub-cat-back/add-sub-cat-back.component';
-import { UpdateSubCatBackComponent } from './backOffice/accommodationModule/update-sub-cat-back/update-sub-cat-back.component';
-import { DetailsRoomBackComponent } from './backOffice/accommodationModule/details-room-back/details-room-back.component';
-import { DetailAccBackComponent } from './backOffice/accommodationModule/detail-acc-back/detail-acc-back.component';
 import { FilterPipe } from './app-filter.pipe';
 import { MappComponent } from './frontOffice/accommodationModule/mapp/map.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
@@ -182,6 +168,31 @@ import { WelcomePageComponent } from './frontOffice/welcome-page/welcome-page.co
 import { ForgetPasswordComponent } from './frontOffice/userModule/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './frontOffice/userModule/reset-password/reset-password.component';
 import { ChatbotComponent } from './ChatBot/chatbot/chatbot.component';
+import { TicketComponent } from './frontOffice/busManagment/ticket/ticket.component';
+import { AddticketComponent } from './frontOffice/busManagment/addticket/addticket.component';
+import { CustomerCreateComponent } from './frontOffice/accommodationModule/accommodationModule/customer-create/customer-create.component';
+import { RoomPaymentComponent } from './frontOffice/accommodationModule/accommodationModule/room-payment/room-payment.component';
+import { ShareBtnComponent } from './frontOffice/facebookbutton/share-btn/share-btn.component';
+import { MyMapComponent } from './frontOffice/my-map/my-map.component';
+import { FavoriteListOfAccommodationsComponent } from './frontOffice/accommodationModule/favorites/favorite-list-of-accommodations/favorite-list-of-accommodations.component';
+import { AccpaymentComponent } from './frontOffice/accommodationModule/accpayment/accpayment.component';
+import { AddSoldComponent } from './frontOffice/accommodationModule/accommodationModule/add-sold/add-sold.component';
+import { CategoryBackComponent } from './backOffice/accommodationModule/category-back/category-back.component';
+import { AccomodationBackComponent } from './backOffice/accommodationModule/accomodation-back/accomodation-back.component';
+import { AddAccBackComponent } from './backOffice/accommodationModule/add-acc-back/add-acc-back.component';
+import { UpdateAccBackComponent } from './backOffice/accommodationModule/update-acc-back/update-acc-back.component';
+import { RoomBackComponent } from './backOffice/accommodationModule/room-back/room-back.component';
+import { AddRoomBackComponent } from './backOffice/accommodationModule/add-room-back/add-room-back.component';
+import { UpdateRoomBackComponent } from './backOffice/accommodationModule/update-room-back/update-room-back.component';
+import { AddCatBackComponent } from './backOffice/accommodationModule/add-cat-back/add-cat-back.component';
+import { UpdateCatBackComponent } from './backOffice/accommodationModule/update-cat-back/update-cat-back.component';
+import { AddSubCatBackComponent } from './backOffice/accommodationModule/add-sub-cat-back/add-sub-cat-back.component';
+import { UpdateSubCatBackComponent } from './backOffice/accommodationModule/update-sub-cat-back/update-sub-cat-back.component';
+import { DetailAccBackComponent } from './backOffice/accommodationModule/detail-acc-back/detail-acc-back.component';
+import { DetailsRoomBackComponent } from './backOffice/accommodationModule/details-room-back/details-room-back.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from '@abacritt/angularx-social-login';
+import { SubCatBackComponent } from './backOffice/accommodationModule/sub-cat-back/sub-cat-back.component';
 
 
 
@@ -344,6 +355,15 @@ import { ChatbotComponent } from './ChatBot/chatbot/chatbot.component';
     UpdateSubCatBackComponent,
     DetailAccBackComponent,
     DetailsRoomBackComponent,
+    CustomerCreateComponent,
+    RoomPaymentComponent,
+    ShareBtnComponent,
+    MyMapComponent,
+    FavoriteListOfAccommodationsComponent,
+    AccpaymentComponent,
+    AddSoldComponent,
+
+
     ReclamationComponent,
     ResponseComponent,
     MyreclamationsComponent,
@@ -354,6 +374,10 @@ import { ChatbotComponent } from './ChatBot/chatbot/chatbot.component';
     ForgetPasswordComponent,
     ResetPasswordComponent,
     ChatbotComponent,
+    TicketComponent,
+    AddticketComponent,
+
+
     
   
   
@@ -392,7 +416,8 @@ import { ChatbotComponent } from './ChatBot/chatbot/chatbot.component';
     NgbModule,
     RelativeTimePipe,
     NgxCaptchaModule,
-
+    ModalModule.forRoot(),
+    SocialLoginModule,
 
     
     
@@ -401,6 +426,16 @@ import { ChatbotComponent } from './ChatBot/chatbot/chatbot.component';
   exports:[CdkStepperModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+          autoLogin: false,
+          providers: [{
+              id: FacebookLoginProvider.PROVIDER_ID,
+              provider: new FacebookLoginProvider('1576393013206435')
+          }]
+      }
+  }
   ],
   bootstrap: [AppComponent]
 })

@@ -25,13 +25,25 @@ export class UpdateRoomBackComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.id = +params['id']; // Récupérer l'ID du paramètre de l'URL
+      // Obtenir la pièce existante (room) par l'ID
+      this.roomService.getRoomById(this.id).subscribe(
+        (room: Room) => {
+          this.room = room; // Associer la pièce récupérée
+        },
+        error => {
+          console.error('Error fetching room:', error);
+        }
+      );
+    });
 
   }
   update(f: NgForm): void {
     this.roomService.updateRoom(this.id,this.room).subscribe(
       response => {
         console.log('Room updated successfully:', response);
-        this.router.navigate(['admin/room'])
+        this.router.navigate(['/room'])
 
       },
       error => {

@@ -22,18 +22,29 @@ export class UpdateSubCatBackComponent implements OnInit {
   constructor(private fb:FormBuilder,private subcategoryService :NewSubCategoryService,private route: ActivatedRoute, private router: Router,private categoryService : NewCategoryService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
-      console.log('ID:', this.id);
-
-      this.categoryService.getAllCategories().subscribe(
-        (categories: Category[]) => {
-          this.categories = categories;
-        },
-        error => {
-          console.error('Error fetching categories:', error);
-        }
-      );
+      // Récupérer l'ID de l'URL
+      this.route.params.subscribe(params => {
+        this.id = params['id'];
+        
+        // Récupérer la sous-catégorie par ID
+        this.subcategoryService.getSubCategoryById(this.id).subscribe(
+          (response: SubCategory) => {
+            this.subcategory = response; // Associer la sous-catégorie récupérée
+          },
+          error => {
+            console.error('Error fetching subcategory:', error);
+          }
+        );
+  
+        // Récupérer toutes les catégories (si nécessaire)
+        this.categoryService.getAllCategories().subscribe(
+          (categories: Category[]) => {
+            this.categories = categories;
+          },
+          error => {
+            console.error('Error fetching categories:', error);
+          }
+        );
     });
   }
 
@@ -43,7 +54,7 @@ export class UpdateSubCatBackComponent implements OnInit {
     this.subcategoryService.updateSubCategory(this.id,this.subcategory).subscribe(
       response => {
         console.log('subcategory updated successfully:', response);
-        this.router.navigate(['/admin/subcat'])
+        this.router.navigate(['/subcat'])
 
       },
       error => {

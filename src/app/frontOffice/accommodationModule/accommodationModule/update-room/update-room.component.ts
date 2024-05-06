@@ -23,7 +23,14 @@ export class UpdateRoomComponent implements OnInit{
   }
 
   ngOnInit(): void {
-
+    this.roomService.getRoomById(this.id).subscribe(
+      (response: Room) => {
+        this.room = response; // Préremplir les détails de la salle
+      },
+      error => {
+        console.error('Error retrieving room:', error);
+      }
+    );
   }
   update(f: NgForm): void {
     this.roomService.updateRoom(this.id,this.room).subscribe(

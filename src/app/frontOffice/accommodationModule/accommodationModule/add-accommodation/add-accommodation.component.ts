@@ -37,10 +37,9 @@ export class AddAccommodationComponent implements OnInit{
     );
   }
   add(f: NgForm): void {
-    // Vérifier si la valeur de this.accommodation.categoryID est définie
     if (!this.accomodation.categoryID) {
       console.error("Category ID is not defined");
-      return; // Arrêter l'exécution si categoryID n'est pas défini
+      return; 
     }
 
     const selectedCategory = this.categories.find(category => category.categoryID === this.accomodation.categoryID);
@@ -56,7 +55,8 @@ export class AddAccommodationComponent implements OnInit{
         } else {
           console.log('error uploading image!');
         }
-        this.router.navigate(['/']);
+        this.router.navigate(['/accommodationF']);
+
 
       },
       (error) => {

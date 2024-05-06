@@ -1,79 +1,383 @@
+// #btnn {
+//   background-color:#05bbf2 ;
+//   border-color: #05bbf2;
+//   color:white;
+//   border-width: 3px;
+//   border-radius: 10px;
+// }
+// .bi-trash3{
+//   fill :red;
+// }
+// .bi-pencil {
+//   fill: #052077;
+// }
+// .bi-eye{
+//   fill: #FFA500;
+// }
+// .map-container {
+//   height: 300px; /* Adjust height as needed */
+// }
+// /* map.component.css */
+// .map-container {
+//   position: relative;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   margin: 30px;
+// }
+
+// .map-frame {
+//   height: 30%;
+//   width: 20%;
+// }
+
+// #map {
+//  height: 100px;
+//  width: 100px;
+// }
+// /* Styles for Accommodation Cards */
+// .card {
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   transition: 0.3s;
+//   border-radius: 10px;
+// }
+
+// .card:hover {
+//   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+// }
+
+// .card img {
+//   border-radius: 10px 10px 0 0;
+// }
+
+// .card-body {
+//   padding: 1rem;
+// }
+
+// .card-footer {
+//   background-color: #f8f9fa;
+//   border-top: 1px solid #dee2e6;
+//   padding: 0.75rem 1rem;
+// }
+
+// .card-footer button {
+//   margin-right: 5px;
+// }
+
+// /* Styles for Titles */
+// .card-text,
+// .card-footer {
+//   font-weight: bold;
+//   color: darkblue;
+// }
+
+// /* Styles for Paragraphs */
+// .card-body p {
+//   font-weight: bold;
+//   color: darkblue; /* blue-cyan color */
+// }
+
+
+
+
+
+
+
+
+// #btnn {
+//   background-color:#05bbf2 ;
+//   border-color: #05bbf2;
+//   color:white;
+//   border-width: 3px;
+//   border-radius: 10px;
+// }
+// .bi-trash3{
+//   fill :red;
+// }
+// .bi-pencil {
+//   fill: #052077;
+// }
+// .bi-eye{
+//   fill: #FFA500;
+// }
+// .map-container {
+//   height: 300px; /* Adjust height as needed */
+// }
+// /* map.component.css */
+// .map-container {
+//   position: relative;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   margin: 30px;
+// }
+
+// .map-frame {
+//   height: 30%;
+//   width: 20%;
+// }
+
+// #map {
+//  height: 100px;
+//  width: 100px;
+// }
+// /* Styles for Accommodation Cards */
+// .card {
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   transition: 0.3s;
+//   border-radius: 10px;
+// }
+
+// .card:hover {
+//   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+// }
+
+// .card img {
+//   border-radius: 10px 10px 0 0;
+// }
+
+// .card-body {
+//   padding: 1rem;
+// }
+
+// .card-footer {
+//   background-color: #f8f9fa;
+//   border-top: 1px solid #dee2e6;
+//   padding: 0.75rem 1rem;
+// }
+
+// .card-footer button {
+//   margin-right: 5px;
+// }
+
+// /* Styles for Titles */
+// .card-text,
+// .card-footer {
+//   font-weight: bold;
+//   color: darkblue;
+// }
+
+// /* Styles for Paragraphs */
+// .card-body p {
+//   font-weight: bold;
+//   color: darkblue; /* blue-cyan color */
+// }
+
+
+
+// .image-container {
+//   width: 100%;  /* Largeur du conteneur */
+//   height: 200px;  /* Hauteur fixe */
+//   overflow: hidden;  /* Masquer les débordements */
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .image-container img {
+//   width: 100%;  /* L'image prend toute la largeur du conteneur */
+//   height: 100%;  /* L'image prend toute la hauteur du conteneur */
+//   object-fit: cover;  /* Pour s'adapter sans déformer */
+//   border-radius: 10px;  /* Arrondir les bords de l'image (optionnel) */
+// }
+
+
+
+/* Bouton Ajouter Hébergement */
 #btnn {
-  background-color:#05bbf2 ;
-  border-color: #05bbf2;
-  color:white;
-  border-width: 3px;
-  border-radius: 10px;
+  background-color: #05bbf2; /* Couleur de fond */
+  border-color: #05bbf2;    /* Couleur de la bordure */
+  color: white;             /* Couleur du texte */
+  border-radius: 10px;      /* Coins arrondis */
+  padding: 10px;            /* Espacement intérieur */
+  transition: all 0.3s;     /* Transition douce au survol */
+  
+  
+  &:hover {
+    background-color: #039bd2; /* Couleur au survol */
+    border-color: #039bd2;     /* Bordure au survol */
+  }
 }
+
+/* Icônes des boutons */
 .bi-trash3{
-  fill :red;
-}
-.bi-pencil {
-  fill: #052077;
-}
-.bi-eye{
-  fill: #FFA500;
-}
-.map-container {
-  height: 300px; /* Adjust height as needed */
-}
-/* map.component.css */
-.map-container {
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 30px;
-}
+    fill :red;  /* Couleur de l'icône de suppression */
+  }
+  .bi-pencil {
+    fill: #052077;  /* Couleur de l'icône de modification */
+  }
+  .bi-eye{
+    fill: #FFA500;   /* Couleur de l'icône de visualisation */
+  }
 
-.map-frame {
-  height: 30%;
-  width: 20%;
-}
 
-#map {
- height: 100px;
- width: 100px;
-}
-/* Styles for Accommodation Cards */
+/* Style des cartes */
 .card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
-  border-radius: 10px;
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.card img {
-  border-radius: 10px 10px 0 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre */
+  border-radius: 10px;                     /* Coins arrondis */
+  transition: 0.3s;                        /* Transition douce */
+  
+  &:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre au survol */
+  }
 }
 
 .card-body {
-  padding: 1rem;
+  padding: 1rem; /* Espacement intérieur */
+  color: #2c3e50; /* Couleur du texte */
 }
 
 .card-footer {
-  background-color: #f8f9fa;
-  border-top: 1px solid #dee2e6;
-  padding: 0.75rem 1rem;
+  background-color: #f8f9fa; /* Couleur de fond */
+  border-top: 1px solid #dee2e6; /* Bordure supérieure */
+  padding: 0.75rem 1rem; /* Espacement intérieur */
 }
 
 .card-footer button {
-  margin-right: 5px;
+  margin-right: 5px; /* Espacement entre les boutons */
 }
 
-/* Styles for Titles */
-.card-text,
-.card-footer {
-  font-weight: bold;
-  color: darkblue;
+/* Alignement des images dans les cartes */
+.image-container {
+  width: 100%;  /* Largeur du conteneur */
+  height: 200px;  /* Hauteur fixe */
+  overflow: hidden;  /* Masquer les débordements */
+  display: flex; /* Disposition flexible */
+  justify-content: center; /* Centrage horizontal */
+  align-items: center; /* Centrage vertical */
 }
 
-/* Styles for Paragraphs */
-.card-body p {
-  font-weight: bold;
-  color: darkblue; /* blue-cyan color */
+.image-container img {
+  width: 100%;  /* L'image prend toute la largeur du conteneur */
+  height: 100%;  /* L'image prend toute la hauteur du conteneur */
+  object-fit: cover;  /* Pour éviter la distorsion */
+  border-radius: 10px;  /* Coins arrondis */
+}
+
+/* Style du curseur pour le contrôle du prix */
+input[type="range"] {
+  width: 100%; /* Assurez-vous que le curseur prend toute la largeur disponible */
+  background-color: #e0e0e0; /* Couleur de fond du curseur */
+  border-radius: 5px; /* Coins légèrement arrondis */
+  height: 5px; /* Épaisseur du curseur */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  background-color: #05bbf2; /* Couleur du bouton du curseur */
+  border: 2px solid #039bd2; /* Bordure du bouton du curseur */
+  height: 15px; /* Taille du bouton */
+  width: 15px;  /* Largeur du bouton */
+  border-radius: 50%; /* Forme ronde */
+  cursor: pointer; /* Afficher le curseur pointeur */
+}
+
+.btn {
+  padding: 10px; /* Espacement intérieur */
+  transition: all 0.3s; /* Transition douce pour hover */
+}
+
+.btn-transparent {
+  background: transparent; /* Pas de couleur de fond */
+  border: none; /* Pas de bordure */
+}
+
+.btn-transparent:hover {
+  opacity: 0.8; /* Changement d'opacité au survol */
+}
+
+
+
+
+.price-label {
+  font-size: 1.5em; /* Taille de police agrandie */
+  font-weight: bold; /* Texte en gras */
+  color: #333; /* Couleur du texte */
+}
+
+.slider-container {
+  width: 100%; /* Le curseur prend toute la largeur */
+}
+
+.custom-slider {
+  // -webkit-appearance: none; /* Supprimer le style par défaut */
+  width: 100%; /* Prendre toute la largeur */
+  height: 8px; /* Épaisseur du curseur */
+  background: #ccc; /* Couleur du curseur */
+  border-radius: 5px; /* Coins arrondis */
+  transition: 0.2s; /* Transition douce */
+}
+
+
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Supprimer le style par défaut */
+  background-color: #05bbf2; /* Couleur du bouton */
+  border: 2px solid #039bd2; /* Bordure du bouton */
+  height: 20px; /* Hauteur du bouton */
+  width: 20px; /* Largeur du bouton */
+  border-radius: 50%; /* Forme arrondie */
+  cursor: pointer; /* Afficher le curseur en mode pointer */
+}
+
+.price-values {
+  font-size: 1em; /* Taille de police standard */
+  color: #555; /* Couleur du texte */
+  width: 100%; /* Prendre toute la largeur */
+  display: flex; /* Disposition flexible */
+  justify-content: space-between; /* Espacement entre les valeurs */
+}
+
+
+
+// search-bar
+
+.search-bar {
+  display: flex; /* Disposition en ligne */
+  align-items: center; /* Alignement vertical */
+  justify-content: space-between; /* Espacement entre les éléments */
+  max-width: 700px; /* Largeur maximale pour la barre de recherche */
+  padding: 10px; /* Espacement intérieur */
+  border: 1px solid #ccc; /* Bordure légère */
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+}
+
+.search-input {
+  flex-grow: 1; /* Prendre toute la largeur disponible */
+  border: none; /* Pas de bordure */
+  padding: 10px; /* Espacement intérieur */
+  border-radius: 10px; /* Coins arrondis */
+  outline: none; /* Supprimer le contour lors du focus */
+}
+
+.search-button {
+  background: transparent; /* Fond transparent */
+  border: none; /* Pas de bordure */
+  transition: background 0.3s; /* Transition douce */
+}
+
+.search-button:hover {
+  background: #f0f0f0; /* Fond au survol */
+}
+
+.search-button svg {
+  color: #555; /* Couleur de l'icône */
+}
+
+
+
+//home
+#back-button {
+  font-weight: bold; // Texte en gras
+  text-transform: uppercase; // Tout en majuscules
+}
+
+#back-button svg {
+  margin-right: 8px; // Espace entre l'icône et le texte
+}
+
+#back-button:hover {
+  background-color: darkred; // Couleur lors du survol
+  text-decoration: none; // Supprime la sous-ligne si un lien
 }

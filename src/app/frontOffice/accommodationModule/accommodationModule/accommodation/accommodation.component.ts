@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { CategoryService } from '../Services/category.service';
+import { CategoryService } from 'src/app/frontOffice/accommodationModule/accommodationModule/Services/category.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from "pdfmake/build/vfs_fonts"
@@ -12,11 +12,15 @@ import { OpenStreetMapProvider, GeoSearchControl } from 'leaflet-geosearch';
 import { Accomodation } from '../../models/accomodationModel'; // Assuming this is the correct model
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FileResponse } from '../../models/FileResponse';
-//import * as saveAs from 'file-saver';
+// import * as saveAs from 'file-saver';
 import { saveAs } from 'file-saver';
 
+import { FavoriteListService } from '../Services/favorite-list.service';
+// import { User } from '../../models/UserModel';
+import { User } from 'src/app/backOffice/userManagement/model/User';
+import { UserSService } from 'src/app/backOffice/userManagement/service/user-s.service';
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
-
+declare var FB: any;
 @Component({
   selector: 'app-accommodation',
   templateUrl: './accommodation.component.html',
@@ -38,13 +42,124 @@ export class AccommodationComponent implements OnInit {
   otherFiles: FileResponse[] = [];
   selectedFile: File | null = null;
   images!: string[];
-  constructor(private modelService: BsModalService, private accommodationService: AccomodationService, private router: Router,private http: HttpClient) { }
+  FB:any;
+  currentUser!: User;
+
+  constructor(private userService: UserSService,private modelService: BsModalService,private favoriteListService:FavoriteListService, private accommodationService: AccomodationService, private router: Router,private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.getCurrent();
+
+    this.loadFiles();
+
     this.fetchAccommodations();
-    this.initMap();
+    this.initFacebookSdk();
+
+  }
+  getCurrent(): void {
+    this.userService.getCurrent()
+      .subscribe(user => {
+        this.currentUser = user;
+        console.log('Utilisateur courant:', this.currentUser);
+      });
   }
 
+
+  addToFavorite(accommodationId: number): void {
+    if (!this.currentUser) {
+      console.error('Current user not found.');
+      return;
+    }
+
+    this.favoriteListService.addAccommodationToFavoriteList(this.currentUser.id, accommodationId)
+      .subscribe(() => {
+      // Afficher l'alerte lors du succès
+        window.alert('Accommodation added to favorites successfully! Check your favorite list.');
+        console.log('Accommodation added to favorites successfully.');
+      }, (error) => {
+        console.error('Error adding accommodation to favorites:', error);
+      });
+  }
+
+ 
+
+  initFacebookSdk() {
+    (window as any).fbAsyncInit = function() {
+       FB.init({
+         appId: '1576393013206435',
+         cookie: true,
+         xfbml: true,
+         version: 'v19.0'
+       });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s) as HTMLScriptElement;
+       js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       if (fjs) {
+         fjs.parentNode?.insertBefore(js, fjs);
+       }
+    }(document, 'script', 'facebook-jssdk'));
+   }
+
+  loginWithFacebook(): void {
+    FB.login((response: any) => {
+      if (response.authResponse) {
+        const accessToken = response.authResponse.accessToken;
+
+        this.sendAccessTokenToBackend(accessToken);
+      } else {
+        console.log('Connexion annulée ou autorisation refusée.');
+      }
+    }, {scope: 'public_profile,email'});
+  }
+
+
+  sendAccessTokenToBackend(accessToken: string): void {
+    this.http.post<any>('http://localhost:8085/api/spring2024/facebook/token', { accessToken })
+      .subscribe(
+        (data) => {
+          console.log('Jeton d\'accès envoyé avec succès au backend.');
+        },
+        (error) => {
+          console.error('Erreur lors de l\'envoi du jeton d\'accès au backend:', error);
+        }
+      );
+  }
+
+   publishToFacebookPage(accommodation: Accomodation): void {
+    const shareMessage = `Découvrez cet hébergement incroyable: ${accommodation.accommodationName},${accommodation.categoryTitle},${accommodation.imageName}, ${accommodation.localisation}, Prix: ${accommodation.rent_price} TND`;
+    const pageId = '121706011035540';
+    const accessToken = 'EAAPuhuDzbCMBO9I7UKiF6nRBuq7ZAsUjI4xKCShH8N6xKsIGS1WVYJS5klw7sBaisSHtSi4XrnTu3PQ8VlCs8sBu9tbV0OlZBLUG6ei8ZBp2a6yFr24kiji31Pi9rvzHR3rhJdCCOgOLoiZAAZAx38mf1ZAOcZBqwfnuZCZBDGAZB8ovYxjxMlXGXFgbTMQx3o7BNlOvjdUNZAaCesFEc05pMZCwqgNZBG4VjQSGuLEE9ktWx';
+
+    FB.api(
+       `/${pageId}/feed`,
+       'POST',
+       {
+         message: shareMessage,
+         access_token: accessToken
+       },
+       function(response: any) {
+         if (!response || response.error) {
+           console.error('Erreur lors du partage:', response.error);
+         } else {
+           console.log('Partage réussi !');
+         }
+       }
+    );
+   }
+
+  shareOnFacebook(accommodation: Accomodation): void {
+    this.publishToFacebookPage(accommodation);
+   }
+
+
+  showMap(localisation: string) {
+    this.router.navigate(['/abc'], { queryParams: { localisation} });
+  }
   filterByPriceRange(): void {
     this.filteredAccommodations = this.accommodations.filter(acc => acc.rent_price <= this.maxRent && acc.rent_price >= this.minRent);
   }
@@ -64,7 +179,7 @@ export class AccommodationComponent implements OnInit {
       const formData = new FormData();
       formData.append('file', this.selectedFile);
 
-      this.http.post('http://localhost:8081/Pi/training/{trainingId}/image', formData).subscribe(
+      this.http.post('http://localhost:8085/spring2024/api/accommodations/{accomodationId}/image', formData).subscribe(
         (response: any) => {
           console.log('image added successfully: ', response);
           this.selectedFile = null;
@@ -83,7 +198,7 @@ export class AccommodationComponent implements OnInit {
   }
 
   loadFiles() {
-    this.http.get<FileResponse[]>('http://localhost:8081/Pi/training/getAllTrainings').subscribe(
+    this.http.get<FileResponse[]>('http://localhost:8085/spring2024/api/accommodations/getAllAccomodation').subscribe(
       (response) => {
         this.imageFiles = response.filter(file => this.isImage(file.fileName));
         this.otherFiles = response.filter(file => !this.isImage(file.fileName));
@@ -96,7 +211,7 @@ export class AccommodationComponent implements OnInit {
 
   openImage(filename: string) {
     const headers = new HttpHeaders().set('Accept', 'application/avif'); // Adjust content type as needed
-    this.http.get(`http://localhost:8081/Pi/training/{trainingId}/image`, { headers, responseType: 'blob' })
+    this.http.get(`http://localhost:8085/spring2024/api/accommodations/{accomodationId}/image`, { headers, responseType: 'blob' })
       .subscribe(
         (blob) => {
           const file = new Blob([blob], { type: 'application/avif' }); // Adjust content type as needed
@@ -108,66 +223,7 @@ export class AccommodationComponent implements OnInit {
       );
   }
 
-  private initMap(): void {
-    this.map = L.map(this.mapContainer.nativeElement, {
-      center: this.centroid,
-      zoom: 6,
-    });
 
-    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      minZoom: 6,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    });
-
-    const provider = new OpenStreetMapProvider();
-    const searchControl = new (GeoSearchControl as any)({
-      provider: provider,
-      style: 'bar',
-      autoClose: true,
-      searchLabel: this.accommodation.localisation,
-      showMarker: true,
-      retainZoomLevel: true,
-      animateZoom: true,
-      keepResult: true,
-      updateMap: true,
-      popupFormat: ({ query, result }: { query: string; result: any }) => result.label,
-      maxMarkers: 1,
-      marker: {
-        icon: L.icon({
-          iconUrl: this.markerIconUrl,
-          iconSize: [40, 40],
-          iconAnchor: [20, 40],
-          popupAnchor: [0, -40],
-        }),
-      },
-    }).addTo(this.map);
-
-    // Trigger search programmatically
-    provider.search({ query: this.accommodation.localisation })
-      .then(results => {
-        if (results.length > 0) {
-          const result = results[0];
-          console.log('Search result:', result);
-          this.map.setView([result.y, result.x], this.map.getZoom());
-          L.marker([result.y, result.x], {
-            icon: L.icon({
-              iconUrl: this.markerIconUrl,
-              iconSize: [40, 40],
-              iconAnchor: [20, 40],
-              popupAnchor: [0, -40],
-            }),
-          }).addTo(this.map);
-        } else {
-          console.log('No results found for:', this.accommodation.localisation);
-        }
-      })
-      .catch(error => {
-        console.error('Error performing search:', error);
-      });
-
-    tiles.addTo(this.map);
-  }
 
   fetchAccommodations() {
     this.accommodationService.getAllAccomodations().subscribe(
@@ -201,7 +257,7 @@ export class AccommodationComponent implements OnInit {
   }
 
   generateQRCode(accommodation: Accomodation): string {
-    const qrContent = `${accommodation.address}\n${accommodation.rent_price}\n${accommodation.rules}\n${accommodation.numberOfRoom}\n${accommodation.localisation}`;
+    const qrContent = `${accommodation.rent_price}\n${accommodation.rules}\n${accommodation.numberOfRoom}\n${accommodation.localisation}`;
     let qrCodeUrl: string = '';
     QRCode.toDataURL(qrContent, { errorCorrectionLevel: 'H' }, (err: any, url: string) => {
       if (err) {
@@ -214,7 +270,7 @@ export class AccommodationComponent implements OnInit {
   }
 
   generatePDF(accommodation: Accomodation) {
-    const qrContent = `${accommodation.address}\n${accommodation.rent_price}\n${accommodation.rules}\n${accommodation.numberOfRoom}\n${accommodation.localisation}`;
+    const qrContent = `${accommodation.rent_price}\n${accommodation.rules}\n${accommodation.numberOfRoom}\n${accommodation.localisation}`;
 
     QRCode.toDataURL(qrContent, (err: any, qrDataURL: string) => {
       if (err) {
@@ -230,7 +286,6 @@ export class AccommodationComponent implements OnInit {
               widths: ['*', '*'],
               body: [
                 [{ text: 'Accommodation Information', colSpan: 2, style: 'header' }, ''],
-                ['Address:', { text: accommodation.address, style: 'cell' }],
                 ['Rent Price:', { text: accommodation.rent_price, style: 'cell' }],
                 ['Rules:', { text: accommodation.rules, style: 'cell' }],
                 ['Number of Rooms:', { text: accommodation.numberOfRoom, style: 'cell' }],
@@ -264,6 +319,6 @@ export class AccommodationComponent implements OnInit {
 
   navigateToViewDetails(accommodationID: number): void {
     console.log('Accomodation ID:', accommodationID);
-    this.router.navigate(['/getAccomodationById', accommodationID]);
+    this.router.navigate(['/getAccomodationByIdF', accommodationID]);
   }
 }
