@@ -1,6 +1,6 @@
 
 
-<app-header-back></app-header-back>
+<!-- <app-header-back></app-header-back>
 <app-navbar-back></app-navbar-back>
 <main id="main" class="main">
 
@@ -15,4 +15,30 @@
   </div>
 </div>
 </main>
-<app-footer-back></app-footer-back>
+<app-footer-back></app-footer-back> -->
+
+<app-header-back></app-header-back>
+<app-navbar-back></app-navbar-back>
+<main id="main" class="main">
+
+  <!-- Utilisation de Flexbox pour centrer -->
+  <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div *ngIf="accomodation" class="card" style="width: 700px; text-align: center;">
+      <div class="card-body">
+        <h2 class="card-title">{{accomodation.accommodationName}}</h2>
+        <img
+          class="file-image"
+          [src]="'http://localhost:8085/spring2024/api/accommodations/' + accomodation.accommodationID + '/image'"
+          (click)="openImage(accomodation.imageName)"
+          style="width: 700px;"
+        />
+        <p class="card-text">Number Of Room: {{ accomodation.numberOfRoom }}</p>
+        <p class="card-text">Localisation: {{ accomodation.localisation }}</p>
+        <p class="card-text">Rules: {{ accomodation.rules }}</p>
+        <p class="card-text">Price: {{ accomodation.rent_price }}</p>
+      </div>
+    </div>
+  </div>
+  
+</main>
+<app-footer-front></app-footer-front>

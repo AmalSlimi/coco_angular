@@ -31,6 +31,7 @@
               <input type="text" class="form-control" id="roomDetails" name="roomDetails" [(ngModel)]="room.roomDetails" required>
               <label for="roomDetails">Room Details</label>
             </div>
+            
             <form [formGroup]="aFormGroup" class="recaptcha-form">
               <ngx-recaptcha2 #captchaElem
                 [siteKey]="siteKey"

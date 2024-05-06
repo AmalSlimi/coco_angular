@@ -27,11 +27,12 @@ export class Room
   accommodationID!: number;
   imageNames !: string[];
   imagePaths !: string[];
-  images: string[] = []; // New property to hold image URLs
-  imagesBase64!: string[]; // Add this line to define imagesBase64 property
-  imageUrls!: string[]; // Add this property to hold image URLs
+  images: string[] = [];
+  imagesBase64!: string[];
+  imageUrls!: string[];
   accommodationName!: string;
-
+  bookingPrice: number = 20;
+  VisitDate!:Date;
 
 
 

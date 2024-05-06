@@ -79,14 +79,6 @@ previousImage() {
   filterByLowestRent() {
     this.rooms.sort((a, b) => a.rent - b.rent);
   }
-//   filterByPriceRange() {
-//     if (this.priceRange) {
-//       const [minPrice, maxPrice] = this.priceRange.split('-').map(Number);
-//       this.rooms = this.rooms.filter(room => room.rent >= minPrice && room.rent <= maxPrice);
-//     } else {
-//       this.fetchRooms();
-//     }
-// }
 
 filterByPriceRange() {
   this.filteredRooms = this.rooms.filter(room => room.rent >= this.minRent && room.rent <= this.maxRent);
@@ -111,7 +103,7 @@ filterByPriceRange() {
       () => {
         console.log('Room deleted successfully');
         this.fetchRooms();
-        this.router.navigate(['/admin/room'])
+        this.router.navigate(['/room'])
       },
       error => {
         console.error('Error deleting room:', error);
@@ -120,10 +112,10 @@ filterByPriceRange() {
   }
 
   editRoom(roomID: number): void {
-    this.router.navigate(['/admin/updateRoom', roomID]);
+    this.router.navigate(['/updateRoom', roomID]);
   }
   navigateToViewDetails( roomID:number):void{ console.log('Room ID:', roomID);
-  this.router.navigate(['/admin/getRoomById', roomID]);
+  this.router.navigate(['/getRoomById', roomID]);
 }
 
 }

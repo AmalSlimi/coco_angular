@@ -1487,7 +1487,7 @@ ol {
   Footer
 -----------------------*/
 .footer-section {
-  background: #103230;
+  background: #6b9694;
   padding-top: 70px;
 }
 
@@ -1512,7 +1512,7 @@ ol {
   color: #ffffff;
   height: 40px;
   width: 40px;
-  background: rgba(225, 225, 225, 0.1);
+  background: rgba(63, 131, 133, 0.1);
   line-height: 40px;
   text-align: center;
   border-radius: 50%;

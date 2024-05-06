@@ -14,10 +14,13 @@ export class UpdateTripComponent implements OnInit {
   id!: number;
   trip!: trip;
 
-  constructor(private tripService: TripServiceService, private router: Router, private route: ActivatedRoute) {
+  constructor(
+    private tripService: TripServiceService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
     this.tripForm = new FormGroup({
-      tripId: new FormControl('', Validators.required),
-      stopId: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
       departureLocation: new FormControl('', Validators.required),
       arrivalLocation: new FormControl('', Validators.required),
       estimatedDuration: new FormControl('', Validators.required),
@@ -26,15 +29,29 @@ export class UpdateTripComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
+    this.id = +this.route.snapshot.paramMap.get('id')!;
     this.tripService.getDetailtrip(this.id).subscribe((trip: trip) => {
-      this.tripForm.patchValue(trip);
+      this.trip = trip;
+      this.tripForm.patchValue({
+        name:trip.name,
+        departureLocation: trip.departureLocation,
+        arrivalLocation: trip.arrivalLocation,
+        estimatedDuration: trip.estimatedDuration,
+        fare: trip.fare
+      });
     });
   }
 
   updateTrip(): void {
     if (this.tripForm.valid) {
-      const updatedTrip = { ...this.tripForm.value, idTrip: this.id } as trip;
+      const updatedTrip: trip = {
+        idTrip: this.id,
+        name: this.tripForm.value.name,
+        departureLocation: this.tripForm.value.departureLocation,
+        arrivalLocation: this.tripForm.value.arrivalLocation,
+        estimatedDuration: this.tripForm.value.estimatedDuration,
+        fare: this.tripForm.value.fare
+      };
       this.tripService.updatetrip(updatedTrip).subscribe({
         next: (response) => {
           console.log('Trip updated successfully', response);

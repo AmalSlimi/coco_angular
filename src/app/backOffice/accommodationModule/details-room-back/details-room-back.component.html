@@ -2,6 +2,7 @@
 <app-header-back></app-header-back>
 <app-navbar-back></app-navbar-back>
 
+
 <main id="main" class="main">
   <div *ngIf="room" class="card mt-10">
     <div class="card-body">
@@ -11,7 +12,7 @@
       <p class="card-text">Amenities: {{ room.amenities }}</p>
       <p class="card-text">Room Details: {{ room.roomDetails }}</p>
 
-      <h3 class="card-title">Room Images</h3>
+      <!-- <h3 class="card-title">Room Images</h3>
       <div *ngIf="roomImages.length > 0">
         <div *ngFor="let image of roomImages">
           <img [src]="image" alt="Room Image" class="room-image">
@@ -19,9 +20,22 @@
       </div>
       <div *ngIf="roomImages.length === 0">
         <p>No images available for this room.</p>
+      </div> -->
+      <h3 class="card-title">Room Images</h3>
+      <div *ngIf="roomImages.length > 0" class="room-images">
+        <div *ngFor="let image of roomImages">
+          <img [src]="image" alt="Room Image" class="room-image">  <!-- Effets attrayants -->
+        </div>
       </div>
+      <div *ngIf="roomImages.length === 0">
+        <p>No images available for this room.</p>
+      </div>
+      
+
     </div>
   </div>
 </main>
+<app-footer-front></app-footer-front>
 
-<app-footer-back></app-footer-back>
+
+

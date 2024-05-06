@@ -66,7 +66,7 @@ export class AddRoomBackComponent implements OnInit {
     this.roomService.uploadImagesToRoom(this.roomId, this.images).subscribe({
       next: (response) => {
         console.log('Images uploaded successfully:', response);
-        this.router.navigate(['admin/room']); // Redirect after uploading images
+        this.router.navigate(['/room']); // Redirect after uploading images
       },
       error: (error) => {
         console.error('Failed to upload images:', error);

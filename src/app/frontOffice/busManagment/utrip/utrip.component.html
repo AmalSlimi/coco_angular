@@ -12,6 +12,11 @@
           <div><strong>Estimated Duration:</strong> {{ trip.estimatedDuration }}</div>
           <div><strong>Fare:</strong> {{ trip.fare }}</div>
           <button (click)="showMap(trip.departureLocation, trip.arrivalLocation)" class="btn btn-primary">Show Map</button>
+          <button (click)="getTicket(trip.idTrip)" class="btn btn-primary">Get Ticket</button>
+<!-- votre-composant.component.html -->
+
+
+
 
         </div>
       </div>

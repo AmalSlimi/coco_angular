@@ -103,20 +103,8 @@ import { CategoryComponent } from './frontOffice/accommodationModule/accommodati
 import { SubCategoryComponent } from './frontOffice/accommodationModule/accommodationModule/sub-category/sub-category.component';
 import { UpdateSubcategoryComponent } from './frontOffice/accommodationModule/accommodationModule/update-subcategory/update-subcategory.component';
 import { AddSubCategoryComponent } from './frontOffice/accommodationModule/accommodationModule/add-sub-category/add-sub-category.component';
-import { AccomodationBackComponent } from './backOffice/accommodationModule/accomodation-back/accomodation-back.component';
-import { AddAccBackComponent } from './backOffice/accommodationModule/add-acc-back/add-acc-back.component';
-import { UpdateAccBackComponent } from './backOffice/accommodationModule/update-acc-back/update-acc-back.component';
-import { DetailAccBackComponent } from './backOffice/accommodationModule/detail-acc-back/detail-acc-back.component';
-import { RoomBackComponent } from './backOffice/accommodationModule/room-back/room-back.component';
-import { AddRoomBackComponent } from './backOffice/accommodationModule/add-room-back/add-room-back.component';
-import { UpdateRoomBackComponent } from './backOffice/accommodationModule/update-room-back/update-room-back.component';
-import { DetailsRoomBackComponent } from './backOffice/accommodationModule/details-room-back/details-room-back.component';
-import { CategoryBackComponent } from './backOffice/accommodationModule/category-back/category-back.component';
-import { AddCatBackComponent } from './backOffice/accommodationModule/add-cat-back/add-cat-back.component';
-import { UpdateCatBackComponent } from './backOffice/accommodationModule/update-cat-back/update-cat-back.component';
-import { SubCatBackComponent } from './backOffice/accommodationModule/sub-cat-back/sub-cat-back.component';
-import { AddSubCatBackComponent } from './backOffice/accommodationModule/add-sub-cat-back/add-sub-cat-back.component';
-import { UpdateSubCatBackComponent } from './backOffice/accommodationModule/update-sub-cat-back/update-sub-cat-back.component';
+
+
 import { RoomComponent } from './frontOffice/accommodationModule/accommodationModule/room/room.component';
 import { AccommodationComponent } from './frontOffice/accommodationModule/accommodationModule/accommodation/accommodation.component';
 import { ReclamationComponent } from './frontOffice/reclamationManagement/reclamation/reclamation.component';
@@ -125,15 +113,40 @@ import { AllreclamationsComponent } from './frontOffice/reclamationManagement/al
 import { UpdateReclamationComponent } from './frontOffice/reclamationManagement/update-reclamation/update-reclamation.component';
 import { ResponseComponent } from './frontOffice/reclamationManagement/response/response.component';
 import { ResponseListComponent } from './frontOffice/reclamationManagement/response-list/response-list.component';
+import { WelcomePageComponent } from './frontOffice/welcome-page/welcome-page.component';
+import { ForgetPasswordComponent } from './frontOffice/userModule/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './frontOffice/userModule/reset-password/reset-password.component';
+import { ChatbotService } from './ChatBot/chatbot.service';
+import { TicketComponent } from './frontOffice/busManagment/ticket/ticket.component';
+import { AddticketComponent } from './frontOffice/busManagment/addticket/addticket.component';
+import { MyMapComponent } from './frontOffice/my-map/my-map.component';
+import { FavoriteListOfAccommodationsComponent } from './frontOffice/accommodationModule/favorites/favorite-list-of-accommodations/favorite-list-of-accommodations.component';
+import { AddSoldComponent } from './frontOffice/accommodationModule/accommodationModule/add-sold/add-sold.component';
+import { CustomerCreateComponent } from './frontOffice/accommodationModule/accommodationModule/customer-create/customer-create.component';
+import { RoomPaymentComponent } from './frontOffice/accommodationModule/accommodationModule/room-payment/room-payment.component';
+import { CategoryBackComponent } from './backOffice/accommodationModule/category-back/category-back.component';
+import { AccomodationBackComponent } from './backOffice/accommodationModule/accomodation-back/accomodation-back.component';
+import { AddAccBackComponent } from './backOffice/accommodationModule/add-acc-back/add-acc-back.component';
+import { UpdateAccBackComponent } from './backOffice/accommodationModule/update-acc-back/update-acc-back.component';
+import { DetailAccBackComponent } from './backOffice/accommodationModule/detail-acc-back/detail-acc-back.component';
+import { RoomBackComponent } from './backOffice/accommodationModule/room-back/room-back.component';
+import { AddRoomBackComponent } from './backOffice/accommodationModule/add-room-back/add-room-back.component';
+import { UpdateRoomBackComponent } from './backOffice/accommodationModule/update-room-back/update-room-back.component';
+import { DetailsRoomBackComponent } from './backOffice/accommodationModule/details-room-back/details-room-back.component';
+import { AddCatBackComponent } from './backOffice/accommodationModule/add-cat-back/add-cat-back.component';
+import { UpdateCatBackComponent } from './backOffice/accommodationModule/update-cat-back/update-cat-back.component';
+import { AddSubCatBackComponent } from './backOffice/accommodationModule/add-sub-cat-back/add-sub-cat-back.component';
+import { UpdateSubCatBackComponent } from './backOffice/accommodationModule/update-sub-cat-back/update-sub-cat-back.component';
+import { SubCatBackComponent } from './backOffice/accommodationModule/sub-cat-back/sub-cat-back.component';
 
 const routes: Routes = [
-  
+
+//default route
+  {path:'WelcomeToCoco',component:WelcomePageComponent},
+  {path:'', redirectTo :'/WelcomeToCoco', pathMatch:'full'},
   {path:'signup',component:RegisterComponent},
   {path:'login',component:LoginComponent},
-  //default route
-  {path:'', redirectTo :'/login', pathMatch:'full'},
   
-
   //amal
   {
     path: 'admin',
@@ -151,7 +164,9 @@ const routes: Routes = [
 {path:'myProfile',component:MyProfileComponent},
 {path:'external-user',component:ExternalUserComponent},
 {path:'dashboard',component:DashboardComponent},
-  
+{ path: 'forget-password', component: ForgetPasswordComponent },
+{ path: 'resetpassword/:passwordResetToken', component: ResetPasswordComponent },
+{path:'chatbot',component:ChatbotService},
 
 
   //special
@@ -309,45 +324,52 @@ const routes: Routes = [
   {path:'add-sub/:id',component:AddsubscriptionComponent},
   {path: 'strip', component: StripeComponent},
   {path: 'map', component: MapComponent},
+  {path: 'ticket', component: TicketComponent},
+  {path:'add-ticket/:id',component:AddticketComponent},
   
 
 
   //hadyla
-  {path:'room',component:RoomComponent},
-  {path:'accommodation',component:AccommodationComponent},
-  {path:'addRoom',component:AddRoomComponent},
-  {path:'update/:id',component:UpdateRoomComponent},
-  {path:'getRoomById/:id',component:DetailsRoomComponent},
+  {path:'create-customer', component: CustomerCreateComponent },
+  {path:'roomPayment', component: RoomPaymentComponent },
+  {path:'roomF',component:RoomComponent},
+  {path:'accommodationF',component:AccommodationComponent},
+  {path:'addRoomF',component:AddRoomComponent},
+  {path:'updateF/:id',component:UpdateRoomComponent},
+  {path:'getRoomByIdF/:id',component:DetailsRoomComponent},
   {path:'updateAccomodation/:id',component:UpdateAccommodationComponent},
-  {path:'addAccomodation',component:AddAccommodationComponent},
-  {path:'getAccomodationById/:id',component:DetailsAccomodationComponent},
-  {path:'addCat',component:AddCategoryComponent},
+  {path:'addAccomodationF',component:AddAccommodationComponent},
+  {path:'getAccomodationByIdF/:id',component:DetailsAccomodationComponent},
+  {path:'addCatF',component:AddCategoryComponent},
   {path:'updateCategory/:id',component:UpdateCategoryComponent},
   {path:'getAllCategories',component:CategoryComponent},
   {path:'getAllSubCategories',component:SubCategoryComponent},
-  { path: 'update-subcategory/:id', component: UpdateSubcategoryComponent },
-  {path:'addSubCat',component:AddSubCategoryComponent},
+  { path:'update-subcategory/:id', component: UpdateSubcategoryComponent },
+  {path:'addSubCatF',component:AddSubCategoryComponent},
+  {path: 'abc', component: MyMapComponent},
+  {path: 'getAllRoom', component: RoomComponent},
+  {path: 'fav', component: FavoriteListOfAccommodationsComponent},
+  {path: 'userSold', component: AddSoldComponent},
 
-  
-    
-    
-      { path: 'accomodation', component: AccomodationBackComponent },
-      { path: 'addAcc', component: AddAccBackComponent },
-      { path: 'updateAcc/:id', component: UpdateAccBackComponent },
-      { path: 'getAccommodationById/:id', component: DetailAccBackComponent },
-  
-      { path: 'room', component: RoomBackComponent },
-      { path: 'addRoom', component: AddRoomBackComponent },
-      { path: 'updateRoom/:id', component: UpdateRoomBackComponent },
-      { path: 'getRoomById/:id', component: DetailsRoomBackComponent },
-  
-      { path: 'cat', component: CategoryBackComponent },
-      { path: 'addCat', component: AddCatBackComponent },
-      { path: 'updateCat/:id', component: UpdateCatBackComponent },
-  
-      { path: 'subcat', component: SubCatBackComponent },
-      { path: 'addSubCat', component: AddSubCatBackComponent },
-      { path: 'updateSubCat/:id', component: UpdateSubCatBackComponent },
+
+    /*******  back */
+  { path: 'accomodation', component: AccomodationBackComponent },
+  { path: 'addAcc', component: AddAccBackComponent },
+  { path: 'updateAcc/:id', component: UpdateAccBackComponent },
+  { path: 'getAccommodationById/:id', component: DetailAccBackComponent },
+  { path: 'room', component: RoomBackComponent },
+  { path: 'addRoom', component: AddRoomBackComponent },
+  { path: 'updateRoom/:id', component: UpdateRoomBackComponent },
+  { path: 'getRoomById/:id', component: DetailsRoomBackComponent },
+
+  { path: 'cat', component: CategoryBackComponent},
+  { path: 'addCat', component: AddCatBackComponent },
+  { path: 'updateCat/:id', component: UpdateCatBackComponent },
+
+  { path: 'subcat', component: SubCatBackComponent },
+  { path: 'addSubCat', component: AddSubCatBackComponent },
+  { path: 'updateSubCat/:id', component: UpdateSubCatBackComponent },
+
     
 
   //ramsys

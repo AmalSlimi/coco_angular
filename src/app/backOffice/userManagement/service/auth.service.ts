@@ -83,5 +83,17 @@ export class AuthService {
     return user ? JSON.parse(user) : null;
   }
 
+  forgetPassword(email: string): Observable<any> {
+    const url = `${this.baseUrl}forgetpassword?email=${encodeURIComponent(email)}`;
+    return this.http.post<any>(url, null, this.httpOptions); 
+  }
+  
+  resetPassword(passwordResetToken: string, newPassword: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}resetPassword/${passwordResetToken}`, { newPassword }, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    });
+  }
+  
+
   
 }

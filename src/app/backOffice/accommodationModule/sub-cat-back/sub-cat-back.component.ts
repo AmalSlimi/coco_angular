@@ -60,7 +60,7 @@ export class SubCatBackComponent  implements OnInit{
     )
   }
   navigateToUpdateSubCat(SubCategoryID: number): void {
-    this.router.navigate(['/admin/updateSubCat', SubCategoryID]);
+    this.router.navigate(['/updateSubCat', SubCategoryID]);
   }
   onhide(){
     this.modelServie.hide(1);

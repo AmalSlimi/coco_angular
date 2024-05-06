@@ -23,6 +23,18 @@ export class UpdateCatBackComponent implements OnInit {
       this.id = params['id']; // Assurez-vous que le nom correspond à celui défini dans la route
       // Chargez les détails de la catégorie en utilisant this.id
     });
+
+
+     // Récupérer les détails de la catégorie par ID
+     this.id = this.route.snapshot.params['id'];
+     this.categoryService.getCategoryById(this.id).subscribe(
+       (response: Category) => {
+         this.category = response; // Préremplir les détails de la catégorie
+       },
+       error => {
+         console.error('Error retrieving category:', error);
+       }
+     );
   }
 
 
@@ -31,7 +43,7 @@ export class UpdateCatBackComponent implements OnInit {
     this.categoryService.updateCategory(this.id,this.category).subscribe(
       response => {
         console.log('category updated successfully:', response);
-        this.router.navigate(['/admin/cat'])
+        this.router.navigate(['/cat'])
 
       },
       error => {

@@ -63,12 +63,13 @@ export class RoomService {
       })
     );
   }
+  // getAllRooms(): Observable<Room[]> {
+  //   return this.http.get<Room[]>(`${this.apiUrl}/getAllRoom`);
+  // }
 
   getImagesForRoom(roomID: number): Observable<string[]> {
     return this.http.get<string[]>(`${this.apiUrl}/${roomID}/images`);
   }
-
-
 
 
   // uploadImagesToRoom(roomID: number, images: FileList): Observable<HttpEvent<Room>> {
@@ -91,5 +92,9 @@ export class RoomService {
     }
 
     return this.http.post<any>(`${this.apiUrl}/addImages/${roomID}/images`, formData);
+  }
+
+  getRoomsByAccommodation(accommodationId: number): Observable<Room[]> {
+    return this.http.get<Room[]>(`${this.apiUrl}/byAccommodation/${accommodationId}`);
   }
 }

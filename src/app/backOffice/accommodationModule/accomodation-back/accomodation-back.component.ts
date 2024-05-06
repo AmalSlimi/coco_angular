@@ -9,7 +9,9 @@ import { TDocumentDefinitions } from 'pdfmake/interfaces';
 import { AccomodationService } from 'src/app/frontOffice/accommodationModule/accommodationModule/Services/accomodation.service';
 import { Accomodation } from 'src/app/frontOffice/accommodationModule/models/accomodationModel';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import * as saveAs from 'file-saver';
+// import * as saveAs from 'file-saver';
+import { saveAs } from 'file-saver';
+
 interface Accommodation {
   accommodationID: any;
   address:string;
@@ -125,7 +127,7 @@ export class AccomodationBackComponent implements OnInit {
   }
 
   navigateToUpdateAccomodation(accommodationID: number): void {
-    this.router.navigate(['/admin/updateAcc', accommodationID]);
+    this.router.navigate(['/updateAcc', accommodationID]);
   }
   delete(accommodationID: number): void {
     this.accommodationService.deleteAccomodation(accommodationID).subscribe({
@@ -193,7 +195,7 @@ openImage(filename: string) {
               widths: ['*', '*'],
               body: [
                 [{ text: 'Accommodation Information', colSpan: 2, style: 'header' }, ''],
-                ['Address:', { text: accommodation.address, style: 'cell' }],
+                ['Name:', { text: accommodation.accommodationName, style: 'cell' }],
                 ['Rent Price:', { text: accommodation.rent_price, style: 'cell' }],
                 ['Rules:', { text: accommodation.rules, style: 'cell' }],
                 ['Number of Rooms:', { text: accommodation.numberOfRoom, style: 'cell' }],
@@ -227,7 +229,7 @@ openImage(filename: string) {
   }
 
   navigateToViewDetails( accommodationID:number):void{ console.log('Accomodation ID:', accommodationID);
-  this.router.navigate(['admin/getAccommodationById', accommodationID]);
+  this.router.navigate(['/getAccommodationById', accommodationID]);
 }
 
 }

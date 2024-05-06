@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class StripeComponent implements OnInit {
   clientSecret: string | null = null;
-  amount: number = 100; // Définir la valeur de 'amount' statiquement
+  amount: number = 100;
   url = "http://localhost:8085/spring2024/stripe";
 
   constructor(private http: HttpClient , private ac: ActivatedRoute, private router: Router) {}
@@ -19,11 +19,9 @@ export class StripeComponent implements OnInit {
   pay() {
     this.http.post<any>(`${this.url}/stripe/${this.amount}`, {}).subscribe(data => {
       this.clientSecret = data;
-      // Afficher une alerte de réussite
       alert("Paiement réussi !");
     }, error => {
       console.error('Une erreur est survenue lors de la requête:', error);
-      // Afficher une alerte en cas d'erreur
       alert("Une erreur est survenue lors du paiement. Veuillez réessayer plus tard.");
     });
   }

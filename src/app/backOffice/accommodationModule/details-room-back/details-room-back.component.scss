@@ -1,0 +1,23 @@
+.room-images {
+    display: flex;  /* Pour aligner les images côte à côte */
+    justify-content: center;  /* Centrer horizontalement */
+    align-items: center;  /* Centrer verticalement */
+    flex-wrap: wrap;  /* Permettre le retour à la ligne si nécessaire */
+    gap: 15px;  /* Espace entre les images, légèrement augmenté */
+  }
+  
+  .room-image {
+    width: 400px;  /* Taille fixe pour uniformiser les images */
+    height: 400px;
+    object-fit: contain;  /* Maintenir le ratio d'aspect */
+    border-radius: 10px;  /* Bords arrondis pour une apparence plus douce */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);  /* Ombres portées */
+    transition: all 0.3s ease;  /* Transition douce pour les effets au survol */
+    background-color: white;  /* Fond blanc pour un contraste plus net */
+  }
+  
+  .room-image:hover {
+    transform: scale(1.1);  /* Agrandissement au survol pour dynamisme */
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 24px 0 rgba(0, 0, 0, 0.2);  /* Ombres accentuées au survol */
+  }
+  
